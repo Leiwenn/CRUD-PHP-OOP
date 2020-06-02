@@ -1,0 +1,58 @@
+/* --------------------------------------------------------- FONTS */
+
+
+/* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
+
+nav, #footer{
+	background: #2D2D2D;
+	color: white;
+}
+
+.single img{
+	max-width: calc(100% - 40em);
+}
+
+footer img{
+	max-width: 300px;
+}
+
+/* ------------------------------------------------------------------------ LAYOUT */
+
+.container-fluid{
+	max-width: 1920px;
+	margin: auto;
+}
+
+header{
+	height: 100vh;
+	overflow: hidden;
+}
+.hero{
+	height: 100%;
+}
+.callToAction{
+	padding: 12px 24px;
+	border-radius: 4px;
+}
+.callToAction:hover{
+	padding: 12px 40px;
+}
+
+.container{
+	margin: -60px auto 30px auto;
+}
+.container, .card-deck{
+	max-width: calc(100% - 10em);
+	border-radius: 5px;
+}
+h2{
+	padding-top: 20px;
+}
+
+.single{
+	border: none;
+}
+
+#footer p:first-of-type{
+	max-width: 45vw;
+}
