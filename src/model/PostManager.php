@@ -1,12 +1,15 @@
 <?php
 
-//namespace Blog\models;
-
-require_once 'model/DbManager.php';
+namespace p4\blog\model;
+require_once 'src/model/DbManager.php';
 
 class PostManager extends DbManager{
 
-    //récupère tous les billets
+    /**
+	 * get all posts where category is 1 = 'billet simple pour l'alaska'
+	 *
+	 * @return void
+	 */
 	public function getPosts(){
 
 		$db = $this->dbConnexion();
@@ -16,7 +19,12 @@ class PostManager extends DbManager{
 		return $posts;
 	}
 
-	//récupère un billet en fonction de son ID
+	/**
+	 * get one post where ID
+	 *
+	 * @param [type] $postId
+	 * @return void
+	 */
 	public function getPost($postId){
 		$db = $this->dbConnexion();
 

@@ -1,13 +1,13 @@
 <?php
 
-//namespace ;
-
-require_once 'model/PostManager.php';
+namespace p4\blog\controller;
+use p4\blog\model\PostManager as PostManager;
+require_once 'src/model/DbManager.php';
 
 class PostController{
 
     /**
-     * Undocumented function
+     * return all posts with template
      *
      * @return void
      */
@@ -20,7 +20,7 @@ class PostController{
     }
 
     /**
-     * Undocumented function
+     * return one post with template
      *
      * @return void
      */

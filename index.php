@@ -1,7 +1,6 @@
 <?php
 
-require 'controller/PostController.php';
-
+require 'vendor/autoload.php'; 
 
 try{
 
@@ -11,7 +10,7 @@ try{
             
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 
-                $postController = new PostController();
+                $postController = new \p4\blog\controller\PostController();
                 $postController->showPost();
                 
             }else{
@@ -19,7 +18,7 @@ try{
             }
         }
     }else{
-        $postController = new PostController();
+        $postController = new \p4\blog\controller\PostController();
         $postController->showPosts();
     }
 
