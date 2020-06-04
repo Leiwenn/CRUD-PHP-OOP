@@ -1,15 +1,83 @@
 /* --------------------------------------------------------- FONTS */
 
+h1{
+	font-size: 30px;
+}
+h2{
+	font-size: 30px;
+	font-weight: bold;
+}
+h3{
+	font-size: 20px;
+	font-weight: bold;
+}
 
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
+.btn, a{
+	background: #CA9A5A;
+	color: #2D2D2D;
+}
 
-nav, #footer{
-	background: #2D2D2D;
+nav a:first-of-type{
+	color: white;
+	text-decoration: none;
+}
+
+.hero{
+	background: url("../img/typewriter.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+.hero img{
+	width: 15vw;
+}
+#callToAction{
+	width: 200px;
+	border-radius: 0;
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+#callToAction, article .btn{
+	background: #2c4444;
+	border-color: transparent;
+	color: white;
+}
+#callToAction:hover, article .btn:hover{
+	background: #577367;
 	color: white;
 }
 
-.hero img{
-	width: 15vw;
+nav .btn{
+	border-color: transparent;
+	background: #2D2D2D;
+	border-color: #2D2D2D;
+	color: #CA9A5A;
+}
+nav .btn:hover{
+	border-color: transparent;
+	background: #CA9A5A;
+	color: #2c4444;
+}
+
+.postsContainer{
+	background: white;
+}
+.title{
+    color: #2c4444;
+}
+article{
+	background: white;
+	color: #2D2D2D;
+}
+article img, .cover{
+	filter: grayscale(60%);
+}
+
+body, nav, header, #footer{
+	background: #2D2D2D;
+	color: white;
 }
 
 .single img{
@@ -42,15 +110,15 @@ header{
 	padding: 12px 40px;
 }
 
-.container{
+.postsContainer{
 	margin: -60px auto 30px auto;
 }
-.container, .card-deck{
-	max-width: calc(100% - 10em);
+.postsContainer, .onePostContainer{
 	border-radius: 5px;
 }
-h2{
-	padding-top: 20px;
+
+article{
+	min-width: 300px;
 }
 
 .single{
