@@ -17,10 +17,10 @@
 
         <?= $content ?>
         
-        <footer id="footer" class="d-flex p-4 rounded">
-            <img class="rounded ml-3" src="public/img/jean.jpg" alt="" />
-            <p class="ml-3 mr-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor risus id congue malesuada. Donec ultrices id arcu eu mattis. Phasellus justo est, sollicitudin quis cursus vitae, pharetra ultricies urna. Suspendisse in leo aliquam, cursus magna eget, hendrerit massa. Mauris ex nunc, porttitor vitae gravida sed.<br/><span>Jean Forteroche</span></p>
-            <div class="d-flex flex-column mr-3">
+        <footer id="footer" class="d-flex flew-row flex-wrap p-4">
+            <img class="rounded ml-4" src="public/img/jean.jpg" alt="" />
+            <p class="ml-4 mr-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque porttitor risus id congue malesuada. Donec ultrices id arcu eu mattis. Phasellus justo est, sollicitudin quis cursus vitae, pharetra ultricies urna. Suspendisse in leo aliquam, cursus magna eget, hendrerit massa. Mauris ex nunc, porttitor vitae gravida sed.<br/><span>Jean Forteroche</span></p>
+            <div class="d-flex flex-column mr-4">
                 <p>Mentions légales</p>
                 <p>Images</p>
             </div>

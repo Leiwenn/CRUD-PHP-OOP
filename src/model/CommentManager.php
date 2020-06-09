@@ -5,6 +5,12 @@ require_once 'src/model/DbManager.php';
 
 class CommentManager extends DbManager{
 
+    /**
+     * get all comments from DB
+     *
+     * @param [type] $postId
+     * @return void
+     */
     public function getComments($postId){
         $db = $this->dbConnexion();
 

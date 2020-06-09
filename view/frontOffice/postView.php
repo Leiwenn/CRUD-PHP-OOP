@@ -1,4 +1,4 @@
-<section class="card-deck onePostContainer w-75 mx-auto">
+<section class="card-deck onePostContainer mx-auto">
 
         <?php
             while ($data = $post->fetch()){
@@ -17,16 +17,16 @@
 
 <section class="pt-4 d-flex flex-wrap justify-content-around">
 
-    <div class="order-2 w-25">
+    <div class="order-2 w-25 bg-light rounded p-2">
         <form action="index.php?action=comment<?= $data['id']; ?>" method="post">
             <h3>Ajouter un commentaire</h3>
-            <label class="mt-4" for="pseudo">Pseudo:</label><input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" <?= htmlspecialchars('pseudo'); ?> required>
+            <label class="mt-4" for="pseudo">Pseudo</label><input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" <?= htmlspecialchars('pseudo'); ?> required>
                         
-            <label class="mt-4" for="title">Titre du message:</label><input class="form-control" type="text" name="title" id="title" placeholder="titre" <?= htmlspecialchars('title'); ?> required>
+            <label class="mt-4" for="title">Titre du message</label><input class="form-control" type="text" name="title" id="title" placeholder="titre" <?= htmlspecialchars('title'); ?> required>
 
-            <label class="mt-4" for="comment">Votre commentaire:</label><textarea rows="5" id="comment" name="comment" class="form-control" <?= htmlspecialchars('comment'); ?> required></textarea>
+            <label class="mt-4" for="comment">Votre commentaire</label><textarea rows="5" id="comment" name="comment" class="form-control" <?= htmlspecialchars('comment'); ?> required></textarea>
 
-            <input class="mt-4 btn" type="submit" value="Valider">
+            <input class="mt-4 btn btn-success" type="submit" value="Valider">
         </form>
 
         <?php
@@ -34,18 +34,19 @@
         ?>
     </div>
 
-    <div class="order-1 w-50">
+    <div class="order-1 w-50 bg-light rounded p-2">
         <div>
             <h4>Commentaires</h4>
             <?php
                 while ($comment = $comments->fetch()){
             ?>
-            <!--htmlspecialchars($comment['author'])-->
+            
             <p> le <?= $comment['comment_date_fr'] ?></p>
             <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-            <form action="index.php?action=report" method="POST">
+            <a href="index.php?action=report" data-toggle="tooltip" title="Modération" class="mt-2 btn btn-danger"><i class="far fa-bell"></i></a>
+            <!--<form action="index.php?action=report" method="POST">
                 <input class="mt-2 btn btn-danger" type="report" name="report" id="report" value="Modération" >
-            </form>
+            </form>-->
                 
             <?php
                 }

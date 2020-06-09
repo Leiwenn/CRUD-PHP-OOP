@@ -5,6 +5,15 @@ require_once 'src/model/DbManager.php';
 
 class MemberManager extends DbManager{
 
+    /**
+     * set new member in DB
+     *
+     * @param [type] $pseudo
+     * @param [type] $mail
+     * @param [type] $passwordHache
+     * @param [type] $members_category
+     * @return void
+     */
     public function setMember($pseudo, $mail, $passwordHache, $members_category){
         $db = $this->dbConnexion();
 
@@ -12,11 +21,42 @@ class MemberManager extends DbManager{
         $addMember->execute(array('pseudo' => $pseudo, 'mail' => $mail, 'passwordHache' => $passwordHache, 'members_category' => $members_category));
     }
 
+    /**
+     * get all from members
+     *
+     * @return void
+     */
     public function getMembers(){
         $db = $this->dbConnexion();
         
         $req = $db->query('SELECT pseudo, mail, passwordHache, members_category FROM members');
         $getMembers = $req;
         return $getMembers;
+    }
+
+    /**
+     * disconnect member
+     *
+     * @return void
+     */
+    public function disconnect(){
+        session_start();
+        $_SESSION['pseudo'] = null;
+        //$_SESSION = array();
+        session_destroy();
+        unset($_SESSION);
+    }
+
+    /**
+     * delete member cookies && DB_data
+     *
+     * @return void
+     */
+    public function deleteMember(){
+        $db = $this->dbConnexion();
+        $req = $db->prepare('DELETE FROM members WHERE id = ?');
+        
+        setcookie('pseudo', '');
+        setcookie('password', '');
     }
 }

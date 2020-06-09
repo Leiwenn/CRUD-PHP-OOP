@@ -3,10 +3,10 @@
     <nav>
         <ul class="nav d-flex justify-content-between">
             <li class="nav-item m-3">
-                <a href="index.php"><h1>JEAN FORTEROCHE</h1></a>
+                <a class="nav-link" href="index.php"><h1>JEAN FORTEROCHE</h1></a>
             </li>
-            <li class="nav-item m-3">
-                <a class="nav-link btn btn-outline-light" data-toggle="modal" data-target="#connexion" href="#"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+            <li class="nav-item m-4">
+                <a class="nav-link btn" data-toggle="modal" data-target="#connexion" href="#"><i class="fas fa-sign-in-alt"></i> Connexion</a>
             </li>
         </ul>
     </nav>
@@ -16,9 +16,8 @@
             <img class="img-fluid cover" src="public/img/livre.jpg" alt="" />
         </div>
         <div class="text-left pt-4 w-50 mt-5">
-            <p class="livre mb-3">BILLET SIMPLE POUR L'ALASKA</p>
             <p class="mb-5">Inédit ! Un nouvel épisode chaque semaine...<br/>Inscrivez vous pour commenter les épisodes être informé dès la publication</p>
-            <a class="btn btn-lg" id="callToAction" data-toggle="modal" data-target="#registration">S'inscrire</a>
+            <a class="btn btn-lg" id="callToAction" data-toggle="modal" data-target="#registration"><i class="fas fa-feather-alt mr-2"></i> S'inscrire</a>
         </div>
             
     </div>
@@ -44,7 +43,7 @@
                     <div class="form-group form-check">
 					    <label class="pt-4 form-check-label" for="checkbox"><input class="form-check-input" type="checkbox" name="checkbox"> se souvenir de moi</label>
                     </div>
-					<input class="mt-4 btn btn-block" type="submit" value="se connecter">
+					<input class="mt-4 btn btn-info btn-block" type="submit" value="se connecter">
 				</form>
 			</div>
 			<div class="modal-footer">
@@ -71,7 +70,7 @@
 
                     <label class="pt-2" for="passwordConfirm">Confirmer votre mot de passe</label><input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" placeholder="password" <?php echo htmlspecialchars('passwordConfirm'); ?> required>
 
-                    <input class="mt-4 btn btn-block" type="submit" value="s'inscrire">
+                    <input class="mt-4 btn btn-info btn-block" type="submit" value="s'inscrire">
                 </form>
             </div>
             <div class="modal-footer">

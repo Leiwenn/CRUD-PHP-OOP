@@ -5,8 +5,14 @@ use p4\blog\model\CommentManager as CommentManager;
 
 class CommentController{
 
+    /**
+     * show all comments of a post
+     *
+     * @return void
+     */
     public function showComments(){
-        $commentsManager = new CommentManager();
-        $showComments = $commentsManager->getComments($_GET['id']);
+        $commentManager = new CommentManager();
+        $showComments = $commentManager->getComments($_GET['id']);
     }
+
 }

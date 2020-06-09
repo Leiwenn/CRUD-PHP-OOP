@@ -1,29 +1,64 @@
 /* --------------------------------------------------------- FONTS */
+@font-face {
+    font-family: 'boycottregular';
+    src: url('../font/boycott_-webfont.woff2') format('woff2'),
+         url('../font/boycott_-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../font/roboto-regular-webfont.woff2') format('woff2'),
+         url('../font/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
-h1{
-	font-size: 30px;
+.container-fluid{
+	font-family: 'robotoregular';
 }
-h2{
+h1, h2, h3, h4, nav{
 	font-size: 30px;
-	font-weight: bold;
+	font-family: 'boycottregular';
 }
-h3{
+h3, .hero p{
 	font-size: 20px;
+}
+.heroConnect p{
+	font-size: 35px;
+}
+h2, h3, #callToAction, .hero p, .heroConnect p{
 	font-weight: bold;
 }
 
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
-.btn, a{
-	background: #CA9A5A;
+body{
+	background: #2D2D2D;
+}
+.container-fluid{
 	color: #2D2D2D;
 }
 
-nav a:first-of-type{
+/* --- HEADER --- */
+nav a h1{
 	color: white;
+}
+nav .btn{
+	color: #2c4444;
+	border: 1px solid #2c4444;
+}
+nav .btn:hover{
+	border-color: transparent;
+}
+.nav-item a:hover{
 	text-decoration: none;
 }
-
-.hero{
+.single a{
+	color: white;
+	border-color: white;
+	text-decoration: none;
+}
+header{
 	background: url("../img/typewriter.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -38,34 +73,26 @@ nav a:first-of-type{
 	border-radius: 0;
 	border-top-left-radius: 20px;
 	border-bottom-right-radius: 20px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
-#callToAction, article .btn{
+#callToAction, article .btn, .heroConnect .btn{
 	background: #2c4444;
 	border-color: transparent;
 	color: white;
 }
-#callToAction:hover, article .btn:hover{
+#callToAction:hover, article .btn:hover, nav .btn:hover, .heroConnect .btn:hover{
 	background: #577367;
 	color: white;
 }
-
-nav .btn{
-	border-color: transparent;
-	background: #2D2D2D;
-	border-color: #2D2D2D;
-	color: #CA9A5A;
-}
-nav .btn:hover{
-	border-color: transparent;
-	background: #CA9A5A;
-	color: #2c4444;
+#callToAction:hover{
+	letter-spacing: 1px;
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
 }
 
+/* --- POSTS --- */
 .postsContainer{
 	background: white;
-}
-.title{
-    color: #2c4444;
 }
 article{
 	background: white;
@@ -74,27 +101,29 @@ article{
 article img, .cover{
 	filter: grayscale(60%);
 }
-
-body, nav, header, #footer{
-	background: #2D2D2D;
-	color: white;
-}
-
 .single img{
 	max-width: calc(100% - 40em);
 }
 
+/* --- FOOTER --- */
+#footer{
+	background: #2D2D2D;
+	color: white;
+}
+footer{
+	border-top: 1px solid grey;
+}
 footer img{
 	max-width: 300px;
 }
 
 /* ------------------------------------------------------------------------ LAYOUT */
-
 .container-fluid{
 	max-width: 1920px;
 	margin: auto;
 }
 
+/* --- HEADER --- */
 header{
 	height: 100vh;
 	overflow: hidden;
@@ -110,21 +139,56 @@ header{
 	padding: 12px 40px;
 }
 
+/* --- POSTS --- */
 .postsContainer{
 	margin: -60px auto 30px auto;
 }
 .postsContainer, .onePostContainer{
+	width: 90%;
 	border-radius: 5px;
 }
-
-article{
+.postsContainer article{
 	min-width: 300px;
+	max-width: 30%;
+	margin: 20px;
 }
-
+.onePostContainer article{
+	width: 100%;
+}
+.posts{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+}
 .single{
 	border: none;
 }
 
+/*overlay*/
+.postsContainer article{
+	position: relative;
+	width: 50%;
+}
+.overlay{
+	position: absolute;
+	bottom: 0;
+	left: 100%;
+	right: 0;
+	background-color: white;
+	opacity: 0.85;
+	overflow: hidden;
+	width: 0;
+	height: 100%;
+	transition: .5s ease;
+}
+.postsContainer article:hover .overlay{
+	width: 100%;
+	left: 0;
+}
+/*end overlay*/
+
+/* --- FOOTER --- */
 #footer p:first-of-type{
 	max-width: 45vw;
 }
