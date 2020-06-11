@@ -14,20 +14,20 @@
     font-style: normal;
 }
 
-.container-fluid{
+.container-fluid, .dropdown-item{
 	font-family: 'robotoregular';
 }
-h1, h2, h3, h4, nav{
+h2, h3, h4, nav{
 	font-size: 30px;
 	font-family: 'boycottregular';
 }
 h3, .hero p{
 	font-size: 20px;
 }
-.heroConnect p{
+h1, .heroConnect p{
 	font-size: 35px;
 }
-h2, h3, #callToAction, .hero p, .heroConnect p{
+h2, h3, #callToAction, #call, .hero p, .heroConnect p{
 	font-weight: bold;
 }
 
@@ -43,12 +43,12 @@ body{
 nav a h1{
 	color: white;
 }
-nav .btn{
-	color: #2c4444;
-	border: 1px solid #2c4444;
+.connexion a{
+	border: 1px solid #2c4444 !important;
+	border-radius: 5px;
 }
-nav .btn:hover{
-	border-color: transparent;
+.dropdown a{
+	color: #2c4444;
 }
 .nav-item a:hover{
 	text-decoration: none;
@@ -68,23 +68,29 @@ header{
 .hero img{
 	width: 15vw;
 }
-#callToAction{
+#callToAction, #call{
 	width: 200px;
 	border-radius: 0;
-	border-top-left-radius: 20px;
-	border-bottom-right-radius: 20px;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
-#callToAction, article .btn, .heroConnect .btn{
+#callToAction{
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+#call{
+	border-top-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+#callToAction, #call, article .btn, .heroConnect .btn{
 	background: #2c4444;
 	border-color: transparent;
 	color: white;
 }
-#callToAction:hover, article .btn:hover, nav .btn:hover, .heroConnect .btn:hover{
+#callToAction:hover, #call:hover, article .btn:hover, nav .btn:hover, .heroConnect .btn:hover{
 	background: #577367;
 	color: white;
 }
-#callToAction:hover{
+#callToAction:hover, #call:hover{
 	letter-spacing: 1px;
 	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
 	transition: all 0.4s ease 0s;
@@ -125,7 +131,6 @@ footer img{
 
 /* --- HEADER --- */
 header{
-	height: 100vh;
 	overflow: hidden;
 }
 .hero{

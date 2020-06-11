@@ -20,7 +20,6 @@ class MemberController{
         $passwordHache = $_POST['password'];
         $passwordHache = password_hash($password, PASSWORD_DEFAULT);
         $memberManager->setMember($pseudo, $mail, $passwordHache, 2);
-        $header = require 'view/frontOffice/header.php';
     }
 
     /**
@@ -42,7 +41,6 @@ class MemberController{
     public function disconnectMember(){
         $memberManager = new MemberManager();
         $disconnectMember = $memberManager->disconnect();
-        $header = require 'views/frontend/header.php';
     }
 
     /**
@@ -54,6 +52,7 @@ class MemberController{
         $memberManager = new MemberManager();
         $disconnectMember = $memberManager->disconnect();
         $DeleteAMember = $memberManager->deleteMember();
-        $header = require 'views/frontend/header.php';
+        echo '<p class="text-danger">' . 'coucou from controller' . '</p>';
     }
+
 }

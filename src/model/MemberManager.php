@@ -40,9 +40,9 @@ class MemberManager extends DbManager{
      * @return void
      */
     public function disconnect(){
-        session_start();
-        $_SESSION['pseudo'] = null;
-        //$_SESSION = array();
+        //session_start();
+        //$_SESSION['pseudo'] = null;
+        $_SESSION = array();
         session_destroy();
         unset($_SESSION);
     }
@@ -58,5 +58,17 @@ class MemberManager extends DbManager{
         
         setcookie('pseudo', '');
         setcookie('password', '');
+    }
+
+    /**
+     * count total of members
+     *
+     * @return void
+     */
+    public function countMembers(){
+        $db = $this->dbConnexion();
+        $req = $db->query('SELECT COUNT(*) nbre_members FROM members WHERE id AND members_category = 2');
+        $countMembers = $req;
+        return $countMembers;
     }
 }

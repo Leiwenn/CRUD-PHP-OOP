@@ -1,0 +1,57 @@
+/* --------------------------------------------------------- FONTS */
+.users, .autre{
+    font-size: 40px;
+}
+
+/* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
+body{
+    background: #ecf0f5;
+    color: #2D2D2D;
+}
+
+.navbar{
+    background: #2D2D2D;
+}
+.navbar, .users, .autre{
+    color: white;
+}
+.navbar img{
+    width: 36%;
+}
+.carte, section{
+    background: white;
+}
+.users{
+    background: #f39c12;
+}
+.autre{
+    background: #00c0ef;
+}
+section{
+    border-top: 2px solid grey;
+}
+
+/* ------------------------------------------------------------------------ LAYOUT */
+.navbar{
+    width: 20%;
+}
+
+header{
+    margin-left: 20%;
+}
+.carte{
+    width: 250px;
+    height: 90px;
+}
+.users{
+    width: 90px;
+}
+.autre{
+    width: 90px;
+}
+
+section{
+    height: 70vh;
+    overflow: hidden;
+    margin: 20px 20px 20px 22%;
+}

@@ -33,6 +33,7 @@ class PostController{
      * @return void
      */
     public function showPost(){
+
         $header = require 'view/frontOffice/headerSingle.php';
         $postManager = new PostManager();
         $commentManager = new CommentManager();

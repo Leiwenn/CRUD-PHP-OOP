@@ -29,3 +29,11 @@ Etape 3-3
     (ajout des fonctions disconnect/unsuscribe)
 - ajout de fonts/compression des images
 - création de headerConnect/HeaderAdmin
+
+Etape 3-4
+- création du membre admin en DB
+- ajout du dossier backOffice dans view avec dashboard.php
+- création de DashboardController avec affichage du nombre de membres
+- update de index.php action=dashboard
+- amélioration header/nav
+- css styleDashboard.css

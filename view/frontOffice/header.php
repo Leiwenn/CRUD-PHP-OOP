@@ -1,12 +1,17 @@
-<header>
+<header class="h-100">
         
     <nav>
         <ul class="nav d-flex justify-content-between">
-            <li class="nav-item m-3">
-                <a class="nav-link" href="index.php"><h1>JEAN FORTEROCHE</h1></a>
+        <li class="nav-item m-4">
+                <a href="index.php"><h1>JEAN FORTEROCHE</h1></a>
             </li>
-            <li class="nav-item m-4">
-                <a class="nav-link btn" data-toggle="modal" data-target="#connexion" href="#"><i class="fas fa-sign-in-alt"></i> Connexion</a>
+            <li class="nav-item dropdown m-3">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MENU</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">lien</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">lien</a>
+                </div>
             </li>
         </ul>
     </nav>
@@ -16,8 +21,15 @@
             <img class="img-fluid cover" src="public/img/livre.jpg" alt="" />
         </div>
         <div class="text-left pt-4 w-50 mt-5">
-            <p class="mb-5">Inédit ! Un nouvel épisode chaque semaine...<br/>Inscrivez vous pour commenter les épisodes être informé dès la publication</p>
-            <a class="btn btn-lg" id="callToAction" data-toggle="modal" data-target="#registration"><i class="fas fa-feather-alt mr-2"></i> S'inscrire</a>
+            <p class="mb-5">Inédit ! Un nouvel épisode chaque semaine...<br/>Inscrivez vous pour commenter les épisodes être informé de chaque publication</p>
+            <div class="btn-group btn-group-lg" role="group" aria-label="inscription ou connexion">
+                <button type="button" id="callToAction" data-toggle="modal" data-target="#registration" class="btn mr-2">
+                    <i class="fas fa-feather-alt mr-2"></i> S'inscrire
+                </button>
+                <button type="button" id="call" data-toggle="modal" data-target="#connexion" class="btn">
+                    <i class="fas fa-sign-in-alt"></i> Se connecter
+                </button>
+            </div>
         </div>
             
     </div>

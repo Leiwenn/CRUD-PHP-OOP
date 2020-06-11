@@ -67,6 +67,9 @@ try{
                 $postController = new \p4\blog\controller\PostController();
                 $postController->showPosts();
 
+                //reste comme ça -> index.php?action=registration
+                // souhait headerConnect directement
+
             }else{
                 throw new Exception('Merci de remplir tous les champs !');
             }
@@ -114,6 +117,9 @@ try{
                     $_SESSION['admin'] = true;
                     $postController = new \p4\blog\controller\PostController();
                     $postController->showPosts();
+
+                    
+
                 }elseif($admin == false){
                     $_SESSION['admin'] = false;
                     $postController = new \p4\blog\controller\PostController();
@@ -124,17 +130,29 @@ try{
                 
             }
 
-            if($_GET['action'] == 'disconnect'){
-                $_SESSION['pseudo'] = null;
-                //$memberController->disconnectMember();
-            }
-
-            if($_GET['action'] == 'unregistration'){
-                $memberController->DeleteAMember();
-            }
-
-        }else{
+        }/*else{
             throw new Exception('Merci de remplir tous les champs !');
+        }*/
+
+        if($_GET['action'] == 'dashboard'){
+            $_SESSION['admin'] = true;
+            $dashboardController = new \p4\blog\controller\DashboardController();
+            $dashboardController->showDashboard();
+        }
+
+        if($_GET['action'] == 'disconnect'){
+            //$_SESSION['pseudo'] = null;
+            $memberController = new \p4\blog\controller\MemberController();
+            $memberController->disconnectMember();
+            $postController = new \p4\blog\controller\PostController();
+            $postController->showPosts();
+        }
+
+        if($_GET['action'] == 'unregistration'){
+            $memberController = new \p4\blog\controller\MemberController();
+            $memberController->DeleteAMember();
+            $postController = new \p4\blog\controller\PostController();
+            $postController->showPosts();
         }
 
     }else{
