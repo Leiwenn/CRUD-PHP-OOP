@@ -12,6 +12,12 @@ try{
         /**
          * POSTS
          */
+        if($_GET['action'] == 'viewPosts'){
+
+            $postController = new \p4\blog\controller\PostController();
+            $postController->showPosts();
+        }
+
         if($_GET['action'] == 'viewPost'){
             
             if (isset($_GET['id']) && $_GET['id'] > 0){
@@ -22,6 +28,40 @@ try{
             }else{
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
+        }
+
+        if($_GET['action'] == 'comment'){
+            
+            if(isset($_SESSION['pseudo'])){
+
+                $postId = $_GET['postId'];
+                $pseudo = $_SESSION['pseudo'];
+                $title = $_POST['title'];
+                $comment = $_POST['comment'];
+
+                $commentController = new \p4\blog\controller\CommentController();
+                $commentController->addComment($postId, $pseudo, $title, $comment);
+                $_GET['id'] = $postId;
+                $postController = new \p4\blog\controller\PostController();
+                $postController->showPost();
+            }else{
+                throw new Exception('Seuls les membres inscrits peuvent commenter un article');
+            }
+        }
+
+        if($_GET['action'] == 'report'){
+            
+            if(isset($_SESSION['pseudo'])){
+                $postId = $_GET['postId'];
+                // title et comment
+                $pseudo = $_SESSION['pseudo'];
+                $commentController = new \p4\blog\controller\CommentController();
+                $commentController->addReport($postId, $pseudo);
+                
+            }else{
+                throw new Exception('Seuls les membres inscrits peuvent signaler un commentaire');
+            }
+            //redirection à faire + message fail or succes
         }
 
         /**
@@ -61,14 +101,12 @@ try{
                     }
                 }
 
-                $members_category = 2;
+                $_SESSION['admin'] = false;
+
                 $memberController->newMember($_POST['pseudo'], $_POST['mail'], $_POST['password'], 2);
                 $_SESSION['pseudo'] = $_POST['pseudo'];
-                $postController = new \p4\blog\controller\PostController();
-                $postController->showPosts();
-
-                //reste comme ça -> index.php?action=registration
-                // souhait headerConnect directement
+                $frontController = new \p4\blog\controller\FrontController();
+                $frontController->showHome();
 
             }else{
                 throw new Exception('Merci de remplir tous les champs !');
@@ -102,9 +140,6 @@ try{
                         }
                     }
                 }
-                /*if($admin == null){
-                    throw new Exception("Ce pseudo n\'existe pas");
-                }*/
 
                 if(isset($_POST['checkbox'])){
                     setcookie('pseudo', $_POST['pseudo'], time() + 365*24*3600, null, null, false, true);
@@ -115,53 +150,75 @@ try{
                 
                 if($admin == true){
                     $_SESSION['admin'] = true;
-                    $postController = new \p4\blog\controller\PostController();
-                    $postController->showPosts();
-
-                    
+                    $frontController = new \p4\blog\controller\FrontController();
+                    $frontController->showHome();
 
                 }elseif($admin == false){
                     $_SESSION['admin'] = false;
                     $postController = new \p4\blog\controller\PostController();
                     $postController->showPosts();
-                }else{
+                }elseif($admin == null){
                     throw new Exception('Vous n\'êtes pas inscrit');
                 }
                 
+            }else{
+                throw new Exception('Merci de remplir tous les champs !');
             }
 
-        }/*else{
-            throw new Exception('Merci de remplir tous les champs !');
-        }*/
-
-        if($_GET['action'] == 'dashboard'){
-            $_SESSION['admin'] = true;
-            $dashboardController = new \p4\blog\controller\DashboardController();
-            $dashboardController->showDashboard();
         }
 
-        if($_GET['action'] == 'disconnect'){
-            //$_SESSION['pseudo'] = null;
+        if($_GET['action'] == 'member_area'){
             $memberController = new \p4\blog\controller\MemberController();
-            $memberController->disconnectMember();
-            $postController = new \p4\blog\controller\PostController();
-            $postController->showPosts();
+            $memberController->showMemberArea();
         }
 
         if($_GET['action'] == 'unregistration'){
             $memberController = new \p4\blog\controller\MemberController();
             $memberController->DeleteAMember();
-            $postController = new \p4\blog\controller\PostController();
-            $postController->showPosts();
+            $frontController = new \p4\blog\controller\FrontController();
+            $frontController->showHome();
         }
 
+        /**
+         * DASHBOARD
+         */
+        if($_GET['action'] == 'dashboard'){
+            if($_SESSION['admin'] = true){
+                $dashboardController = new \p4\blog\controller\DashboardController();
+                $dashboardController->showDashboard();
+            }
+        }
+        if($_GET['action'] == 'show_reports'){
+            if($_SESSION['admin'] = true){
+                $dashboardController = new \p4\blog\controller\DashboardController();
+                $dashboardController->showReports();
+            }
+        }
+        if($_GET['action'] == 'text_editor'){
+            if($_SESSION['admin'] = true){
+                $dashboardController = new \p4\blog\controller\DashboardController();
+                $dashboardController->showEditor();
+            }
+        }
+
+        /**
+         * MEMBERS AND ADMIN
+         */
+        if($_GET['action'] == 'disconnect'){
+            $memberController = new \p4\blog\controller\MemberController();
+            $memberController->disconnectMember();
+            $frontController = new \p4\blog\controller\FrontController();
+            $frontController->showHome();
+        }
+
+        
+
     }else{
-        $postController = new \p4\blog\controller\PostController();
-        $postController->showPosts();
+        $frontController = new \p4\blog\controller\FrontController();
+        $frontController->showHome();
     }
     
 }catch(Exception $e){
     echo 'erreur : ' . $e->getMessage();
     
 }
-

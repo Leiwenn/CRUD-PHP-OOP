@@ -28,10 +28,28 @@ class MemberManager extends DbManager{
      */
     public function getMembers(){
         $db = $this->dbConnexion();
-        
         $req = $db->query('SELECT pseudo, mail, passwordHache, members_category FROM members');
         $getMembers = $req;
         return $getMembers;
+    }
+
+    public function getMember($pseudo){
+        $db = $this->dbConnexion();
+        $req = $db->query('SELECT pseudo, mail, registration_date FROM members WHERE pseudo LIKE ' . "'" . $pseudo . "'");
+        $getMember = $req;
+        return $getMember;
+    }
+
+    /**
+     * count total of members
+     *
+     * @return void
+     */
+    public function countMembers(){
+        $db = $this->dbConnexion();
+        $req = $db->query('SELECT COUNT(*) nbre_members FROM members WHERE id AND members_category = 2');
+        $countMembers = $req;
+        return $countMembers;
     }
 
     /**
@@ -60,15 +78,4 @@ class MemberManager extends DbManager{
         setcookie('password', '');
     }
 
-    /**
-     * count total of members
-     *
-     * @return void
-     */
-    public function countMembers(){
-        $db = $this->dbConnexion();
-        $req = $db->query('SELECT COUNT(*) nbre_members FROM members WHERE id AND members_category = 2');
-        $countMembers = $req;
-        return $countMembers;
-    }
 }

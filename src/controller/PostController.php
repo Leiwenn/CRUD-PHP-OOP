@@ -15,7 +15,7 @@ class PostController{
     public function showPosts(){
         
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
-            $header = require 'view/frontOffice/header.php';
+            $header = require 'view/frontOffice/headerSingle.php';
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == true){
             $header = require 'view/frontOffice/headerAdmin.php';
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == false){
@@ -34,7 +34,13 @@ class PostController{
      */
     public function showPost(){
 
-        $header = require 'view/frontOffice/headerSingle.php';
+        if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
+            $header = require 'view/frontOffice/headerSingle.php';
+        }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == true){
+            $header = require 'view/frontOffice/headerAdmin.php';
+        }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == false){
+            $header = require 'view/frontOffice/headerConnect.php';
+        }
         $postManager = new PostManager();
         $commentManager = new CommentManager();
         $post = $postManager->getPost($_GET['id']);

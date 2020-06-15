@@ -32,12 +32,16 @@ section{
 }
 
 /* ------------------------------------------------------------------------ LAYOUT */
+body{
+    margin: 0;
+    padding: 0;
+}
 .navbar{
     width: 20%;
 }
 
 header{
-    margin-left: 20%;
+    margin-left: 22%;
 }
 .carte{
     width: 250px;
@@ -50,8 +54,10 @@ header{
     width: 90px;
 }
 
-section{
+.widgets{
     height: 70vh;
     overflow: hidden;
+}
+.editor, .reports, .widgets{
     margin: 20px 20px 20px 22%;
 }

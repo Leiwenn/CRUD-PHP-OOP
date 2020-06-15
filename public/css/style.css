@@ -1,4 +1,5 @@
 /* --------------------------------------------------------- FONTS */
+
 @font-face {
     font-family: 'boycottregular';
     src: url('../font/boycott_-webfont.woff2') format('woff2'),
@@ -14,86 +15,73 @@
     font-style: normal;
 }
 
-.container-fluid, .dropdown-item{
+.container-fluid{
 	font-family: 'robotoregular';
 }
-h2, h3, h4, nav{
+h2, h3, h4{
 	font-size: 30px;
 	font-family: 'boycottregular';
 }
-h3, .hero p{
+h3{
 	font-size: 20px;
 }
-h1, .heroConnect p{
+h1{
 	font-size: 35px;
-}
-h2, h3, #callToAction, #call, .hero p, .heroConnect p{
-	font-weight: bold;
 }
 
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
-body{
-	background: #2D2D2D;
-}
+
 .container-fluid{
 	color: #2D2D2D;
 }
-
-/* --- HEADER --- */
-nav a h1{
-	color: white;
-}
-.connexion a{
-	border: 1px solid #2c4444 !important;
-	border-radius: 5px;
-}
-.dropdown a{
-	color: #2c4444;
-}
-.nav-item a:hover{
-	text-decoration: none;
-}
-.single a{
-	color: white;
-	border-color: white;
-	text-decoration: none;
-}
-header{
+.wrapper{
 	background: url("../img/typewriter.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
 	background-size: cover;
 }
-.hero img{
-	width: 15vw;
+.nav-link:hover{
+	text-decoration: underline;
 }
-#callToAction, #call{
-	width: 200px;
-	border-radius: 0;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+
+/* --- HEADER --- */
+
+.single a{
+	color: white;
+	border-color: white;
+	text-decoration: none;
+}
+header img{
+	width: 250px;
 }
 #callToAction{
+	border-radius: 0;
 	border-top-left-radius: 20px;
 	border-bottom-right-radius: 20px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
-#call{
-	border-top-right-radius: 20px;
-	border-bottom-left-radius: 20px;
-}
-#callToAction, #call, article .btn, .heroConnect .btn{
+#callToAction, article .btn{
 	background: #2c4444;
 	border-color: transparent;
 	color: white;
 }
-#callToAction:hover, #call:hover, article .btn:hover, nav .btn:hover, .heroConnect .btn:hover{
+#callToAction:hover, article .btn:hover, nav .btn:hover{
 	background: #577367;
 	color: white;
 }
-#callToAction:hover, #call:hover{
+#callToAction:hover{
 	letter-spacing: 1px;
 	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
 	transition: all 0.4s ease 0s;
+}
+
+.jean{
+	width: 20em;
+  	height: auto;
+  	float: left;
+	shape-outside: circle(45%);
+	clip-path: circle(38%);
 }
 
 /* --- POSTS --- */
@@ -119,22 +107,22 @@ article img, .cover{
 footer{
 	border-top: 1px solid grey;
 }
-footer img{
-	max-width: 300px;
-}
+
 
 /* ------------------------------------------------------------------------ LAYOUT */
+body{
+    margin: 0;
+    padding: 0;
+}
 .container-fluid{
 	max-width: 1920px;
 	margin: auto;
+	padding: 0;
 }
 
 /* --- HEADER --- */
 header{
-	overflow: hidden;
-}
-.hero{
-	height: 100%;
+	height: 90vh;
 }
 .callToAction{
 	padding: 12px 24px;
@@ -144,10 +132,13 @@ header{
 	padding: 12px 40px;
 }
 
-/* --- POSTS --- */
-.postsContainer{
-	margin: -60px auto 30px auto;
+.home{
+	width: 90%;
+	height: auto;
 }
+
+/* --- POSTS --- */
+
 .postsContainer, .onePostContainer{
 	width: 90%;
 	border-radius: 5px;
@@ -194,6 +185,9 @@ header{
 /*end overlay*/
 
 /* --- FOOTER --- */
+footer{
+	height: auto;
+}
 #footer p:first-of-type{
 	max-width: 45vw;
 }

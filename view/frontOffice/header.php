@@ -1,40 +1,30 @@
-<header class="h-100">
-        
-    <nav>
-        <ul class="nav d-flex justify-content-between">
-        <li class="nav-item m-4">
-                <a href="index.php"><h1>JEAN FORTEROCHE</h1></a>
-            </li>
-            <li class="nav-item dropdown m-3">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MENU</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">lien</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">lien</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-                
-    <div class="text-center hero pt-5 d-flex justify-content-around flex-wrap">
-        <div class="w-50 pt-4 mt-5">
-            <img class="img-fluid cover" src="public/img/livre.jpg" alt="" />
+<nav class="text-center bg-dark text-white p-3">
+    <h1>JEAN FORTEROCHE</h1>
+    <ul class="nav d-flex justify-content-between">
+        <li class="nav-item">
+            <a class="nav-link text-white" href="index.php">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="index.php?action=viewPosts">Liste des épisodes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#">Connection</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="wrapper">
+    <header class="d-flex flex-column flex-sm-row justify-content-around pt-5">
+        <div class="w-50 text-center mx-auto pt-4">
+            <img class="img-fluid" src="public/img/livre.jpg" alt="" />
         </div>
-        <div class="text-left pt-4 w-50 mt-5">
-            <p class="mb-5">Inédit ! Un nouvel épisode chaque semaine...<br/>Inscrivez vous pour commenter les épisodes être informé de chaque publication</p>
-            <div class="btn-group btn-group-lg" role="group" aria-label="inscription ou connexion">
-                <button type="button" id="callToAction" data-toggle="modal" data-target="#registration" class="btn mr-2">
-                    <i class="fas fa-feather-alt mr-2"></i> S'inscrire
-                </button>
-                <button type="button" id="call" data-toggle="modal" data-target="#connexion" class="btn">
-                    <i class="fas fa-sign-in-alt"></i> Se connecter
-                </button>
+        <div class="w-50 mx-auto text-center pt-5 p-3">
+            <p class="text-left h3 mb-5 font-weight-bold">Inédit ! Un nouvel épisode chaque semaine...</p>
+            <p class="h4">Inscrivez vous pour commenter les épisodes être informé de chaque publication</p>
+            <button type="button" id="callToAction" data-toggle="modal" data-target="#registration" class="btn btn-lg mr-2 mt-5"><i class="fas fa-feather-alt mr-2"></i> S'inscrire</button>
             </div>
         </div>
-            
-    </div>
-    
-</header>
+    </header>
 
 
 <!-- MODAL -->
@@ -44,7 +34,7 @@
 	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Connection</h4>
+				<h4 class="modal-title"><i class="fas fa-sign-in-alt"></i> Connection</h4>
 			</div>
 			<div class="modal-body">
 				<form action="index.php?action=login" method="post">
@@ -70,7 +60,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-			    <h4 class="modal-title">Inscription</h4>
+			    <h4 class="modal-title"><i class="fas fa-feather-alt"></i> Inscription</h4>
             </div>
             <div class="modal-body">
                 <form action="index.php?action=registration" method="post">

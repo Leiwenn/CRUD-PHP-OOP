@@ -11,9 +11,9 @@ class PostManager extends DbManager{
 	 * @return void
 	 */
 	public function getPosts(){
-
+		//imin%ss
 		$db = $this->dbConnexion();
-        $req = $db->query('SELECT id, title, content, file_name, file_description, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE category_id = 1 ORDER BY date_creation DESC LIMIT 0, 5');
+        $req = $db->query('SELECT id, title, content, file_name, file_description, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%\') AS creation_date_fr FROM posts WHERE category_id = 1 ORDER BY date_creation DESC LIMIT 0, 5');
         $posts = $req;
 
 		return $posts;

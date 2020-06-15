@@ -1,25 +1,27 @@
-<header class="h-50">
+<nav class="text-center bg-dark text-white p-3">
+    <h1>JEAN FORTEROCHE</h1>
+    <ul class="nav d-flex justify-content-between">
+        <li class="nav-item">
+            <a class="nav-link text-white" href="index.php">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="index.php?action=viewPosts">Liste des épisodes</a>
+        </li>
+        <li>
+            <a class="nav-link text-white" href="index.php?action=member_area">Mon profil</a>
+        </li>
+        <li>
+            <a class="nav-link text-white" href="index.php?action=disconnect">Déconnexion</a>
+        </li>
+        <li>
+            <a class="nav-link text-white" href="index.php?action=unregistration">Désinscription</a>
+        </li>
+    </ul>
+</nav>
 
-    <nav>
-        <ul class="nav d-flex justify-content-between">
-            <li class="nav-item m-4">
-                <a href="index.php"><h1>JEAN FORTEROCHE</h1></a>
-            </li>
-            <li class="nav-item dropdown m-3">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MENU</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="index.php?action=disconnect"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="index.php?action=unregistration"><i class="fas fa-user-alt-slash"></i> Désinscription</a>
-                </div>
-            </li>
-        </ul>
-    </nav>
-
-    <div class="heroConnect text-center">
-        <p>Bonjour <?= $_SESSION['pseudo']; ?> !</p>
-    </div>
-
-</header>
-
-
+<div class="wrapper">
+    <header class="h-50 p-5">
+        <div class="text-center h3 mt-5">
+            <p>Bonjour <?= $_SESSION['pseudo']; ?> !</p>
+        </div>
+    </header>

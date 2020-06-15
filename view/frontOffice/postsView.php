@@ -1,5 +1,5 @@
-<section class="card-deck postsContainer pt-5 mx-auto">
-    <h2 class="mt-3 mb-5 w-100 mx-auto text-center">LISTE DES EPISODES</h2>
+<section class="card-deck postsContainer mx-auto">
+    <h2 class="mt-3 mb-5 w-100 mx-auto text-center">BILLET SIMPLE POUR L'ALASKA</h2>
     <div class="posts">
         <?php
             while($data = $posts->fetch()){
@@ -19,3 +19,4 @@
         ?>
     </div>
 </section>
+</div>

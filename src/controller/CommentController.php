@@ -15,4 +15,17 @@ class CommentController{
         $showComments = $commentManager->getComments($_GET['id']);
     }
 
+    public function addComment($postId, $pseudo, $title, $comment){
+        $commentManager = new CommentManager();
+        $addComment = $commentManager->postComment($postId, $pseudo, $title, $comment);
+    }
+
+    public function addReport($postId, $pseudo){
+        $commentManager = new CommentManager();
+        $addReport = $commentManager->setReport($postId, $pseudo);
+    }
+
+    public function deleteAComment(){
+
+    }
 }

@@ -2,19 +2,21 @@
 
 ETAPE 1
 - mise en place squelette MVC
-- creation des classes: PostController/DbManager/PostManager (création de Posts test en DB)
+- creation des classes: PostController/DbManager/PostManager
+(création de Posts test en DB)
 - creation des vues: template/postsView/postView/header/headerSingle
 - début mise en forme CSS/BOOTSTRAP
 
 ETAPE 2
 - ajout de namespaces
 - creation de CommentManager/CommentController
-- affichage des commentaires/formulaire de leur ajout ((création de commentaire test en DB)
+- affichage des commentaires/formulaire de leur ajout
+(création de commentaire test en DB)
 - installation de composer
 
 ETAPE 3 MEMBERS
 Etape 3-1
-- nouvelle branche Members
+- nouvelle branche members
 - Création des classes MemberManager/MemberController
 
 Etape 3-2
@@ -33,7 +35,16 @@ Etape 3-3
 Etape 3-4
 - création du membre admin en DB
 - ajout du dossier backOffice dans view avec dashboard.php
-- création de DashboardController avec affichage du nombre de membres
+- création de DashboardController avec 1 widget 
+(nombre de membres)
 - update de index.php action=dashboard
 - amélioration header/nav
 - css styleDashboard.css
+
+Etape 4 COMMENTS et backOffice gestion des reports
+- nouvelle branche comments
+- creation du midOffice
+- update de index.php action=comment/report/member_area pour les membres
+et action=show_reports/text_editor pour dashboard
+- creation de FrontController/DashboardManager/update de DashboardController
+- view/backOffice: création de template/reports/editor
