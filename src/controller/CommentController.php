@@ -6,7 +6,8 @@ use p4\blog\model\CommentManager as CommentManager;
 class CommentController{
 
     /**
-     * show all comments of a post
+     * COMMENTS show all comments validated by admin
+     * manager _ getComments($postId)
      *
      * @return void
      */
@@ -23,9 +24,5 @@ class CommentController{
     public function addReport($postId, $pseudo){
         $commentManager = new CommentManager();
         $addReport = $commentManager->setReport($postId, $pseudo);
-    }
-
-    public function deleteAComment(){
-
     }
 }

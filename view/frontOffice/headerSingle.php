@@ -1,20 +1,25 @@
-<nav class="text-center bg-dark text-white p-3">
+<div class="text-center bg-dark text-white p-3">
     <h1>JEAN FORTEROCHE</h1>
-    <ul class="nav d-flex justify-content-between">
-        <li class="nav-item">
-            <a class="nav-link text-white" href="index.php">Accueil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" href="index.php?action=viewPosts">Liste des épisodes</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#">Connection</a>
-		</li>
-		<li>
-			<a class="nav-link text-white" type="button" data-toggle="modal" data-target="#registration" href="#">S'inscrire</a>
-		</li>
-    </ul>
-</nav>
+    <nav class="navbar navbar-expand-md">
+        <button class="navbar-toggler mx-auto text-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav row col-12">
+                <li class="nav-item col-12 col-md-3">
+                    <a class="nav-link text-white" href="index.php">Accueil</a>
+                </li>
+                <li class="nav-item col-12 col-md-3">
+                    <a class="nav-link text-white" href="index.php?action=viewPosts">Liste des épisodes</a>
+                </li>
+                <li class="nav-item col-12 col-md-3">
+                    <a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#">Connection</a>
+                </li>
+                <li class="nav-item col-12 col-md-3">
+                    <a class="nav-link text-white" type="button" data-toggle="modal" data-target="#registration" href="#">S'inscrire</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
 <div class="wrapper">
 

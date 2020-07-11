@@ -33,13 +33,6 @@ class MemberManager extends DbManager{
         return $getMembers;
     }
 
-    public function getMember($pseudo){
-        $db = $this->dbConnexion();
-        $req = $db->query('SELECT pseudo, mail, registration_date FROM members WHERE pseudo LIKE ' . "'" . $pseudo . "'");
-        $getMember = $req;
-        return $getMember;
-    }
-
     /**
      * count total of members
      *

@@ -1,28 +1,31 @@
-<nav class="text-center bg-dark text-white p-3">
+<div class="text-center bg-dark text-white p-3">
     <h1>JEAN FORTEROCHE</h1>
-    <ul class="nav d-flex justify-content-between">
-        <li class="nav-item">
-            <a class="nav-link text-white" href="index.php">Accueil</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" href="index.php?action=viewPosts">Liste des épisodes</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#">Connection</a>
-        </li>
-    </ul>
-</nav>
+    <nav class="navbar navbar-expand-md">
+        <button class="navbar-toggler mx-auto text-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav row col-12">
+                <li class="nav-item col-12 col-md-4">
+                    <a class="nav-link text-white" href="index.php">Accueil</a>
+                </li>
+                <li class="nav-item col-12 col-md-4">
+                    <a class="nav-link text-white" href="index.php?action=viewPosts">Liste des épisodes</a>
+                </li>
+                <li class="nav-item col-12 col-md-4">
+                    <a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#">Connection</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
 <div class="wrapper">
     <header class="d-flex flex-column flex-sm-row justify-content-around pt-5">
         <div class="w-50 text-center mx-auto pt-4">
-            <img class="img-fluid" src="public/img/livre.jpg" alt="" />
+            <img class="img-fluid" src="public/img/book_cover.png" alt="" />
         </div>
-        <div class="w-50 mx-auto text-center pt-5 p-3">
-            <p class="text-left h3 mb-5 font-weight-bold">Inédit ! Un nouvel épisode chaque semaine...</p>
-            <p class="h4">Inscrivez vous pour commenter les épisodes être informé de chaque publication</p>
+        <div class="w-50 text-center d-flex flex-column justify-content-center align-items-center pt-5 p-3 hero">
+            <p class="h3">Inscrivez vous pour commenter les épisodes</br>et être informé de chaque publication</p>
             <button type="button" id="callToAction" data-toggle="modal" data-target="#registration" class="btn btn-lg mr-2 mt-5"><i class="fas fa-feather-alt mr-2"></i> S'inscrire</button>
-            </div>
         </div>
     </header>
 

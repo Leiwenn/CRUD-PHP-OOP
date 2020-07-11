@@ -41,10 +41,13 @@ Etape 3-4
 - amélioration header/nav
 - css styleDashboard.css
 
-Etape 4 COMMENTS et backOffice gestion des reports
+Etape 4-1 COMMENTS et backOffice gestion des reports
 - nouvelle branche comments
 - creation du midOffice
 - update de index.php action=comment/report/member_area pour les membres
 et action=show_reports/text_editor pour dashboard
 - creation de FrontController/DashboardManager/update de DashboardController
 - view/backOffice: création de template/reports/editor
+
+Etape 4-2
+- debut backOffice gestion des reports

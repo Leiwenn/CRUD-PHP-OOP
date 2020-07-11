@@ -8,12 +8,12 @@ require_once 'src/model/DbManager.php';
 class PostController{
 
     /**
-     * return all posts with template
+     * POSTS show all posts where category is 1 = 'billet simple pour l'alaska'
+     * manager _ getPosts()
      *
      * @return void
      */
     public function showPosts(){
-        
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
             $header = require 'view/frontOffice/headerSingle.php';
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == true){
@@ -28,12 +28,12 @@ class PostController{
     }
 
     /**
-     * return one post with template
+     * POSTS show one post where id && category is 1 = 'billet simple pour l'alaska'
+     * manager _ getPost($postId)
      *
      * @return void
      */
     public function showPost(){
-
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
             $header = require 'view/frontOffice/headerSingle.php';
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == true){

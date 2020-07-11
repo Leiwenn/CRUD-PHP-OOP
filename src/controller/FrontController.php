@@ -2,6 +2,7 @@
 
 namespace p4\blog\controller;
 require_once 'src/model/DbManager.php';
+use p4\blog\model\FrontManager as FrontManager;
 
 class FrontController{
 
@@ -13,7 +14,15 @@ class FrontController{
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == false){
             $header = require 'view/frontOffice/headerConnect.php';
         }
+        $frontManager = new FrontManager();
+        $showLastPost = $frontManager->getLastPost();
         $content = require 'view/frontOffice/home.php';
         require 'view/frontOffice/template.php';
     }
+
+    /*public function showLastPost(){
+        $frontManager = new FrontManager();
+        $showLastPost = $frontManager->getLastPost();
+        return $showLastPost;
+    }*/
 }

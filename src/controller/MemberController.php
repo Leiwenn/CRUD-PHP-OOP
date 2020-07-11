@@ -22,12 +22,6 @@ class MemberController{
         $memberManager->setMember($pseudo, $mail, $passwordHache, 2);
     }
 
-    public function showMemberArea(){
-        $memberManager = new MemberManager();
-        $showOneMember = self::getOneMember();
-        require 'view/midOffice/template.php';
-    }
-
     /**
      * get all from members
      *
@@ -37,12 +31,6 @@ class MemberController{
         $memberManager = new MemberManager();
         $getAllMembers = $memberManager->getMembers();
         return $getAllMembers;
-    }
-
-    public function getOneMember(){
-        $memberManager = new MemberManager();
-        $getOneMember = $memberManager->getMember($_SESSION['pseudo']);
-        return $getOneMember;
     }
 
     /**

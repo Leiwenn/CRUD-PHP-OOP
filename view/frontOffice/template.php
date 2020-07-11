@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/f2c3a49501.js"></script>
-	<link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="preload" href="public/font/cinzeldecorative-bold-webfont.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="public/font/cinzeldecorative-bold-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/font/roboto-regular-webfont.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="public/font/roboto-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" type="text/css" href="public/css/styleFrontOffice.css">
 	<title>Blog de Jean FORTEROCHE</title>
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>

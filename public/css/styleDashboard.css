@@ -1,6 +1,9 @@
 /* --------------------------------------------------------- FONTS */
-.users, .autre{
+.w_users, .w_comments, .w_reports{
     font-size: 40px;
+}
+.billets h3, .billets h4{
+    font-size: 30px;
 }
 
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
@@ -9,10 +12,10 @@ body{
     color: #2D2D2D;
 }
 
-.navbar{
+/*.navbar{
     background: #2D2D2D;
-}
-.navbar, .users, .autre{
+}*/
+.navbar, .w_users, .w_comments, .w_reports{
     color: white;
 }
 .navbar img{
@@ -20,12 +23,6 @@ body{
 }
 .carte, section{
     background: white;
-}
-.users{
-    background: #f39c12;
-}
-.autre{
-    background: #00c0ef;
 }
 section{
     border-top: 2px solid grey;
@@ -44,20 +41,12 @@ header{
     margin-left: 22%;
 }
 .carte{
-    width: 250px;
-    height: 90px;
+    width: auto;
 }
-.users{
-    width: 90px;
-}
-.autre{
+.w_users, .w_comments, .w_reports{
     width: 90px;
 }
 
-.widgets{
-    height: 70vh;
-    overflow: hidden;
-}
-.editor, .reports, .widgets{
+.editor, .reports, .widgets, .comments{
     margin: 20px 20px 20px 22%;
 }

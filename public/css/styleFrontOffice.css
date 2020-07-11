@@ -1,18 +1,84 @@
 /* --------------------------------------------------------- FONTS */
 
-@font-face {
-    font-family: 'boycottregular';
-    src: url('../font/boycott_-webfont.woff2') format('woff2'),
-         url('../font/boycott_-webfont.woff') format('woff');
+/*@font-face {
+    font-family: 'cinzel_decorativeblack';
+    src: url('../font/cinzeldecorative-black-webfont.woff2') format('woff2'),
+         url('../font/cinzeldecorative-black-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+
 }
+
+@font-face {
+    font-family: 'cinzelblack';
+    src: url('../font/cinzel-black-webfont.woff2') format('woff2'),
+         url('../font/cinzel-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'cinzel_decorativebold';
+    src: url('../font/cinzeldecorative-bold-webfont.woff2') format('woff2'),
+         url('../font/cinzeldecorative-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'cinzel_decorativeregular';
+    src: url('../font/cinzeldecorative-regular-webfont.woff2') format('woff2'),
+         url('../font/cinzeldecorative-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'cinzelregular';
+    src: url('../font/cinzel-regular-webfont.woff2') format('woff2'),
+         url('../font/cinzel-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'cinzelsemi_bold';
+    src: url('../font/cinzel-semibold-webfont.woff2') format('woff2'),
+         url('../font/cinzel-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}*/
+
+@font-face {
+    font-family: 'cinzel_decorativesemi_bold';
+    src: url('../font/cinzeldecorative-semibold-webfont.woff2') format('woff2'),
+         url('../font/cinzeldecorative-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'cinzelbold';
+    src: url('../font/cinzel-bold-webfont.woff2') format('woff2'),
+         url('../font/cinzel-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 @font-face {
     font-family: 'robotoregular';
     src: url('../font/roboto-regular-webfont.woff2') format('woff2'),
          url('../font/roboto-regular-webfont.woff') format('woff');
     font-weight: normal;
-    font-style: normal;
+	font-style: normal;
+	font-display: auto;
 }
 
 .container-fluid{
@@ -20,13 +86,19 @@
 }
 h2, h3, h4{
 	font-size: 30px;
-	font-family: 'boycottregular';
+	font-family: 'cinzelbold';
 }
 h3{
 	font-size: 20px;
 }
 h1{
 	font-size: 35px;
+}
+h1, #callToAction, .cinzelD{
+	font-family: 'cinzel_decorativesemi_bold';
+}
+.cinzel{
+	font-family: 'cinzelbold';
 }
 
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
@@ -41,20 +113,24 @@ h1{
 	background-attachment: fixed;
 	background-size: cover;
 }
-.nav-link:hover{
-	text-decoration: underline;
+
+/* --- NAV --- */
+nav a:hover{
+	letter-spacing: 1px;
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	transition: all 0.4s ease 0s;
 }
 
 /* --- HEADER --- */
-
 .single a{
 	color: white;
 	border-color: white;
 	text-decoration: none;
 }
 header img{
-	width: 250px;
+	width: 40%;
 }
+
 #callToAction{
 	border-radius: 0;
 	border-top-left-radius: 20px;
@@ -66,7 +142,7 @@ header img{
 	border-color: transparent;
 	color: white;
 }
-#callToAction:hover, article .btn:hover, nav .btn:hover{
+#callToAction:hover, article .btn:hover{
 	background: #577367;
 	color: white;
 }
@@ -85,6 +161,7 @@ header img{
 }
 
 /* --- POSTS --- */
+
 .postsContainer{
 	background: white;
 }
@@ -95,8 +172,11 @@ article{
 article img, .cover{
 	filter: grayscale(60%);
 }
-.single img{
-	max-width: calc(100% - 40em);
+.last img, .single img{
+	width: 30%;
+}
+.last a{
+	color: #2c4444;
 }
 
 /* --- FOOTER --- */
@@ -110,7 +190,7 @@ footer{
 
 
 /* ------------------------------------------------------------------------ LAYOUT */
-body{
+body, .wrapper{
     margin: 0;
     padding: 0;
 }
@@ -121,9 +201,9 @@ body{
 }
 
 /* --- HEADER --- */
-header{
+/*header{
 	height: 90vh;
-}
+}*/
 .callToAction{
 	padding: 12px 24px;
 	border-radius: 4px;
@@ -173,7 +253,7 @@ header{
 	right: 0;
 	background-color: white;
 	opacity: 0.85;
-	overflow: hidden;
+	overflow: auto;
 	width: 0;
 	height: 100%;
 	transition: .5s ease;
