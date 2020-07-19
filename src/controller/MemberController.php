@@ -33,25 +33,6 @@ class MemberController{
         return $getAllMembers;
     }
 
-    /**
-     * disconnect member
-     *
-     * @return void
-     */
-    public function disconnectMember(){
-        $memberManager = new MemberManager();
-        $disconnectMember = $memberManager->disconnect();
-    }
-
-    /**
-     * disconnect && delete a member
-     *
-     * @return void
-     */
-    public function DeleteAMember(){
-        $memberManager = new MemberManager();
-        $disconnectMember = $memberManager->disconnect();
-        $DeleteAMember = $memberManager->deleteMember();
-    }
+    
 
 }

@@ -21,10 +21,10 @@
     </nav>
 </div>
 
-<div class="wrapper">
+<div class="wrapper pb-5">
     <header class="pt-5 mb-5">
         <div class="text-center rounded shadow w-25 p-3 mx-auto bg-white">
-            <p>Bonjour <?= $_SESSION['pseudo']; ?> </p>
+            <p class="cinzel">Bonjour <?= htmlspecialchars($_SESSION['pseudo']) ?> </p>
             <p>Qu'allez vous lire aujourd'hui ?</p>
         </div>
     </header>

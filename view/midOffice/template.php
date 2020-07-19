@@ -7,6 +7,8 @@
     <script src="https://kit.fontawesome.com/f2c3a49501.js"></script>
     <link rel="preload" href="public/font/cinzeldecorative-bold-webfont.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="public/font/cinzeldecorative-bold-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/font/cinzelbold-webfont.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="public/font/cinzelbold-webfont.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="public/font/roboto-regular-webfont.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="public/font/roboto-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" type="text/css" href="public/css/styleMidOffice.css">
@@ -16,33 +18,9 @@
 <body>
     <div class="bloc_page">
 
-            <nav class="navbar navbar-expand-lg bg-dark d-flex justify-content-around">
-                <h1 class="ml-3"><i class="fas fa-user mr-2" aria-hidden="true"></i> Mon profil</h1>
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link btn btn-outline-light" role="button" href="index.php">Retour au blog</a></li>
-                </ul>
-            </nav>
+        <?= $header ?>    
 
-        <section class="p-5 d-flex justify-content-around">
-            <div class="bg-light rounded p-3 shadow">
-                <h2 class="p-2 pb-3">Mes informations</h2>
-                <?php 
-                    
-                    while($data = $showOneMember->fetch()){
-                ?>
-                    <p>Pseudo: <?= $data['pseudo'] ?> </p>
-                    <p>Mail <?= $data['mail'] ?> </p>
-                    <p>Date d'inscription: <?= $data['registration_date'] ?> </p>
-                <?php 
-                    } 
-                ?>
-            </div>
-
-            <div class="p-3 d-flex flex-column">
-                <a class="btn btn-info p-2 mt-3 shadow" role="button" href="index.php?action=change_password">Changer mon mot de passe</a>
-                <a class="btn btn-info p-2 mt-3 shadow" role="button" href="index.php?action=unregistration">Désinscription</a>
-            </div>
-        </section>
+        <?= $content ?>
 
     </div>
 

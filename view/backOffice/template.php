@@ -7,6 +7,8 @@
     <script src="https://kit.fontawesome.com/f2c3a49501.js"></script>
     <link rel="preload" href="public/font/cinzeldecorative-bold-webfont.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="public/font/cinzeldecorative-bold-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="public/font/cinzel-bold-webfont.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="public/font/cinzel-bold-webfont.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="public/font/roboto-regular-webfont.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="public/font/roboto-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" type="text/css" href="public/css/styleDashboard.css">
@@ -16,23 +18,23 @@
 <body>
     <div class="bloc_page">
         
-        <nav class="navbar d-flex flex-column justify-content-around fixed-top h-100">
+        <nav class="navbar bg-dark d-flex flex-column justify-content-around fixed-top h-100">
             <img class="navbar-brand img-fluid rounded-circle" src="public/img/jeanAdmin.jpg" alt="photo de Jean Forteroche" />
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link btn btn-info p-2" role="button" href="index.php?action=dashboard">Accueil Dashboard</a>
+                    <a class="nav-link btn btn-outline-info p-2" role="button" href="index.php?action=dashboard">Accueil Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-light p-2 mt-3" role="button" href="index.php?action=text_editor">Editeur de texte</a>
+                    <a class="nav-link btn btn-outline-light  p-2 mt-3" role="button" href="index.php?action=text_editor">Editeur de texte</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-warning p-2 mt-3" role="button" href="index.php?action=comments_awaiting">Commentaires à publier</a>
+                    <a class="nav-link btn btn-outline-warning  p-2 mt-3" role="button" href="index.php?action=comments_awaiting">Commentaires à publier</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-danger p-2 mt-3" role="button" href="index.php?action=show_reports">Modération</a>
+                    <a class="nav-link btn btn-outline-danger p-2 mt-3" role="button" href="index.php?action=show_reports">Modération</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-info p-2 mt-3" role="button" href="index.php">Voir le site</a>
+                    <a class="nav-link btn btn-outline-info p-2 mt-3" role="button" href="index.php">Voir le site</a>
                 </li>
             </ul>
         </nav>

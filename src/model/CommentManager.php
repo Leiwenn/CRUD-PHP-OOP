@@ -32,15 +32,15 @@ class CommentManager extends DbManager{
      */
     public function getComments($postId){
         $db = $this->dbConnexion();
-        $getComments = $db->prepare('SELECT id, pseudo, title, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
+        $getComments = $db->prepare('SELECT id AS comment_id, pseudo, title, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, post_id FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
         $getComments->execute(array($postId));
         return $getComments;
     }
 
-    public function setReport($postId, $pseudo){
+    public function setReport($comment_id, $member_pseudo, $post_concerned_id){
         $db = $this->dbConnexion();
-        $setReport = $db->prepare('INSERT INTO reports(postId, pseudo) VALUES(?, ?)');
-        $setReportDb = $setReport->execute(array($postId, $pseudo));
+        $setReport = $db->prepare('INSERT INTO reports(comment_id, member_pseudo, post_concerned_id) VALUES(?, ?, ?)');
+        $setReportDb = $setReport->execute(array($comment_id, $member_pseudo, $post_concerned_id));
         return $setReportDb;
     }
 

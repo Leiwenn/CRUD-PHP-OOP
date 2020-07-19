@@ -21,8 +21,8 @@ class CommentController{
         $addComment = $commentManager->postComment($postId, $pseudo, $title, $comment);
     }
 
-    public function addReport($postId, $pseudo){
+    public function addReport($comment_id, $member_pseudo, $post_concerned_id){
         $commentManager = new CommentManager();
-        $addReport = $commentManager->setReport($postId, $pseudo);
+        $addReport = $commentManager->setReport($comment_id, $member_pseudo, $post_concerned_id);
     }
 }

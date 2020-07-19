@@ -51,3 +51,14 @@ et action=show_reports/text_editor pour dashboard
 
 Etape 4-2
 - debut backOffice gestion des reports
+
+Etape 4-3
+- correction JOIN requete getReports du dashboardManager
+- creation de "mes commentaires" dans member-area
+- correction dashboard publish comment_awaiting
+- correction JOIN requete getReportedComment du DashboardReportManager
+- correction member-area unregistration
+- correction dashboard exclude_member
+- ajout .htacess rewrite url et gestion des erreurs
+- creation de error.php à la racine => gestion de l'affichage des erreurs
+- ajout d'un else dans index.php pour gestion 404

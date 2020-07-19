@@ -21,7 +21,7 @@
     </nav>
 </div>
 
-<div class="wrapper">
+<div class="wrapper pt-5 pb-5">
 
 
 <!-- MODAL -->
@@ -46,7 +46,7 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fermer</button>
 			</div>
 		</div>
 	</div>
@@ -73,7 +73,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fermer</button>
             </div>
         </div>
     </div>

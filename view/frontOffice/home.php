@@ -6,8 +6,8 @@
             <article class="rounded p-3">
                 <h3 class="text-center m-3"> <?= htmlspecialchars($data['title']) ?> </h3>
                 <div class="d-flex justify-content-around p-3">
-                    <img src="public/img/<?= $data['file_name'] ?>" class="img-fluid rounded" alt="<?= $data['file_description'] ?>" />
-                    <p class="ml-sm-3"> <?= substr(htmlspecialchars($data['content']), 0, 700) ?> <a href="index.php?action=viewPost&id=<?= $data['id']; ?>" class="ml-2">Lire la suite ...</a></p>
+                    <img src="public/img/<?= htmlspecialchars($data['file_name']) ?>" class="img-fluid rounded" alt="<?= $data['file_description'] ?>" />
+                    <p class="ml-sm-3"> <?= substr(htmlspecialchars($data['content']), 0, 700) ?> <a href="index.php?action=viewPost&id=<?= htmlspecialchars($data['id']) ?>" class="ml-2">Lire la suite ...</a></p>
                     
                 </div>
             </article>

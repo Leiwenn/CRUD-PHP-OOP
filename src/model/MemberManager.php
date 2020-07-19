@@ -23,12 +23,14 @@ class MemberManager extends DbManager{
 
     /**
      * get all from members
+     * controller _ getAllMembers()
      *
      * @return void
      */
     public function getMembers(){
         $db = $this->dbConnexion();
-        $req = $db->query('SELECT pseudo, mail, passwordHache, members_category FROM members');
+        $req = $db->prepare('SELECT pseudo, mail, passwordHache, members_category FROM members');
+        $req->execute(array());
         $getMembers = $req;
         return $getMembers;
     }
@@ -43,32 +45,6 @@ class MemberManager extends DbManager{
         $req = $db->query('SELECT COUNT(*) nbre_members FROM members WHERE id AND members_category = 2');
         $countMembers = $req;
         return $countMembers;
-    }
-
-    /**
-     * disconnect member
-     *
-     * @return void
-     */
-    public function disconnect(){
-        //session_start();
-        //$_SESSION['pseudo'] = null;
-        $_SESSION = array();
-        session_destroy();
-        unset($_SESSION);
-    }
-
-    /**
-     * delete member cookies && DB_data
-     *
-     * @return void
-     */
-    public function deleteMember(){
-        $db = $this->dbConnexion();
-        $req = $db->prepare('DELETE FROM members WHERE id = ?');
-        
-        setcookie('pseudo', '');
-        setcookie('password', '');
     }
 
 }

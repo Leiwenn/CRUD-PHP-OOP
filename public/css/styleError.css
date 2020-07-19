@@ -1,4 +1,3 @@
-/* ------------------------------------------------------------------------- FONTS */
 @font-face {
     font-family: 'cinzel_decorativesemi_bold';
     src: url('../font/cinzeldecorative-semibold-webfont.woff2') format('woff2'),
@@ -7,7 +6,6 @@
     font-style: normal;
 
 }
-
 @font-face {
     font-family: 'cinzelbold';
     src: url('../font/cinzel-bold-webfont.woff2') format('woff2'),
@@ -16,7 +14,6 @@
     font-style: normal;
 
 }
-
 @font-face {
     font-family: 'robotoregular';
     src: url('../font/roboto-regular-webfont.woff2') format('woff2'),
@@ -26,47 +23,49 @@
 	font-display: auto;
 }
 
-.bloc_page{
-    font-family: 'robotoregular';
-}
-.cinzeld{
-    font-family: 'cinzel_decorativesemi_bold';
-}
-.cinzel{
-    font-family: 'cinzelbold';
-}
-.fa-comment-dots{
-    font-size: 20px;
-}
-
-/* ---------------------------------------------------------------- COLORS AND IMG */
-body{
-    background: #343A40;
-}
-
-h1{
-    color: white;
-}
-
-span{
-    font-weight: bold;
-}
-
-section{
-    height: auto;
-    background: url("../img/typewriter.jpg");
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-attachment: fixed;
-    background-size: cover;
-}
-
-/* ------------------------------------------------------------------------ LAYOUT */
 body{
     margin: 0;
     padding: 0;
 }
 
-.card{
-    width: 100%;
+section{
+    max-width: 1920px;
+	margin: auto;
+    padding: 0;
+    height: 100vh;
+    background: url("../img/typewriter.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+div{
+    background: rgba(51, 74, 77, 0.5);
+    color: white;
+}
+h1{
+    font-family: 'cinzel_decorativesemi_bold';
+    font-size: 50px;
+}
+p{
+    font-family: 'robotoregular';
+    font-size: 20px;
+}
+span{
+    font-family: 'cinzelbold';
+    font-size: 20px;
+}
+.btn{
+    background: #2c4444;
+	border-color: transparent;
+    color: white;
+    font-family: 'cinzel_decorativesemi_bold';
+}
+.btn:hover{
+	background: #577367;
+    color: white;
+	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+}
+
+.notfound{
+    height: 100vh;
 }

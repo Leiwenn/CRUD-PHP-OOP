@@ -6,11 +6,11 @@
             ?>
 
                 <article class="shadow rounded">
-                    <img src="public/img/<?= $data['file_name'] ?>" class="img-fluid rounded" alt="<?= $data['file_description'] ?>" />
-                    <div class="overlay">
+                    <img src="public/img/<?= htmlspecialchars($data['file_name']) ?>" class="img-fluid rounded" alt="<?= htmlspecialchars($data['file_description']) ?>" />
+                    <div class="overlay text-right">
                         <h3 class="text-center m-3"> <?= htmlspecialchars($data['title']) ?> </h3>
                         <p class="m-3"> <?= substr(htmlspecialchars($data['content']), 0, 200) ?> </p>
-                        <a href="index.php?action=viewPost&id=<?= $data['id']; ?>" class="btn">Lire la suite</a>
+                        <a href="index.php?action=viewPost&id=<?= htmlspecialchars($data['id']) ?>" class="btn mr-3">Lire la suite</a>
                     </div>
                 </article>
 

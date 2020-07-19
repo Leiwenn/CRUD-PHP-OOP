@@ -24,7 +24,7 @@
             <img class="img-fluid" src="public/img/book_cover.png" alt="" />
         </div>
         <div class="w-50 text-center d-flex flex-column justify-content-center align-items-center pt-5 p-3 hero">
-            <p class="h3">Inscrivez vous pour commenter les épisodes</br>et être informé de chaque publication</p>
+            <p class="h3 p-2 rounded">Inscrivez vous pour commenter les épisodes</br>et être informé de chaque publication</p>
             <button type="button" id="callToAction" data-toggle="modal" data-target="#registration" class="btn btn-lg mr-2 mt-5"><i class="fas fa-feather-alt mr-2"></i> S'inscrire</button>
         </div>
     </header>
@@ -52,7 +52,7 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fermer</button>
 			</div>
 		</div>
 	</div>
@@ -79,7 +79,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Fermer</button>
             </div>
         </div>
     </div>

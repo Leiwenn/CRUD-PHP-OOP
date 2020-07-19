@@ -14,15 +14,14 @@ class FrontController{
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == false){
             $header = require 'view/frontOffice/headerConnect.php';
         }
-        $frontManager = new FrontManager();
-        $showLastPost = $frontManager->getLastPost();
+        $showLastPost = self::showLastPost();
         $content = require 'view/frontOffice/home.php';
         require 'view/frontOffice/template.php';
     }
 
-    /*public function showLastPost(){
+    public function showLastPost(){
         $frontManager = new FrontManager();
         $showLastPost = $frontManager->getLastPost();
         return $showLastPost;
-    }*/
+    }
 }

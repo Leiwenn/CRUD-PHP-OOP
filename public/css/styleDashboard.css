@@ -1,31 +1,68 @@
 /* --------------------------------------------------------- FONTS */
+@font-face {
+    font-family: 'cinzel_decorativesemi_bold';
+    src: url('../font/cinzeldecorative-semibold-webfont.woff2') format('woff2'),
+         url('../font/cinzeldecorative-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'cinzelbold';
+    src: url('../font/cinzel-bold-webfont.woff2') format('woff2'),
+         url('../font/cinzel-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../font/roboto-regular-webfont.woff2') format('woff2'),
+         url('../font/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+	font-style: normal;
+	font-display: auto;
+}
+
+.bloc_page{
+    font-family: 'robotoregular';
+}
+
+h1{
+    font-family: 'cinzel_decorativesemi_bold';
+}
 .w_users, .w_comments, .w_reports{
     font-size: 40px;
 }
-.billets h3, .billets h4{
+.billets h2, .billets h3{
     font-size: 30px;
+}
+span, h2, h3, h4{
+    font-family: 'cinzelbold';
+}
+.fa-comment-dots{
+    font-size: 20px;
 }
 
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
-body{
-    background: #ecf0f5;
+.bloc_page{
     color: #2D2D2D;
 }
-
-/*.navbar{
-    background: #2D2D2D;
-}*/
+.editor, .reports, .widgets, .comments, .postAwaiting{
+    background: url("../img/typewriter.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
 .navbar, .w_users, .w_comments, .w_reports{
     color: white;
 }
 .navbar img{
-    width: 36%;
+    width: 50%;
 }
 .carte, section{
     background: white;
-}
-section{
-    border-top: 2px solid grey;
 }
 
 /* ------------------------------------------------------------------------ LAYOUT */
@@ -38,15 +75,17 @@ body{
 }
 
 header{
-    margin-left: 22%;
+    margin-left: 20%;
 }
 .carte{
     width: auto;
 }
-.w_users, .w_comments, .w_reports{
-    width: 90px;
+
+.editor, .reports, .widgets, .comments, .postAwaiting{
+    min-height: 100%;
+    margin: 0 0 0 20%;
 }
 
-.editor, .reports, .widgets, .comments{
-    margin: 20px 20px 20px 22%;
+.w_users, .w_comments, .w_reports{
+    width: 90px;
 }

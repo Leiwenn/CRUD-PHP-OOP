@@ -5,11 +5,11 @@
             ?>
 
             <article class="card mt-4 w-100 p-5 shadow single">
-                <img src="public/img/<?= $data['file_name'] ?>" class="card-img-top mt-3 mx-auto img-fluid" alt="<?= $data['file_description'] ?>" />
+                <img src="public/img/<?= htmlspecialchars($data['file_name']) ?>" class="card-img-top mt-3 mx-auto img-fluid" alt="<?= htmlspecialchars($data['file_description']) ?>" />
                 <h2 class="card-title text-center m-3"> <?= htmlspecialchars($data['title']) ?></h2>
                 <p class="card-text m-3"> <?= htmlspecialchars($data['content']) ?> </p>
                 <p class="m-3"> <?= ' le ' . htmlspecialchars($data['creation_date_fr']) ?> </p>
-                    <?php $postId = $data['id']; ?>
+                    <?php $postId = htmlspecialchars($data['id']) ?>
                 <a href="index.php?action=viewPosts" class="btn btn-info">Retour à la liste</a>
             </article>
 
@@ -24,7 +24,7 @@
                 <p>Pseudo: 
                     <?php
                         if(isset($_SESSION['pseudo'])){
-                            echo '<span class="text-info">' . $_SESSION['pseudo'] . '</span>';
+                            echo '<span class="text-info">' . htmlspecialchars($_SESSION['pseudo']) . '</span>';
                         }else{
                             echo '<span class="text-info">' . 'Inscrivez-vous pour pouvoir commenter' . '</span>';
                         }
@@ -34,7 +34,7 @@
                             
                 <label class="mt-4" for="title">Titre du message</label><input class="form-control" type="text" name="title" id="title" placeholder="titre" <?= htmlspecialchars('title'); ?> required>
 
-                <label class="mt-4" for="comment">Votre commentaire</label><textarea rows="5" id="comment" name="comment" class="form-control" <?= htmlspecialchars('comment'); ?> required></textarea>
+                <label class="mt-4" for="comment">Votre commentaire</label><textarea rows="5" id="comment" name="comment" placeholder="commentaire" class="form-control" <?= htmlspecialchars('comment'); ?> required></textarea>
 
                 <input class="mt-4 btn btn-success" type="submit" value="Valider">
             </form>
@@ -50,14 +50,15 @@
 
                 <?php 
                     while ($data = $comments->fetch()){
-                        $postId = $data['id'];
+                        $post_concerned_id = $data['post_id'];
+                        $comment_id = $data['comment_id'];
                 ?>
 
                 <div class="shadow p-3 m-3">
-                    <p class="font-weight-bold"> <?= $data['pseudo'] ?>, le <?= $data['comment_date_fr'] ?></p>
-                    <h5><span class="text-info">Titre</span></br> <?= $data['title'] ?></h5>
+                    <p class="font-weight-bold"> <?= htmlspecialchars($data['pseudo']) ?>, le <?= htmlspecialchars($data['comment_date_fr']) ?></p>
+                    <h5><span class="text-info">Titre</span></br> <?= htmlspecialchars($data['title']) ?></h5>
                     <p><span class="text-info">Commentaire</span></br> <?= nl2br(htmlspecialchars($data['comment'])) ?></p>
-                    <a href="index.php?action=report&postId=<?= $postId ?>"  class="mt-2 btn btn-danger"><i class="far fa-bell"></i></a>
+                    <a href="index.php?action=report&post_concerned_id=<?= $post_concerned_id ?>&comment_id=<?= $comment_id ?>"  class="mt-2 btn btn-danger"><i class="far fa-bell"></i></a>
                 </div>
                 
                 <?php

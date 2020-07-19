@@ -21,10 +21,15 @@ class PostController{
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == false){
             $header = require 'view/frontOffice/headerConnect.php';
         }
-        $postManager = new PostManager();
-        $posts = $postManager->getPosts();
+        $posts = self::getPosts();
         $content = require 'view/frontOffice/postsView.php';
         require 'view/frontOffice/template.php';
+    }
+
+    public function getPosts(){
+        $postManager = new PostManager();
+        $posts = $postManager->getPosts();
+        return $posts;
     }
 
     /**
@@ -41,12 +46,22 @@ class PostController{
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == false){
             $header = require 'view/frontOffice/headerConnect.php';
         }
-        $postManager = new PostManager();
-        $commentManager = new CommentManager();
-        $post = $postManager->getPost($_GET['id']);
-        $comments = $commentManager->getComments($_GET['id']);
+        $post = self::getPost($_GET['id']);
+        $comments = self::getComments($_GET['id']);
         $content = require 'view/frontOffice/postView.php';
         require 'view/frontOffice/template.php';
+    }
+
+    public function getPost(){
+        $postManager = new PostManager();
+        $post = $postManager->getPost($_GET['id']);
+        return $post;
+    }
+
+    public function getComments(){
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getComments($_GET['id']);
+        return $comments;
     }
     
 }

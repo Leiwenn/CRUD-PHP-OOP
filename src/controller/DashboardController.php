@@ -3,12 +3,11 @@
 namespace p4\blog\controller;
 use p4\blog\model\MemberManager as MemberManager;
 use p4\blog\model\DashboardManager as DashboardManager;
+use p4\blog\model\DashboardPostManager as DashboardPostManager;
 use p4\blog\model\PostManager as PostManager;
 require_once 'src/model/DbManager.php';
 
 class DashboardController{
-
-    //public $totalMembers;
 
     /**
      * show dashboard with widgets
@@ -20,17 +19,16 @@ class DashboardController{
         $totalMembers = self::totalMembers();
         $totalCommentsAwaiting = self::totalCommentsAwaiting();
         $totalReports = self::totalReports();
-
-        $titleh2 = 'Mes billets';
+        $titleh2 = 'Billets en attente de publication';
+        $totalPostsAwaiting = self::totalPostsAwaiting();
+        $showPostsAwaiting = self::getPostsAwaiting();
         $titleh3 = 'Billets publiés';
         $totalPosts = self::totalPosts();
-        $showPostsList = self::showPostsList();
-        $titleh4 = 'Billets en attente de publication';
-        $showPostsAwaiting = self::showPostsAwaiting();
-
+        $showPostsList = self::getPosts();
         $content = require 'view/backOffice/dashboard.php';
         require 'view/backOffice/template.php';
     }
+
     /**
      * WIDGET MEMBERS count total of members
      *
@@ -72,117 +70,25 @@ class DashboardController{
         $totalPosts = $dashboardManager->countPosts();
         return $totalPosts;
     }
-    public function showPostsList(){
+    public function getPosts(){
         $postManager = new PostManager();
         $showPostsList = $postManager->getPosts();
         return $showPostsList;
     }
-    public function showPostsAwaiting(){
+    
+    public function totalPostsAwaiting(){
         $dashboardManager = new DashboardManager();
-        $showPostsAwaiting = $dashboardManager->getPostsAwaiting();
+        $totalPostsAwaiting = $dashboardManager->countPostsAwaiting();
+        return $totalPostsAwaiting;
+    }
+    public function getPostsAwaiting(){
+        $dashboardPostManager = new DashboardPostManager();
+        $showPostsAwaiting = $dashboardPostManager->getPostsAwaiting();
         return $showPostsAwaiting;
     }
 
-    // ---- COMMENTS ----
 
-    /**
-     * get all the comments awaiting
-     *
-     * @return void
-     */
-    public function commentsAwaiting(){
-        $dashboardManager = new DashboardManager();
-        $commentsAwaiting = $dashboardManager->getCommentsAwaiting();
-        return $commentsAwaiting;
-    }
-    /**
-     * manage the display of these
-     *
-     * @return void
-     */
-    public function showCommentsAwaiting(){
-        $showCommentsAwaiting = self::commentsAwaiting();
-        $content = require 'view/backOffice/commentsAwaiting.php';
-        require 'view/backOffice/template.php';
-    }
-    public function deleteAComment(){
-
-    }
-    /**
-     * post a comment who was awaiting
-     *
-     * @param [type] $pseudo
-     * @param [type] $title
-     * @param [type] $comment
-     * @param [type] $comment_date
-     * @param [type] $post_id
-     * @return void
-     */
-    public function addComment($pseudo, $title, $comment, $comment_date, $post_id){
-        $dashboardManager = new DashboardManager();
-        $addComment = $dashboardManager->postComment($pseudo, $title, $comment, $comment_date, $post_id);
-    }
-    // ---- END COMMENTS ----
-
-    // ---- REPORTS ----
-
-    /**
-     * delete a reported comment
-     * 
-     */
-    public function deleteComment($id){
-        $dashboardManager = new DashboardManager();
-        $deleteAComment = $dashboardManager->deleteComment($id);
-        return $deleteAComment;
-    }
-    /**
-     * REPORTS  keep a reported comment
-     * manager _ keepComment($commentId)
-     */
-    public function keepAComment($id){
-        $dashboardManager = new DashboardManager();
-        $keepAComment = $dashboardManager->keepComment($id);
-        return $keepAComment;
-    }
-    
-    public function getAllReports(){
-        $dashboardManager = new DashboardManager();
-        $getAllReports = $dashboardManager->getReports();
-        return $getAllReports;
-    }
-    public function showComment(){
-        $dashboardManager = new DashboardManager();
-        $showComment = $dashboardManager->showComment();
-        return $showComment;
-    }
-    public function showReports(){
-        $h1 = 'Dashboard';
-        $h2 = 'Modération';
-        $h3 = 'Demandes de modération:';
-        $getAllReports = self::getAllReports();
-        $showComment = self::showComment();
-        $content = require 'view/backOffice/reports.php';
-        require 'view/backOffice/template.php';
-    }
-
-    public function getReport($id){
-        //obtenir le report
-        $dashboardManager = new DashboardManager();
-        $getReport = $dashboardManager->getReport($id);
-        return $getReport;
-    }
-    public function showReport($id){
-        //afficher le report
-        $h1 = 'Dashboard';
-        $h2 = 'Modération';
-        $h3 = 'Modérer ce commentaire:';
-        $getAReport = self::getReport($id);
-        $content = require 'view/backOffice/oneReport.php';
-        require 'view/backOffice/template.php';
-    }
-
-    // ---- END REPORTS ----
-
+    // ---- TINY ----
     public function showEditor(){
         $content = require 'view/backOffice/editor.php';
         require 'view/backOffice/template.php';
