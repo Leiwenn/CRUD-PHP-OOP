@@ -24,7 +24,7 @@
 
     <?php
         }
-        $req->closeCursor();
+        $getReportedComment->closeCursor();
     ?>
 
 </section>

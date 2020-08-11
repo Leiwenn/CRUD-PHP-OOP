@@ -40,8 +40,8 @@
             </form>
 
             <?php
-                    $req->closeCursor();
                 }
+                $post->closeCursor();
             ?>
         </div>
 
@@ -63,8 +63,8 @@
                 </div>
                 
                 <?php
-                        $req->closeCursor();
                     }
+                    $comments->closeCursor();
                 ?>
             </div>
         </div>

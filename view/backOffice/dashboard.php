@@ -20,7 +20,7 @@
                 <?php
                         }
                     }
-                    $req->closeCursor();
+                    $totalMembers->closeCursor();
                 ?>
             </div>
         </div>
@@ -40,7 +40,7 @@
                 <?php
                         }
                     }
-                    $req->closeCursor();
+                    $totalCommentsAwaiting->closeCursor();
                 ?>
             </div>
         </div>
@@ -60,7 +60,7 @@
                 <?php
                         }
                     }
-                    $req->closeCursor();
+                    $totalReports->closeCursor();
                 ?>
             </div>
         </div>
@@ -76,7 +76,7 @@
                                 echo ' : ' . htmlspecialchars($data['nbre_posts']);
                             }
                         }
-                        $req->closeCursor();
+                        $totalPostsAwaiting->closeCursor();
                     ?>
             </h2>
                 <ul class="list-group list-group-flush">
@@ -90,7 +90,7 @@
                     <?php
                             }
                         }
-                        $req->closeCursor();
+                        $showPostsAwaiting->closeCursor();
                     ?>
                 </ul>
         </section>
@@ -104,7 +104,7 @@
                                 echo ' : ' . htmlspecialchars($data['nbre_posts']);
                             }
                         }
-                        $req->closeCursor();
+                        $totalPosts->closeCursor();
                     ?>
                 </h3>
                 <ul class="list-group list-group-flush">
@@ -114,7 +114,7 @@
                         <li class="list-group-item d-flex align-items-center justify-content-between"> <?= htmlspecialchars($data['title']) ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Dashboard&id=<?= htmlspecialchars($data['id']) ?>">Voir le billet</a></li>
                     <?php 
                         }
-                        $req->closeCursor();
+                        $showPostsList->closeCursor();
                     ?>
                 </ul>
         </section>

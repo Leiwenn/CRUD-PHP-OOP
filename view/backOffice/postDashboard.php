@@ -18,7 +18,7 @@
 
     <?php
         }
-        $req->closeCursor();
+        $showPostDashboard->closeCursor();
     ?>
 
 </section>

@@ -26,7 +26,7 @@
 
     <?php
         }
-        $req->closeCursor();
+        $showPostAwaiting->closeCursor();
     ?>
 
 </section>

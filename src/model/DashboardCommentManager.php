@@ -14,9 +14,9 @@ class DashboardCommentManager extends DbManager{
      */
     public function getCommentsAwaiting(){
         $db = $this->dbConnexion();
-        $getCommentsAwaiting = $db->prepare('SELECT id, pseudo, title, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, post_id FROM comments WHERE published = 0 ORDER BY comment_date DESC');
-        $getCommentsAwaiting->execute(array());
-        return $getCommentsAwaiting;
+        $req = $db->prepare('SELECT id, pseudo, title, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, post_id FROM comments WHERE published = 0 ORDER BY comment_date DESC');
+        $req->execute(array());
+        return $req;
     }
 
     /**

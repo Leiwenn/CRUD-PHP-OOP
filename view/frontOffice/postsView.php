@@ -15,8 +15,8 @@
                 </article>
 
             <?php
-                    $req->closeCursor();
                 }
+                $posts->closeCursor();
             ?>
         </div>
     </section>

@@ -18,6 +18,6 @@
     <?php
             }
         }
-        $req->closeCursor();
+        $getAllReports->closeCursor();
     ?>
 </section>

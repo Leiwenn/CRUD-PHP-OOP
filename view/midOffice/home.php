@@ -8,8 +8,8 @@
                 <p><span>Mail:</span> <?= htmlspecialchars($data['mail']) ?> </p>
                 <p><span>Date d'inscription:</span> <?= htmlspecialchars($data['registration_date']) ?> </p>
             <?php
-                    $req->closeCursor();
-                } 
+                }
+                $getOneMember->closeCursor();
             ?>
             <div class="btn-group shadow" role="group" aria-label="changer le pseudo, changer le mot de pass, se désinscrire">
                 <a class="btn btn-info border" role="button" data-toggle="modal" data-target="#changePseudo" href="#"> <?= $link2 ?> </a>
@@ -33,8 +33,8 @@
                 </div>
             <?php 
                     }
-                    $req->closeCursor();
-                } 
+                }
+                $getComments->closeCursor();
             ?>
         </div>
     </section>

@@ -33,6 +33,6 @@
     <?php
         }
     }
-    $req->closeCursor();
+    $showCommentsAwaiting->closeCursor();
     ?>
 </section>

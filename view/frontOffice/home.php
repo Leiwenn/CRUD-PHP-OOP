@@ -11,9 +11,9 @@
                     
                 </div>
             </article>
-        <?php
-                $req->closeCursor();
+        <?php  
             }
+            $showLastPost->closeCursor();
         ?>
     </section>
     
