@@ -1,7 +1,7 @@
 <?php
 
 namespace p4\blog\model;
-require_once 'src/model/DbManager.php';
+require_once 'src/model/dataBase/DbManager.php';
 
 class MemberManager extends DbManager{
 
@@ -16,23 +16,30 @@ class MemberManager extends DbManager{
      */
     public function setMember($pseudo, $mail, $passwordHache, $members_category){
         $db = $this->dbConnexion();
-
         $addMember = $db->prepare('INSERT INTO members(pseudo, mail, passwordHache, registration_date, members_category) VALUES(:pseudo, :mail, :passwordHache, CURDATE(), :members_category)');
         $addMember->execute(array('pseudo' => $pseudo, 'mail' => $mail, 'passwordHache' => $passwordHache, 'members_category' => $members_category));
     }
 
-    /**
-     * get all from members
-     * controller _ getAllMembers()
-     *
-     * @return void
-     */
-    public function getMembers(){
+    public function getMember($pseudo){
         $db = $this->dbConnexion();
-        $req = $db->prepare('SELECT pseudo, mail, passwordHache, members_category FROM members');
-        $req->execute(array());
-        $getMembers = $req;
-        return $getMembers;
+        $req = $db->query('SELECT * FROM members WHERE pseudo LIKE ' . "'" . $pseudo . "'");
+        $getMember = $req;
+        return $getMember;
+    }
+
+    public function setNewPseudo($oldPseudo, $newPseudo){
+        $db = $this->dbConnexion();
+        $req = $db->prepare('UPDATE members SET pseudo = :newPseudo WHERE pseudo = $oldPseudo');
+        $req->execute(array('pseudo' => $newPseudo));
+        return $req;
+    }
+
+    public function changePassword($pseudo, $newPassword){
+        $passwordHache = password_hash($newPassword, PASSWORD_DEFAULT);
+        $db = $this->dbConnexion();
+        $req = $db->prepare('UPDATE members SET passwordHache = :passwordHache WHERE pseudo LIKE ' . "'" . $pseudo . "'");
+        $req->execute(array('passwordHache' => $passwordHache));
+        return $req;
     }
 
     /**

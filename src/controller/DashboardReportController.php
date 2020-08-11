@@ -2,13 +2,11 @@
 
 namespace p4\blog\controller;
 use p4\blog\model\DashboardReportManager as DashboardReportManager;
-use p4\blog\model\MidOfficeManager as MidOfficeManager;
-require_once 'src/model/DbManager.php';
 
 class DashboardReportController{
 
     /**
-     * delete a reported comment
+     * delete a comment
      * 
      */
     public function deleteComment($id){
@@ -29,8 +27,8 @@ class DashboardReportController{
     
     public function showReports(){
         $h1 = 'Dashboard';
-        $h2 = 'Modération';
-        $h3 = 'Demandes des membres:';
+        $h2 = 'Demandes de modération';
+        $link = 'Voir le commentaire';
         $dashboardReportManager = new DashboardReportManager();
         $getAllReports = $dashboardReportManager->getReports();
         $content = require 'view/backOffice/reports.php';
@@ -40,7 +38,7 @@ class DashboardReportController{
     public function showReportedComment($rid){
         $h1 = 'Dashboard';
         $h2 = 'Modération';
-        $h3 = 'Modérer ce commentaire:';
+        $h3 = 'Afficher le commentaire signalé:';
         $dashboardReportManager = new DashboardReportManager();
         $getReportedComment = $dashboardReportManager->getReportedComment($rid);
         $content = require 'view/backOffice/oneReport.php';

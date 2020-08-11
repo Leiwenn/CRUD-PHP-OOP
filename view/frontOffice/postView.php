@@ -40,6 +40,7 @@
             </form>
 
             <?php
+                    $req->closeCursor();
                 }
             ?>
         </div>
@@ -62,6 +63,7 @@
                 </div>
                 
                 <?php
+                        $req->closeCursor();
                     }
                 ?>
             </div>

@@ -1,10 +1,7 @@
 <?php
 
 namespace p4\blog\controller;
-use p4\blog\model\MemberManager as MemberManager;
 use p4\blog\model\DashboardCommentManager as DashboardCommentManager;
-use p4\blog\model\PostManager as PostManager;
-require_once 'src/model/DbManager.php';
 
 class DashboardCommentController{
 
@@ -30,13 +27,15 @@ class DashboardCommentController{
      * @param [type] $post_id
      * @return void
      */
-    public function addComment($pseudo, $title, $comment, $comment_date, $post_id){
+    public function publishComment($id){
         $dashboardCommentManager = new DashboardCommentManager();
-        $addComment = $dashboardCommentManager->postComment($pseudo, $title, $comment, $comment_date, $post_id);
+        $addComment = $dashboardCommentManager->postComment($id);
+        return $addComment;
     }
 
     public function deleteCommentAwaiting($id){
         $dashboardCommentManager = new DashboardCommentManager();
-        $dashboardCommentManager->deleteCommentAwaiting($id);
+        $deleteCommentAwait = $dashboardCommentManager->deleteCommentAwaiting($id);
+        return $deleteCommentAwait;
     }
 }

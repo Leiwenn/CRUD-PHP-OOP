@@ -1,5 +1,5 @@
     <section class="last bg-white rounded w-75 mx-auto">
-        <h2 class="cinzel font-weight-bold mt-5 p-3">Dernier épisode publié</h2>
+        <h2 class="font-weight-bold mt-5 p-3 text-center">Dernier épisode publié</h2>
         <?php
             while($data = $showLastPost->fetch()){
         ?>
@@ -12,6 +12,7 @@
                 </div>
             </article>
         <?php
+                $req->closeCursor();
             }
         ?>
     </section>

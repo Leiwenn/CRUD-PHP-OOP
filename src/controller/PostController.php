@@ -3,7 +3,6 @@
 namespace p4\blog\controller;
 use p4\blog\model\PostManager as PostManager;
 use p4\blog\model\CommentManager as CommentManager;
-require_once 'src/model/DbManager.php';
 
 class PostController{
 

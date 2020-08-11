@@ -14,15 +14,18 @@ class CommentController{
     public function showComments(){
         $commentManager = new CommentManager();
         $showComments = $commentManager->getComments($_GET['id']);
+        return $showComments;
     }
 
-    public function addComment($postId, $pseudo, $title, $comment){
+    public function addComment($pseudo, $title, $comment, $postId){
         $commentManager = new CommentManager();
-        $addComment = $commentManager->postComment($postId, $pseudo, $title, $comment);
+        $addComment = $commentManager->setComment($pseudo, $title, $comment, $postId);
+        return $addComment;
     }
 
     public function addReport($comment_id, $member_pseudo, $post_concerned_id){
         $commentManager = new CommentManager();
         $addReport = $commentManager->setReport($comment_id, $member_pseudo, $post_concerned_id);
+        return $addReport;
     }
 }

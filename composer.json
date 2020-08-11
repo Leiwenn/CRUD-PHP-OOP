@@ -1,7 +1,8 @@
 {
     "autoload": {
       "psr-4": {
-        "p4\\blog\\model\\": "src/model", 
+        "p4\\blog\\model\\": "src/model",
+        "p4\\blog\\model\\": "src/model/dataBase",
         "p4\\blog\\controller\\": "src/controller"
         }
     }

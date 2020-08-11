@@ -13,15 +13,15 @@ try{
          * ---- REGISTRATION _ LOGIN _ LOGOUT ----
          */
         if($_GET['action'] == 'registration'){
-
             if(isset($_POST['pseudo']) AND isset($_POST['password']) AND isset($_POST['passwordConfirm']) AND isset($_POST['mail'])){
-
                 $memberController = new \p4\blog\controller\MemberController();
-                $memberController->getAllMembers();
-                $dataDb = $memberController->getAllMembers();
-                  
+                $pseudo = $_POST['pseudo'];
+                $memberController->getMember($pseudo);
+                $dataDb = $memberController->getMember($pseudo);
+                
                 while($data = $dataDb->fetch()){
-                    if($_POST['pseudo'] == $data['pseudo']){
+
+                    if($_POST['pseudo'] === $data['pseudo']){
                         throw new Exception('Ce pseudo est déja utilisé, merci d\'en choisir un autre.');
                     }
 
@@ -61,11 +61,12 @@ try{
         elseif($_GET['action'] == 'login'){
             if(isset($_POST['pseudo']) && isset($_POST['password'])){
                 $memberController = new \p4\blog\controller\MemberController();
-                $memberController->getAllMembers();
-                $dataDb = $memberController->getAllMembers();
-                
+                $pseudo = $_POST['pseudo'];
+                $memberController->getMember($pseudo);
+                $dataDb = $memberController->getMember($pseudo);
+
                 while($data = $dataDb->fetch()){
-                    if($_POST['pseudo'] == $data['pseudo']){
+                    if($_POST['pseudo'] === $data['pseudo']){
                         if(password_verify($_POST['password'], $data['passwordHache'])){
                             if(isset($_POST['pseudo'])){                             
                                 if($data['members_category'] == 1){
@@ -77,6 +78,8 @@ try{
                         }else{
                             throw new Exception('Mot de passe invalide');
                         }
+                    }else{
+                        throw new Exception('Ce pseudo n\'existe pas');
                     }
                 }
 
@@ -117,22 +120,38 @@ try{
          * ---- MEMBER AREA ----
          */ 
         elseif($_GET['action'] == 'member_area'){
-            $midOfficeController = new \p4\blog\controller\MidOfficeController();
-            $midOfficeController->showMemberArea();
+            if(isset($_SESSION['pseudo'])){
+                $pseudo = $_SESSION['pseudo'];
+                $midOfficeController = new \p4\blog\controller\MidOfficeController();
+                $midOfficeController->showMemberArea($pseudo);
+            }
         }
-
+        elseif($_GET['action'] == 'change_pseudo'){
+            if(isset($_SESSION['pseudo'])){
+                $oldPseudo = $_SESSION['pseudo'];
+                $newPseudo = $_POST['newPseudo'];
+                $memberController = new \p4\blog\controller\MemberController();
+                $memberController->updatePseudo($oldPseudo, $newPseudo);
+                $midOfficeController = new \p4\blog\controller\MidOfficeController();
+                $midOfficeController->showMemberArea($pseudo);
+            }
+        }
         elseif($_GET['action'] == 'change_password'){
             $passwordCorrect = false;
             if(isset($_SESSION['pseudo']) && isset($_POST['currentPassword']) && isset($_POST['newPassword']) && isset($_POST['confirmPassword'])){
+                $pseudo = $_SESSION['pseudo'];
+                $currentPassword = $_POST['currentPassword'];
+                $newPassword = $_POST['newPassword'];
+                $confirmPassword = $_POST['confirmPassword'];
+
                 $memberController = new \p4\blog\controller\MemberController();
-                $memberController->getAllMembers();
-                $dataDb = $memberController->getAllMembers();
+                $memberController->getMember($pseudo);
+                $dataDb = $memberController->getMember($pseudo);
                 
                 while($data = $dataDb->fetch()){
-                    if(password_verify($_POST['currentPassword'], $data['passwordHache'])){
-                        
-                        if($_POST['newPassword'] == $_POST['confirmPassword']){
-                            if(preg_match('#^[a-zA-Z0-9]+$#', $_POST['newPassword']) !== 1){
+                    if(password_verify($currentPassword, $data['passwordHache'])){
+                        if($newPassword === $confirmPassword){
+                            if(preg_match('#^[a-zA-Z0-9]+$#', $newPassword) !== 1){
                                 throw new Exception('Le mot de passe ne peut contenir que des lettres minuscules, majuscules et des chiffres');
                             }else{
                                 $passwordCorrect = true;
@@ -146,10 +165,11 @@ try{
                 }
 
                 if($passwordCorrect = true){
-                    $pseudo = $_SESSION['pseudo'];
-                    $newPassword = $_POST['newPassword'];
+                    $memberController->changePassword($pseudo, $newPassword);
                     $midOfficeController = new \p4\blog\controller\MidOfficeController();
-                    $midOfficeController->changePassword($pseudo, $newPassword);
+                    $midOfficeController->disconnectMember($pseudo);
+                    $frontController = new \p4\blog\controller\FrontController();
+                    $frontController->showHome();
                 }
                 
             }else{
@@ -194,13 +214,12 @@ try{
          */
         elseif($_GET['action'] == 'comment'){
             if(isset($_SESSION['pseudo'])){
-                $postId = $_GET['postId'];
                 $pseudo = $_SESSION['pseudo'];
                 $title = $_POST['title'];
                 $comment = $_POST['comment'];
-
+                $postId = $_GET['postId'];
                 $commentController = new \p4\blog\controller\CommentController();
-                $commentController->addComment($postId, $pseudo, $title, $comment);
+                $commentController->addComment($pseudo, $title, $comment, $postId);
                 $_GET['id'] = $postId;
                 $postController = new \p4\blog\controller\PostController();
                 $postController->showPost();
@@ -211,12 +230,14 @@ try{
 
         elseif($_GET['action'] == 'report'){
             if(isset($_SESSION['pseudo'])){
-                $comment_id = $_GET['comment_id'];
-                $post_concerned_id = $_GET['post_concerned_id'];
-                $member_pseudo = $_SESSION['pseudo'];
-
                 $commentController = new \p4\blog\controller\CommentController();
+                $comment_id = $_GET['comment_id'];
+                $member_pseudo = $_SESSION['pseudo'];
+                $post_concerned_id = $_GET['post_concerned_id'];
                 $commentController->addReport($comment_id, $member_pseudo, $post_concerned_id);
+                $postController = new \p4\blog\controller\PostController();
+                $_GET['id'] = $_GET['post_concerned_id'];
+                $postController->showPost();
             }else{
                 throw new Exception('Seuls les membres inscrits peuvent signaler un commentaire');
             }
@@ -237,15 +258,150 @@ try{
 
         elseif($_GET['action'] == 'text_editor'){
             if($_SESSION['admin'] = true){
+                $tinyController = new \p4\blog\controller\TinyController();
+                $tinyController->showEditor();
+            }
+        }
+        elseif($_GET['action'] == 'create_new_post'){
+            if($_SESSION['admin'] = true){
+                // recordPost || publishPost
+                $title = $_POST['title'];
+                $content = $_POST['content'];
+                $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                $dashboardPostController->recordPost($title, $content);
                 $dashboardController = new \p4\blog\controller\DashboardController();
-                $dashboardController->showEditor();
+                $dashboardController->showDashboard();
+            }
+        }
+        elseif(isset($_POST['publish'])){
+            $title = $_POST['title'];
+            $content = $_POST['content'];
+            $file_name = $_POST['file_name'];
+            $file_description = $_POST['file_description'];
+            $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+            $dashboardPostController->publishPost($title, $content, $file_name, $file_description);
+            $dashboardController = new \p4\blog\controller\DashboardController();
+            $dashboardController->showDashboard();
+        }
+        elseif($_GET['action'] == 'view_Post_Awaiting'){
+            if($_SESSION['admin'] = true){
+                $id = $_GET['id'];
+                $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                $dashboardPostController->showPostAwaiting($id);
+            }
+        }
+        elseif($_GET['action'] == 'edit_Post_Awaiting'){
+            if($_SESSION['admin'] = true){
+                $id = $_GET['postId'];
+                $tinyController = new \p4\blog\controller\TinyController();
+                $tinyController->editPostAwaiting($id);
+            }
+        }
+        elseif($_GET['action'] == 'update_post_awaiting'){
+            if($_SESSION['admin'] = true){
+                if(isset($_POST['record'])){
+                    $title = $_POST['title'];
+                    $content = $_POST['content'];
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->recordPost($title, $content);
+                    $dashboardController = new \p4\blog\controller\DashboardController();
+                    $dashboardController->showDashboard();
+                }elseif(isset($_POST['publish'])){
+                    $id = $_GET['id'];
+                    $title = $_POST['title'];
+                    $content = $_POST['content'];
+                    $file_name = $_POST['file_name'];
+                    $file_description = $_POST['file_description'];
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->updatePost($id, $title, $content, $file_name, $file_description);
+                    $dashboardPostController->deletePostAwaiting($id);
+                    $dashboardController = new \p4\blog\controller\DashboardController();
+                    $dashboardController->showDashboard();
+                }elseif(isset($_POST['delete'])){
+                    $id = $_GET['postId'];
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->deletePost($id);
+                    $dashboardController = new \p4\blog\controller\DashboardController();
+                    $dashboardController->showDashboard();
+                }
+                
+            }
+        }
+        elseif($_GET['action'] == 'view_Post_Dashboard'){
+            if($_SESSION['admin'] = true){
+                if (isset($_GET['id']) && $_GET['id'] > 0){
+                    $postId = $_GET['id'];
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->showPostDashboard($postId);
+                }else{
+                    throw new Exception('Aucun identifiant de billet envoyé');
+                }
+            }
+        }
+        elseif($_GET['action'] == 'edit_Post'){
+            if($_SESSION['admin'] = true){
+                $id = $_GET['id'];
+                $tinyController = new \p4\blog\controller\TinyController();
+                $tinyController->editPost($id);
+            }
+        }
+        elseif($_GET['action'] == 'change_post'){
+            if($_SESSION['admin'] = true){
+                
+                if(isset($_POST['update'])){
+                    $id = $_GET['id'];
+                    $title = $_POST['title'];
+                    $content = $_POST['content'];
+                    $file_name = $_POST['file_name'];
+                    $file_description = $_POST['file_description'];
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->updatePost($id, $title, $content, $file_name, $file_description);
+                    $dashboardController = new \p4\blog\controller\DashboardController();
+                    $dashboardController->showDashboard();
+                }elseif(isset($_POST['delete'])){
+                    $id = $_GET['postId'];
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->deletePost($id);
+                    $dashboardController = new \p4\blog\controller\DashboardController();
+                    $dashboardController->showDashboard();
+                }
+            }
+        }
+        elseif($_GET['action'] == 'delete_Post'){
+            if($_SESSION['admin'] = true){
+                $id = $_GET['id'];
+                $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                $dashboardPostController->deletePost($id);
+                $dashboardController = new \p4\blog\controller\DashboardController();
+                $dashboardController->showDashboard();
             }
         }
 
-        elseif($_GET['action'] == 'viewPostAwaiting'){
-            $dashboardPostController = new \p4\blog\controller\DashboardPostController();
-            $dashboardPostController->showPostAwaiting();
+
+        elseif($_GET['action'] == 'publish_Post_Awaiting'){
+            if($_SESSION['admin'] = true){
+                $id = $_GET['postId'];
+                $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                $dashboardPostController->publishPostAwaiting($id);
+                $dashboardController = new \p4\blog\controller\DashboardController();
+                $dashboardController->showDashboard();
+            }
         }
+        
+        elseif($_GET['action'] == 'delete_Post_Awaiting'){
+            if($_SESSION['admin'] = true){
+                $id = $_GET['postId'];
+                $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                $dashboardPostController->deletePostAwaiting($id);
+                $dashboardController = new \p4\blog\controller\DashboardController();
+                $dashboardController->showDashboard();
+            }
+        }
+
+        
+
+        
+        
 
         // REPORTS
         elseif($_GET['action'] == 'show_reports'){
@@ -261,28 +417,35 @@ try{
                 $dashboardReportController->showReportedComment($rid);
             }
         }
-        elseif($_GET['action'] == 'delete_comment'){
+        elseif($_GET['action'] == 'keep_comment'){
             if($_SESSION['admin'] = true){
-                $id = $_GET['comment_id'];
                 $dashboardReportController = new \p4\blog\controller\DashboardReportController();
-                $dashboardReportController->deleteComment($id);
+                $id = $_GET['comment_id'];
+                $dashboardReportController->keepAComment($id);
                 $dashboardReportController->showReports();
             }
         }
-        elseif($_GET['action'] == 'keep_comment'){
+        elseif($_GET['action'] == 'delete_comment'){
             if($_SESSION['admin'] = true){
-                $id = $_GET['comment_id'];
                 $dashboardReportController = new \p4\blog\controller\DashboardReportController();
-                $dashboardReportController->keepAComment($id);
+                $rid = $_GET['rid'];
+                $dashboardReportController->deleteReport($rid);
+                $id = $_GET['comment_id'];
+                $dashboardReportController->deleteComment($id);
                 $dashboardReportController->showReports();
             }
         }
         elseif($_GET['action'] == 'exclude_member'){
             if($_SESSION['admin'] = true){
                 $dashboardReportController = new \p4\blog\controller\DashboardReportController();
+                $pseudo = $_GET['pseudo'];
+                $id = $_GET['comment_id'];
+                $rid = $_GET['rid'];
                 $dashboardReportController->deleteMember($pseudo);
                 $dashboardReportController->deleteComment($id);
                 $dashboardReportController->deleteReport($rid);
+                $dashboardController = new \p4\blog\controller\DashboardController();
+                $dashboardController->showDashboard();
             }
         }
 
@@ -295,23 +458,17 @@ try{
         }
         elseif($_GET['action'] == 'publish_comment'){
             if($_SESSION['admin'] = true){
-                $post_id = $_GET['post_id'];
-                $pseudo = $_GET['pseudo'];
-                $title = $_GET['title'];
-                $comment = $_GET['comment'];
-                $comment_date = $_GET['comment_date'];
-                $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
-                $dashboardCommentController->addComment($pseudo, $title, $comment, $comment_date, $post_id);
                 $id = $_GET['id'];
-                $dashboardCommentController->deleteCommentAwaiting($id);
+                $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
+                $dashboardCommentController->publishComment($id);
                 $dashboardCommentController->showCommentsAwaiting();
             }
         }
         elseif($_GET['action'] == 'delete_comment_awaiting'){
             if($_SESSION['admin'] = true){
                 $id = $_GET['id'];
-                $dashboardReportController = new \p4\blog\controller\DashboardReportController();
-                $dashboardReportController->deleteComment($id);
+                $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
+                $dashboardCommentController->deleteCommentAwaiting($id);
                 $dashboardCommentController->showCommentsAwaiting();
             }
         }

@@ -1,12 +1,12 @@
 <?php
 
 namespace p4\blog\model;
-require_once 'src/model/DbManager.php';
+require_once 'src/model/dataBase/DbManager.php';
 
 class CommentManager extends DbManager{
 
     /**
-     * post a comment to comments_awaiting -> awaiting publication
+     * post a comment awaiting publication by admin
      *
      * @param [type] $postId
      * @param [type] $pseudo
@@ -14,17 +14,15 @@ class CommentManager extends DbManager{
      * @param [type] $comment
      * @return void
      */
-    public function postComment($postId, $pseudo, $title, $comment){
+    public function setComment($pseudo, $title, $comment, $postId){
         $db = $this->dbConnexion();
-
-        $addComment = $db->prepare('INSERT INTO comments_awaiting(post_id, pseudo, title, comment, comment_date) VALUES(?, ?, ?, ?, NOW())');
-        $addCommentDb = $addComment->execute(array($postId, $pseudo, $title, $comment));
-
-        return $addCommentDb;
+        $req = $db->prepare('INSERT INTO comments(pseudo, title, comment, comment_date, post_id, published) VALUES(?, ?, ?, NOW(), ?, 0)');
+        $req->execute(array($pseudo, $title, $comment, $postId));
+        return $req;
     }
 
     /**
-     * COMMENTS get all comments of a post, validated by admin
+     * COMMENTS get published comments of a post
      * controller _ showComments()
      *
      * @param [type] $postId
@@ -32,16 +30,16 @@ class CommentManager extends DbManager{
      */
     public function getComments($postId){
         $db = $this->dbConnexion();
-        $getComments = $db->prepare('SELECT id AS comment_id, pseudo, title, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, post_id FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
-        $getComments->execute(array($postId));
-        return $getComments;
+        $req = $db->prepare('SELECT id AS comment_id, pseudo, title, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, post_id FROM comments WHERE published = 1 AND post_id = ? ORDER BY comment_date DESC');
+        $req->execute(array($postId));
+        return $req;
     }
 
     public function setReport($comment_id, $member_pseudo, $post_concerned_id){
         $db = $this->dbConnexion();
-        $setReport = $db->prepare('INSERT INTO reports(comment_id, member_pseudo, post_concerned_id) VALUES(?, ?, ?)');
-        $setReportDb = $setReport->execute(array($comment_id, $member_pseudo, $post_concerned_id));
-        return $setReportDb;
+        $req = $db->prepare('INSERT INTO reports(comment_id, member_pseudo, post_concerned_id) VALUES(?, ?, ?)');
+        $req->execute(array($comment_id, $member_pseudo, $post_concerned_id));
+        return $req;
     }
 
     

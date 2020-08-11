@@ -1,32 +1,16 @@
 <?php
 
 namespace p4\blog\model;
-require_once 'src/model/DbManager.php';
+require_once 'src/model/dataBase/DbManager.php';
 
 class MidOfficeManager extends DbManager{
 
-    public function getMember($pseudo){
-        $db = $this->dbConnexion();
-        $req = $db->query('SELECT * FROM members WHERE pseudo LIKE ' . "'" . $pseudo . "'");
-        $getMember = $req;
-        return $getMember;
-    }
-
     public function getMemberComments($pseudo){
         $db = $this->dbConnexion();
-        $req = $db->prepare('SELECT * FROM comments WHERE pseudo LIKE ' . "'" . $pseudo . "'");
+        $req = $db->prepare('SELECT * FROM comments WHERE published = 1 AND pseudo LIKE ' . "'" . $pseudo . "'");
         $req->execute(array($pseudo));
         $getMemberComments = $req;
         return $getMemberComments;
-    }
-
-    public function changePassword($pseudo, $newPassword){
-        $passwordHache = password_hash($newPassword, PASSWORD_DEFAULT);
-        $db = $this->dbConnexion();
-        $req = $db->prepare('UPDATE members SET passwordHache = passwordHache WHERE pseudo LIKE ' . "'" . $pseudo . "'");
-        $req->execute(array('passwordHache' => $passwordHache));
-        $changePassword = $req;
-        return $changePassword;
     }
 
     /**

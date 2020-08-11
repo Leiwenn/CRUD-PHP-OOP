@@ -1,4 +1,4 @@
-/* ------------------------------------------------------------------------- FONTS */
+/* --------------------------------------------------------- FONTS */
 @font-face {
     font-family: 'cinzel_decorativesemi_bold';
     src: url('../font/cinzeldecorative-semibold-webfont.woff2') format('woff2'),
@@ -7,7 +7,6 @@
     font-style: normal;
 
 }
-
 @font-face {
     font-family: 'cinzelbold';
     src: url('../font/cinzel-bold-webfont.woff2') format('woff2'),
@@ -16,7 +15,6 @@
     font-style: normal;
 
 }
-
 @font-face {
     font-family: 'robotoregular';
     src: url('../font/roboto-regular-webfont.woff2') format('woff2'),
@@ -29,43 +27,33 @@
 .bloc_page{
     font-family: 'robotoregular';
 }
-.cinzeld{
+
+h1{
     font-family: 'cinzel_decorativesemi_bold';
 }
-.cinzel{
-    font-family: 'cinzelbold';
-}
-.fa-comment-dots{
+
+label{
     font-size: 20px;
+    font-weight: bolder;
 }
 
-/* ---------------------------------------------------------------- COLORS AND IMG */
+/* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
 .bloc_page{
-    height: 100%;
-    background: url("../img/typewriter.jpg");
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-attachment: fixed;
-    background-size: cover;
+    color: #2D2D2D;
 }
 .ombre{
     text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em grey;
 }
-
-h1{
-    color: white;
-}
-
-span{
-    font-weight: bold;
+section{
+    background: url("../img/typewriter.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
 /* ------------------------------------------------------------------------ LAYOUT */
 body{
     margin: 0;
     padding: 0;
-}
-
-.card{
-    width: 100%;
 }

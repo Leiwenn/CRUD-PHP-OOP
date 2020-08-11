@@ -62,3 +62,14 @@ Etape 4-3
 - ajout .htacess rewrite url et gestion des erreurs
 - creation de error.php à la racine => gestion de l'affichage des erreurs
 - ajout d'un else dans index.php pour gestion 404
+
+Etape 5 TinyMCE et optimisation DB
+- intégration TinyMCE
+- ajout input file pour img et text pour alt
+- action=record_post (peuvent etre enregistrés sans file_description et sans file_name)
+- action=editPostAwaiting avec Tiny / action=deletePostAwaiting / action=publishPostAwaiting
+- creation dans viewPostDashboard action=editPost avec tiny
+- optimisation DB -> suppression des tables posts_awaiting et comments_awaiting
+- class dataBase passée en abstract
+- update Dashboard = pouvoir lire les billets dans le dashboard + ajout date dans report + redirection apres report
+- correction delete_comment & change_password

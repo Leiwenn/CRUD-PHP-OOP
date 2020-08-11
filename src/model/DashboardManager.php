@@ -1,7 +1,7 @@
 <?php
 
 namespace p4\blog\model;
-require_once 'src/model/DbManager.php';
+require_once 'src/model/dataBase/DbManager.php';
 
 class DashboardManager extends DbManager{
 
@@ -13,7 +13,7 @@ class DashboardManager extends DbManager{
      */
     public function countCommentsAwaiting(){
         $db = $this->dbConnexion();
-        $req = $db->query('SELECT COUNT(*) nbre_comments FROM comments_awaiting WHERE id');
+        $req = $db->query('SELECT COUNT(*) nbre_comments FROM comments WHERE published = 0 AND id');
         $countCommentsAwaiting = $req;
         return $countCommentsAwaiting;
     }
@@ -29,20 +29,20 @@ class DashboardManager extends DbManager{
     }
 
     /**
-     * count total of posts ALASKA
+     * count total published posts ALASKA
      *
      * @return void
      */
     public function countPosts(){
         $db = $this->dbConnexion();
-        $req = $db->query('SELECT COUNT(*) nbre_posts FROM posts WHERE id AND category_id = 1');
+        $req = $db->query('SELECT COUNT(*) nbre_posts FROM posts WHERE published = 1 AND category_id = 1');
         $countPosts = $req;
         return $countPosts;
     }
 
     public function countPostsAwaiting(){
         $db = $this->dbConnexion();
-        $req = $db->prepare('SELECT COUNT(*) nbre_posts FROM posts_awaiting WHERE id');
+        $req = $db->prepare('SELECT COUNT(*) nbre_posts FROM posts WHERE published = 0 AND id');
         $req->execute(array());
         $countPostsAwaiting = $req;
         return $countPostsAwaiting;

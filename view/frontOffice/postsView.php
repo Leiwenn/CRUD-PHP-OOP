@@ -15,6 +15,7 @@
                 </article>
 
             <?php
+                    $req->closeCursor();
                 }
             ?>
         </div>

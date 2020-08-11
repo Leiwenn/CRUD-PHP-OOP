@@ -2,7 +2,6 @@
 
 namespace p4\blog\controller;
 use p4\blog\model\MemberManager as MemberManager;
-require_once 'src/model/DbManager.php';
 
 class MemberController{
 
@@ -22,17 +21,22 @@ class MemberController{
         $memberManager->setMember($pseudo, $mail, $passwordHache, 2);
     }
 
-    /**
-     * get all from members
-     *
-     * @return void
-     */
-    public function getAllMembers(){
+    public function getMember($pseudo){
         $memberManager = new MemberManager();
-        $getAllMembers = $memberManager->getMembers();
-        return $getAllMembers;
+        $getMember = $memberManager->getMember($pseudo);
+        return $getMember;
+    }
+    
+    public function updatePseudo($oldPseudo, $newPseudo){
+        $memberManager = new MemberManager();
+        $updatePseudo = $memberManager->setNewPseudo($oldPseudo, $newPseudo);
+        return $updatePseudo;
     }
 
-    
+    public function changePassword($pseudo, $newPassword){
+        $memberManager = new MemberManager();
+        $changePassword = $memberManager->changePassword($pseudo, $newPassword);
+        return $changePassword;
+    }
 
 }

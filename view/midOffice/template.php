@@ -12,17 +12,15 @@
     <link rel="preload" href="public/font/roboto-regular-webfont.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="public/font/roboto-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" type="text/css" href="public/css/styleMidOffice.css">
-	<title>Mon profil</title>
+	<title> <?= $title ?> </title>
 </head>
 
 <body>
-    <div class="bloc_page">
 
         <?= $header ?>    
 
         <?= $content ?>
 
-    </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

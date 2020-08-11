@@ -5,7 +5,6 @@ use p4\blog\model\MemberManager as MemberManager;
 use p4\blog\model\DashboardManager as DashboardManager;
 use p4\blog\model\DashboardPostManager as DashboardPostManager;
 use p4\blog\model\PostManager as PostManager;
-require_once 'src/model/DbManager.php';
 
 class DashboardController{
 
@@ -87,10 +86,4 @@ class DashboardController{
         return $showPostsAwaiting;
     }
 
-
-    // ---- TINY ----
-    public function showEditor(){
-        $content = require 'view/backOffice/editor.php';
-        require 'view/backOffice/template.php';
-    }    
 }

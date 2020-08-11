@@ -1,5 +1,5 @@
-<header class="d-flex bg-dark text-white">
-    <h1 class="ml-5 pt-2"> <?= $titleh1 ?></h1>
+<header class="p-2 bg-dark text-white">
+    <h1 class="text-center"> <?= $titleh1 ?></h1>
 </header>
 
 <section class="widgets p-3">
@@ -20,6 +20,7 @@
                 <?php
                         }
                     }
+                    $req->closeCursor();
                 ?>
             </div>
         </div>
@@ -39,6 +40,7 @@
                 <?php
                         }
                     }
+                    $req->closeCursor();
                 ?>
             </div>
         </div>
@@ -58,13 +60,14 @@
                 <?php
                         }
                     }
+                    $req->closeCursor();
                 ?>
             </div>
         </div>
     </div>
     <div class="mt-3 p-2 text-center billets">
         <section>
-            <h2 class="p-2 bg-secondary text-white"> <?= $titleh2 ?>
+            <h2 class="p-2 ombre text-white"> <?= $titleh2 ?>
                     <?php
                         while($data = $totalPostsAwaiting->fetch()){
                             if($data == null){
@@ -73,9 +76,9 @@
                                 echo ' : ' . htmlspecialchars($data['nbre_posts']);
                             }
                         }
+                        $req->closeCursor();
                     ?>
-                </h2>
-                <a class="btn btn-info ml-3" href="index.php?action=viewPostAwaiting">Voir les billets en attente</a>
+            </h2>
                 <ul class="list-group list-group-flush">
                     <?php
                         while($data = $showPostsAwaiting->fetch()){
@@ -83,15 +86,16 @@
                                 echo '0';
                             }else{
                     ?>
-                                <li class="list-group-item"> <?= htmlspecialchars($data['title']) ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> </li>
+                                <li class="list-group-item d-flex align-items-center justify-content-between"> <?= $data['title'] ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Awaiting&id=<?= htmlspecialchars($data['id']) ?>">Voir le billet</a></li>
                     <?php
                             }
                         }
+                        $req->closeCursor();
                     ?>
                 </ul>
-            </section>
-            <section>
-                <h3 class="p-2 bg-secondary text-white"> <?= $titleh3 ?>
+        </section>
+        <section>
+                <h3 class="mt-2 p-2 ombre text-white"> <?= $titleh3 ?>
                     <?php
                         while($data = $totalPosts->fetch()){
                             if($data == null){
@@ -100,14 +104,19 @@
                                 echo ' : ' . htmlspecialchars($data['nbre_posts']);
                             }
                         }
+                        $req->closeCursor();
                     ?>
                 </h3>
                 <ul class="list-group list-group-flush">
-                    <?php while($data = $showPostsList->fetch()){
+                    <?php 
+                        while($data = $showPostsList->fetch()){
                     ?>
-                        <li class="list-group-item"> <?= htmlspecialchars($data['title']) ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> <a class="btn btn-outline-info ml-3" href="index.php?action=viewPost&id=<?= htmlspecialchars($data['id']) ?>">Voir le billet</a></li>
-                    <?php } ?>
+                        <li class="list-group-item d-flex align-items-center justify-content-between"> <?= htmlspecialchars($data['title']) ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Dashboard&id=<?= htmlspecialchars($data['id']) ?>">Voir le billet</a></li>
+                    <?php 
+                        }
+                        $req->closeCursor();
+                    ?>
                 </ul>
-            </section>
+        </section>
     </div>
 </section>

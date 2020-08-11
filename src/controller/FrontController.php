@@ -1,7 +1,6 @@
 <?php
 
 namespace p4\blog\controller;
-require_once 'src/model/DbManager.php';
 use p4\blog\model\FrontManager as FrontManager;
 
 class FrontController{
