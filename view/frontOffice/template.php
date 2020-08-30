@@ -10,7 +10,7 @@
     <link rel="preload" href="public/font/roboto-regular-webfont.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="public/font/roboto-regular-webfont.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" type="text/css" href="public/css/styleFrontOffice.css">
-	<title>Blog de Jean FORTEROCHE</title>
+	<title> <?= $title ?> </title>
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 </head>
 

@@ -5,20 +5,20 @@ use p4\blog\model\DashboardReportManager as DashboardReportManager;
 
 class DashboardReportController{
 
-    /**
-     * delete a comment
-     * 
-     */
+    public const TITLE = 'Modération';
+    public const H1 = 'Dashboard';
+    public const HOMEDASHBOARD = 'Accueil Dashboard';
+    public const LINKTINY = 'Editeur de texte';
+    public const LINKCOMMENTS = 'Commentaires à publier';
+    public const LINKREPORTS = 'Modération';
+    public const LINKHOME = 'Voir le site';
+
     public function deleteComment($id){
         $dashboardReportManager = new DashboardReportManager();
         $deleteAComment = $dashboardReportManager->deleteComment($id);
         return $deleteAComment;
     }
 
-    /**
-     * REPORTS  keep a reported comment
-     * manager _ keepComment($commentId)
-     */
     public function keepAComment($id){
         $dashboardReportManager = new DashboardReportManager();
         $keepAComment = $dashboardReportManager->keepComment($id);
@@ -26,7 +26,13 @@ class DashboardReportController{
     }
     
     public function showReports(){
-        $h1 = 'Dashboard';
+        $title = self::TITLE;
+        $h1 = self::H1;
+        $linkHomeDashboard = self::HOMEDASHBOARD;
+        $linkTiny = self::LINKTINY;
+        $linkComments = self::LINKCOMMENTS;
+        $linkReports = self::LINKREPORTS;
+        $linkHome = self::LINKHOME;
         $h2 = 'Demandes de modération';
         $link = 'Voir le commentaire';
         $dashboardReportManager = new DashboardReportManager();
@@ -36,20 +42,18 @@ class DashboardReportController{
     }
 
     public function showReportedComment($rid){
-        $h1 = 'Dashboard';
+        $title = self::TITLE;
+        $h1 = self::H1;
+        $linkHomeDashboard = self::HOMEDASHBOARD;
+        $linkTiny = self::LINKTINY;
+        $linkComments = self::LINKCOMMENTS;
+        $linkReports = self::LINKREPORTS;
+        $linkHome = self::LINKHOME;
         $h2 = 'Modération';
-        $h3 = 'Afficher le commentaire signalé:';
         $dashboardReportManager = new DashboardReportManager();
         $getReportedComment = $dashboardReportManager->getReportedComment($rid);
         $content = require 'view/backOffice/oneReport.php';
         require 'view/backOffice/template.php';
-    }
-
-    public function deleteMember($pseudo){
-        $dashboardReportManager = new DashboardReportManager();
-        $deleteMember = $dashboardReportManager->deleteMember($pseudo);
-        
-        return $deleteMember;
     }
 
     public function deleteReport($rid){

@@ -1,16 +1,11 @@
 <?php
 
 namespace p4\blog\model;
-require_once 'src/model/dataBase/DbManager.php';
+use p4\blog\model\database\DbManager as DbManager;
 
 class DashboardManager extends DbManager{
 
-    /**
-     * count total of comments awaiting validation by admin from comments_awaiting
-     * controller _ totalCommentsAwaiting()
-     *
-     * @return void
-     */
+    // WIDGETS
     public function countCommentsAwaiting(){
         $db = $this->dbConnexion();
         $req = $db->query('SELECT COUNT(*) nbre_comments FROM comments WHERE published = 0 AND id');
@@ -18,9 +13,6 @@ class DashboardManager extends DbManager{
         return $countCommentsAwaiting;
     }
 
-    /**
-     * controller _ totalReports()
-     */
     public function countReports(){
         $db = $this->dbConnexion();
         $req = $db->query('SELECT COUNT(*) nbre_reports FROM reports WHERE id');
@@ -28,11 +20,6 @@ class DashboardManager extends DbManager{
         return $countReports;
     }
 
-    /**
-     * count total published posts ALASKA
-     *
-     * @return void
-     */
     public function countPosts(){
         $db = $this->dbConnexion();
         $req = $db->query('SELECT COUNT(*) nbre_posts FROM posts WHERE published = 1 AND category_id = 1');
@@ -48,4 +35,10 @@ class DashboardManager extends DbManager{
         return $countPostsAwaiting;
     }
 
+    public function countMembers(){
+        $db = $this->dbConnexion();
+        $req = $db->query('SELECT COUNT(*) nbre_members FROM members WHERE id AND members_category = 2');
+        $countMembers = $req;
+        return $countMembers;
+    }
 }

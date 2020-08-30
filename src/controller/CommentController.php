@@ -5,12 +5,6 @@ use p4\blog\model\CommentManager as CommentManager;
 
 class CommentController{
 
-    /**
-     * COMMENTS show all comments validated by admin
-     * manager _ getComments($postId)
-     *
-     * @return void
-     */
     public function showComments(){
         $commentManager = new CommentManager();
         $showComments = $commentManager->getComments($_GET['id']);
@@ -21,6 +15,12 @@ class CommentController{
         $commentManager = new CommentManager();
         $addComment = $commentManager->setComment($pseudo, $title, $comment, $postId);
         return $addComment;
+    }
+
+    public function getComments(){
+        $commentManager = new CommentManager();
+        $comments = $commentManager->getComments($_GET['id']);
+        return $comments;
     }
 
     public function addReport($comment_id, $member_pseudo, $post_concerned_id){

@@ -24,36 +24,28 @@ class MidOfficeController{
         $content = require 'view/midOffice/home.php';
         require 'view/midOffice/template.php';
     }
+
     public function getMember($pseudo){
         $memberManager = new MemberManager();
         $getOneMember = $memberManager->getMember($pseudo);
         return $getOneMember;
     }
+
     public function getComments($pseudo){
         $midOfficeManager = new MidOfficeManager();
         $getComments = $midOfficeManager->getMemberComments($pseudo);
         return $getComments;
     }
 
-    /**
-     * disconnect member
-     *
-     * @return void
-     */
-    public function disconnectMember(){
+    public function updatePseudo($oldPseudo, $newPseudo){
         $midOfficeManager = new MidOfficeManager();
-        $disconnectMember = $midOfficeManager->disconnect();
-        return $disconnectMember;
+        $updatePseudo = $midOfficeManager->setNewPseudo($oldPseudo, $newPseudo);
+        return $updatePseudo;
     }
 
-    /**
-     * disconnect && delete a member
-     *
-     * @return void
-     */
-    public function deleteMember($pseudo){
+    public function changePassword($pseudo, $newPassword){
         $midOfficeManager = new MidOfficeManager();
-        $disconnectMember = $midOfficeManager->disconnect();
-        $DeleteAMember = $midOfficeManager->deleteMember($pseudo);
+        $changePassword = $midOfficeManager->changePassword($pseudo, $newPassword);
+        return $changePassword;
     }
 }

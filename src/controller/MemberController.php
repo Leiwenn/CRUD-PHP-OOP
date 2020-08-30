@@ -5,15 +5,6 @@ use p4\blog\model\MemberManager as MemberManager;
 
 class MemberController{
 
-    /**
-     * new member in DB
-     *
-     * @param [type] $pseudo
-     * @param [type] $mail
-     * @param [type] $password
-     * @param [type] $members_category
-     * @return void
-     */
     public function newMember($pseudo, $mail, $password, $members_category){
         $memberManager = new MemberManager();
         $passwordHache = $_POST['password'];
@@ -26,17 +17,17 @@ class MemberController{
         $getMember = $memberManager->getMember($pseudo);
         return $getMember;
     }
-    
-    public function updatePseudo($oldPseudo, $newPseudo){
+
+    public function deleteMember($pseudo){
         $memberManager = new MemberManager();
-        $updatePseudo = $memberManager->setNewPseudo($oldPseudo, $newPseudo);
-        return $updatePseudo;
+        $disconnectMember = $memberManager->disconnect();
+        $deleteMember = $memberManager->deleteMember($pseudo);
+        return $deleteMember;
     }
 
-    public function changePassword($pseudo, $newPassword){
+    public function disconnectMember(){
         $memberManager = new MemberManager();
-        $changePassword = $memberManager->changePassword($pseudo, $newPassword);
-        return $changePassword;
+        $disconnectMember = $memberManager->disconnect();
+        return $disconnectMember;
     }
-
 }

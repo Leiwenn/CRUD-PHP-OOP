@@ -6,17 +6,26 @@ use p4\blog\model\PostManager as PostManager;
 
 class DashboardPostController{
 
-    // POSTS
+    public const TITLE = 'Billets';
+    public const H1 = 'Dashboard';
+    public const HOMEDASHBOARD = 'Accueil Dashboard';
+    public const LINKTINY = 'Editeur de texte';
+    public const LINKCOMMENTS = 'Commentaires à publier';
+    public const LINKREPORTS = 'Modération';
+    public const LINKHOME = 'Voir le site';
 
-    /**
-     * see one post in dashboard
-     *
-     * @param [type] $postId
-     * @return void
-     */
     public function showPostDashboard($postId){
-        $showPostDashboard = self::getPostDashboard($postId);
+        $title = self::TITLE;
+        $h1 = self::H1;
+        $linkHomeDashboard = self::HOMEDASHBOARD;
+        $linkTiny = self::LINKTINY;
+        $linkComments = self::LINKCOMMENTS;
+        $linkReports = self::LINKREPORTS;
+        $linkHome = self::LINKHOME;
         $h2 = 'Modifier le billet';
+        $linkEdit = 'Editer';
+        $linkDelete = 'Supprimer';
+        $showPostDashboard = self::getPostDashboard($postId);
         $content = require 'view/backOffice/postDashboard.php';
         require 'view/backOffice/template.php'; 
     }
@@ -25,19 +34,6 @@ class DashboardPostController{
         $getPostDashboard = $postManager->getPost($postId);
         return $getPostDashboard;
     }
-    /**
-     * publish a post who was record
-     *
-     * @param [type] $id
-     * @return void
-     */
-    public function publishPostAwaiting($id){
-        $dashboardPostManager = new DashboardPostManager();
-        $publishPostAwaiting = $dashboardPostManager->setPostAwait($id);
-        return $publishPostAwaiting;
-    }
-
-    // POSTS AWAITING
 
     /**
      * see one post_awaiting in dashboard
@@ -46,6 +42,13 @@ class DashboardPostController{
      * @return void
      */
     public function showPostAwaiting($id){
+        $title = self::TITLE;
+        $h1 = self::H1;
+        $linkHomeDashboard = self::HOMEDASHBOARD;
+        $linkTiny = self::LINKTINY;
+        $linkComments = self::LINKCOMMENTS;
+        $linkReports = self::LINKREPORTS;
+        $linkHome = self::LINKHOME;
         $showPostAwaiting = self::getPostAwaiting($id);
         $h2 = 'Billet en attente de publication';
         $content = require 'view/backOffice/postAwaiting.php';
@@ -58,13 +61,15 @@ class DashboardPostController{
     }
 
     /**
-     * get posts_awaiting list in dashboard home
+     * get list in dashboard
+     *
+     * @return void
      */
     public function getPostsAwaiting(){
         $dashboardPostManager = new DashboardPostManager();
         $getPostsAwaiting = $dashboardPostManager->getPostsAwaiting();
         return $getPostsAwaiting;
-    }
+    }    
 
     public function recordPost($title, $content){
         $dashboardPostManager = new DashboardPostManager();
@@ -78,7 +83,11 @@ class DashboardPostController{
         return $publishNewPost;
     }
 
-    
+    public function publishPostAwaiting($id){
+        $dashboardPostManager = new DashboardPostManager();
+        $publishPostAwaiting = $dashboardPostManager->setPostAwait($id);
+        return $publishPostAwaiting;
+    }
 
     public function updatePost($id, $title, $content, $file_name, $file_description){
         $dashboardPostManager = new DashboardPostManager();

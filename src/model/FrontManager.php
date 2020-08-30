@@ -1,7 +1,7 @@
 <?php
 
 namespace p4\blog\model;
-require_once 'src/model/dataBase/DbManager.php';
+use p4\blog\model\database\DbManager as DbManager;
 
 class FrontManager extends DbManager{
 

@@ -34,18 +34,22 @@ h2, h3, h4{
 	font-family: 'cinzelbold';
 	font-size: 30px;
 }
-h3{
+.last h3{
+	font-size: 22px;
+}
+.headerConnect{
 	font-size: 20px;
 }
 h1{
 	font-size: 35px;
 }
-h1, #callToAction, .cinzelD{
+h1, #callToAction, .cinzelD, .last h2{
 	font-family: 'cinzel_decorativesemi_bold';
 }
 .cinzel{
 	font-family: 'cinzelbold';
 }
+
 
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
 
@@ -72,7 +76,7 @@ nav a:hover{
 	text-decoration: underline !important;
 }
 
-header p{
+.hero p{
 	background: rgba(255,255,255,0.28);
 }
 
@@ -81,7 +85,7 @@ header p{
 	border-color: white;
 	text-decoration: none;
 }
-header img{
+.hero img{
 	width: 40%;
 	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7), -1px 2px 20px rgba(255, 255, 255, 0.6) inset;
 }
@@ -105,6 +109,10 @@ header img{
 	letter-spacing: 1px;
 	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
 	transition: all 0.4s ease 0s;
+}
+
+.ombre{
+    text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em grey;
 }
 
 .jean{
@@ -132,6 +140,10 @@ article img, .cover{
 }
 .last a{
 	color: #2c4444;
+	text-decoration: underline;
+}
+.last a:hover{
+	color: #17A2B8;
 }
 
 /* --- FOOTER --- */
@@ -156,9 +168,6 @@ body, .wrapper{
 }
 
 /* --- HEADER --- */
-/*header{
-	height: 90vh;
-}*/
 .callToAction{
 	padding: 12px 24px;
 	border-radius: 4px;
@@ -225,4 +234,27 @@ footer{
 }
 #footer p:first-of-type{
 	max-width: 45vw;
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 767.98px){
+
+	.hero img, .heroP{
+		width: 80% !important;
+	}
+
+	.home{
+		background: rgba(255,255,255,0.28);
+		border-radius: 5px;
+	}
+
+	.jean{
+		width: 90%;
+  		float: none;
+		shape-outside: none;
+	}
+
+	.home h4{
+		text-align: center;
+	}
 }

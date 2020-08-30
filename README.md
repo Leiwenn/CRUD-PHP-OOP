@@ -73,3 +73,5 @@ Etape 5 TinyMCE et optimisation DB
 - class dataBase passée en abstract
 - update Dashboard = pouvoir lire les billets dans le dashboard + ajout date dans report + redirection apres report
 - correction delete_comment & change_password
+
+Etape 6 Refactoring

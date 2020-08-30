@@ -1,16 +1,10 @@
 <?php
 
 namespace p4\blog\model;
-require_once 'src/model/dataBase/DbManager.php';
+use p4\blog\model\database\DbManager as DbManager;
 
 class DashboardPostManager extends DbManager{
 
-    /**
-     * get all posts awaiting to publish
-     * controller _ showPostsAwaiting()
-     *
-     * @return void
-     */
     public function getPostsAwaiting(){
         $db = $this->dbConnexion();
         $req = $db->prepare('SELECT id, title, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM posts WHERE category_id = 1 AND published = 0 ORDER BY id DESC');

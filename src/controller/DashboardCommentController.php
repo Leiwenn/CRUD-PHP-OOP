@@ -5,28 +5,27 @@ use p4\blog\model\DashboardCommentManager as DashboardCommentManager;
 
 class DashboardCommentController{
 
-    /**
-     * show all the comments awaiting
-     *
-     * @return void
-     */
     public function showCommentsAwaiting(){
+        $h1 = 'Dashboard';
+        $linkHomeDashboard = 'Accueil Dashboard';
+        $linkTiny = 'Editeur de texte';
+        $linkComments = 'Commentaires à publier';
+        $linkReports = 'Modération';
+        $linkHome = 'Voir le site';
+        $h2 = 'Commentaires en attente de publication';
+        $postNumber = 'Lié au billet n°';
+        $theAuthor = 'Auteur du commentaire:';
+        $theTitle = 'Titre du commentaire:';
+        $theComment = 'Commentaire:';
+        $theDate = 'Date du commentaire:';
+        $publish = 'Publier';
+        $delete = 'Supprimer';
         $dashboardCommentManager = new DashboardCommentManager();
         $showCommentsAwaiting = $dashboardCommentManager->getCommentsAwaiting();
         $content = require 'view/backOffice/commentsAwaiting.php';
         require 'view/backOffice/template.php';
     }
 
-    /**
-     * post a comment who was awaiting
-     *
-     * @param [type] $pseudo
-     * @param [type] $title
-     * @param [type] $comment
-     * @param [type] $comment_date
-     * @param [type] $post_id
-     * @return void
-     */
     public function publishComment($id){
         $dashboardCommentManager = new DashboardCommentManager();
         $addComment = $dashboardCommentManager->postComment($id);

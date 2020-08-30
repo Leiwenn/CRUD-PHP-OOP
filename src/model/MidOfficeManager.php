@@ -1,8 +1,7 @@
 <?php
 
 namespace p4\blog\model;
-require_once 'src/model/dataBase/DbManager.php';
-
+use p4\blog\model\database\DbManager as DbManager;
 class MidOfficeManager extends DbManager{
 
     public function getMemberComments($pseudo){
@@ -13,28 +12,18 @@ class MidOfficeManager extends DbManager{
         return $getMemberComments;
     }
 
-    /**
-     * disconnect member
-     *
-     * @return void
-     */
-    public function disconnect(){
-        $_SESSION = array();
-        session_destroy();
-        unset($_SESSION);
+    public function setNewPseudo($oldPseudo, $newPseudo){
+        $db = $this->dbConnexion();
+        $req = $db->prepare('UPDATE members SET pseudo = :newPseudo WHERE pseudo = $oldPseudo');
+        $req->execute(array('pseudo' => $newPseudo));
+        return $req;
     }
 
-    /**
-     * delete member cookies && DB_data
-     *
-     * @return void
-     */
-    public function deleteMember($pseudo){
+    public function changePassword($pseudo, $newPassword){
+        $passwordHache = password_hash($newPassword, PASSWORD_DEFAULT);
         $db = $this->dbConnexion();
-        $req = $db->prepare('DELETE FROM members WHERE pseudo LIKE ' . "'" . $pseudo . "'");
-        $req->execute(array($pseudo));
+        $req = $db->prepare('UPDATE members SET passwordHache = :passwordHache WHERE pseudo LIKE ' . "'" . $pseudo . "'");
+        $req->execute(array('passwordHache' => $passwordHache));
         return $req;
-        setcookie('pseudo', '');
-        setcookie('password', '');
     }
 }

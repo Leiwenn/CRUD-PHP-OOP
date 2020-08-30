@@ -1,6 +1,6 @@
 <?php
 
-namespace p4\blog\model;
+namespace p4\blog\model\database;
 
 abstract class DbManager{
 

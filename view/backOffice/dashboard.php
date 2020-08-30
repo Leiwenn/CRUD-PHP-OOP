@@ -1,5 +1,5 @@
 <header class="p-2 bg-dark text-white">
-    <h1 class="text-center"> <?= $titleh1 ?></h1>
+    <h1 class="text-center"> <?= $h1 ?></h1>
 </header>
 
 <section class="widgets p-3">
@@ -9,14 +9,14 @@
                 <i class="fas fa-users"></i>
             </div>
             <div class="m-3">
-                <p>Membres</p>
+                <p> <?= $membersTitle ?> </p>
                 <?php
                     while($data = $totalMembers->fetch()){
                         if($data == null){
                             echo '0';
                         }else{
                 ?>
-                            <p class="text-center"> <?= htmlspecialchars($data['nbre_members']) ?> </p>
+                <p class="text-center"> <?= htmlspecialchars($data['nbre_members']) ?> </p>
                 <?php
                         }
                     }
@@ -29,14 +29,14 @@
                 <i class="fas fa-comments"></i>
             </div>
             <div class="m-3">
-                <p>Commentaires à publier</p>
+                <p> <?= $commentsTitle ?> </p>
                 <?php
                     while($data = $totalCommentsAwaiting->fetch()){
                         if($data == null){
                             echo '0';
                         }else{
                 ?>
-                            <p class="text-center"> <?= htmlspecialchars($data['nbre_comments']) ?> </p>
+                <p class="text-center"> <?= htmlspecialchars($data['nbre_comments']) ?> </p>
                 <?php
                         }
                     }
@@ -49,14 +49,14 @@
                 <i class="far fa-bell"></i>
             </div>
             <div class="m-3">
-                <p>Demandes de modération</p>
+                <p> <?= $reportsTitle ?> </p>
                 <?php
                     while($data = $totalReports->fetch()){
                         if($data == null){
                             echo '0';
                         }else{
                 ?>
-                            <p class="text-center"> <?= htmlspecialchars($data['nbre_reports']) ?> </p>
+                <p class="text-center"> <?= htmlspecialchars($data['nbre_reports']) ?> </p>
                 <?php
                         }
                     }
@@ -67,56 +67,58 @@
     </div>
     <div class="mt-3 p-2 text-center billets">
         <section>
-            <h2 class="p-2 ombre text-white"> <?= $titleh2 ?>
-                    <?php
-                        while($data = $totalPostsAwaiting->fetch()){
-                            if($data == null){
-                                echo ' : ' . '0';
-                            }else{
-                                echo ' : ' . htmlspecialchars($data['nbre_posts']);
-                            }
-                        }
-                        $totalPostsAwaiting->closeCursor();
-                    ?>
+            <h2 class="p-2 ombre text-white"> <?= $h2 ?>
+            <?php
+                while($data = $totalPostsAwaiting->fetch()){
+                    if($data == null){
+                        echo ' : ' . '0';
+                    }else{
+                        echo ' : ' . htmlspecialchars($data['nbre_posts']);
+                    }
+                }
+                $totalPostsAwaiting->closeCursor();
+            ?>
             </h2>
-                <ul class="list-group list-group-flush">
-                    <?php
-                        while($data = $showPostsAwaiting->fetch()){
-                            if($data == null){
-                                echo '0';
-                            }else{
-                    ?>
-                                <li class="list-group-item d-flex align-items-center justify-content-between"> <?= $data['title'] ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Awaiting&id=<?= htmlspecialchars($data['id']) ?>">Voir le billet</a></li>
-                    <?php
-                            }
-                        }
-                        $showPostsAwaiting->closeCursor();
-                    ?>
-                </ul>
+            <ul class="list-group list-group-flush">
+                <?php
+                    while($data = $showPostsAwaiting->fetch()){
+                ?>
+                <li class="list-group-item d-flex align-items-center justify-content-between"> 
+                    <?= $data['title'] ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> 
+                    <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Awaiting&id=<?= htmlspecialchars($data['id']) ?>"> <?= $linkSeePostAwaiting ?> </a>
+                </li>
+                <?php
+                    }
+                    $showPostsAwaiting->closeCursor();
+                ?>
+            </ul>
         </section>
         <section>
-                <h3 class="mt-2 p-2 ombre text-white"> <?= $titleh3 ?>
-                    <?php
-                        while($data = $totalPosts->fetch()){
-                            if($data == null){
-                                echo ' : ' . '0';
-                            }else{
-                                echo ' : ' . htmlspecialchars($data['nbre_posts']);
-                            }
-                        }
-                        $totalPosts->closeCursor();
-                    ?>
-                </h3>
-                <ul class="list-group list-group-flush">
-                    <?php 
-                        while($data = $showPostsList->fetch()){
-                    ?>
-                        <li class="list-group-item d-flex align-items-center justify-content-between"> <?= htmlspecialchars($data['title']) ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Dashboard&id=<?= htmlspecialchars($data['id']) ?>">Voir le billet</a></li>
-                    <?php 
-                        }
-                        $showPostsList->closeCursor();
-                    ?>
-                </ul>
+            <h3 class="mt-2 p-2 ombre text-white"> <?= $h3 ?>
+            <?php
+                while($data = $totalPosts->fetch()){
+                    if($data == null){
+                        echo ' : ' . '0';
+                    }else{
+                        echo ' : ' . htmlspecialchars($data['nbre_posts']);
+                    }
+                }
+                $totalPosts->closeCursor();
+            ?>
+            </h3>
+            <ul class="list-group list-group-flush">
+                <?php 
+                    while($data = $showPostsList->fetch()){
+                ?>
+                <li class="list-group-item d-flex align-items-center justify-content-between"> 
+                    <?= htmlspecialchars($data['title']) ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> 
+                    <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Dashboard&id=<?= htmlspecialchars($data['id']) ?>"> <?= $linkSeePost ?> </a>
+                </li>
+                <?php 
+                    }
+                    $showPostsList->closeCursor();
+                ?>
+            </ul>
         </section>
     </div>
 </section>
