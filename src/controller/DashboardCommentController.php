@@ -6,6 +6,7 @@ use p4\blog\model\DashboardCommentManager as DashboardCommentManager;
 class DashboardCommentController{
 
     public function showCommentsAwaiting(){
+        $title = 'Commentaires';
         $h1 = 'Dashboard';
         $linkHomeDashboard = 'Accueil Dashboard';
         $linkTiny = 'Editeur de texte';
@@ -20,10 +21,15 @@ class DashboardCommentController{
         $theDate = 'Date du commentaire:';
         $publish = 'Publier';
         $delete = 'Supprimer';
-        $dashboardCommentManager = new DashboardCommentManager();
-        $showCommentsAwaiting = $dashboardCommentManager->getCommentsAwaiting();
+        $showCommentsAwaiting = $this->getAllCommentsAwaiting();
         $content = require 'view/backOffice/commentsAwaiting.php';
         require 'view/backOffice/template.php';
+    }
+
+    private function getAllCommentsAwaiting(){
+        $dashboardCommentManager = new DashboardCommentManager();
+        $getAllCommentsAwaiting = $dashboardCommentManager->getCommentsAwaiting();
+        return $getAllCommentsAwaiting;
     }
 
     public function publishComment($id){

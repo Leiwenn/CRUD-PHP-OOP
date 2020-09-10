@@ -42,11 +42,15 @@
 			<div class="modal-body">
 				<form action="index.php?action=login" method="post">
                     <label class="pb-1" for="pseudo">Votre pseudo:</label>
-                    <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" <?php echo htmlspecialchars('pseudo'); ?> required>
+                    <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" required>
                     <label class="pb-1 pt-2" for="password">Mot de passe:</label>
-                    <input class="form-control" type="password" name="password" id="password" placeholder="password" <?php echo htmlspecialchars('password'); ?> required>
+                    <input class="form-control" type="password" name="password" id="password" placeholder="password" required>
                     <div class="form-group form-check">
-					    <label class="pt-4 form-check-label" for="checkbox"><input class="form-check-input" type="checkbox" name="checkbox"> se souvenir de moi</label>
+					    <label class="pt-4 form-check-label" for="checkbox">
+                            <input class="form-check-input" type="checkbox" name="checkbox"> 
+                            se souvenir de moi
+                        </label>
+                        <small class="text-muted">(Enregistrement sous forme de cookies)</small>
                     </div>
 					<input class="mt-4 btn btn-info btn-block" type="submit" value="se connecter">
 				</form>
@@ -63,19 +67,19 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-			    <h3 class="modal-title"><i class="fas fa-feather-alt"></i> Inscription</h3>
+			    <h3 class="modal-title mx-auto"><i class="fas fa-feather-alt"></i> Inscription</h3>
             </div>
             <div class="modal-body">
                 <form action="index.php?action=registration" method="post">
                     <label class="pb-1" for="pseudo">Votre pseudo</label>
-                    <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" <?php echo htmlspecialchars('pseudo'); ?> required>
+                    <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" required>
                     <label class="pb-1 pt-2" for="mail">Votre adresse mail</label>
-                    <input class="form-control" type="mail" name="mail" id="mail" placeholder="adresse@mail.fr" <?php echo htmlspecialchars('mail'); ?> required>
+                    <input class="form-control" type="mail" name="mail" id="mail" placeholder="adresse@mail.fr" required>
                     <label class="pb-1 pt-2" for="password">Mot de passe</label>
-                    <input class="form-control" type="password" name="password" id="password" placeholder="password" <?php echo htmlspecialchars('password'); ?> required>
+                    <input class="form-control" type="password" name="password" id="password" placeholder="password" required>
                     <label class="pt-2" for="passwordConfirm">Confirmer votre mot de passe</label>
-                    <input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" placeholder="password" <?php echo htmlspecialchars('passwordConfirm'); ?> required>
-                    <input class="mt-4 btn btn-info btn-block" type="submit" value="s'inscrire">
+                    <input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" placeholder="password" required>
+                    <input class="mt-3 btn btn-info btn-block" type="submit" value="s'inscrire">
                 </form>
             </div>
             <div class="modal-footer">

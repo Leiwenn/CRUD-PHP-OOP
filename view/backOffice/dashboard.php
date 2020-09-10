@@ -16,7 +16,7 @@
                             echo '0';
                         }else{
                 ?>
-                <p class="text-center"> <?= htmlspecialchars($data['nbre_members']) ?> </p>
+                <p class="text-center"> <?= $data['nbre_members'] ?> </p>
                 <?php
                         }
                     }
@@ -36,7 +36,7 @@
                             echo '0';
                         }else{
                 ?>
-                <p class="text-center"> <?= htmlspecialchars($data['nbre_comments']) ?> </p>
+                <p class="text-center"> <?= $data['nbre_comments'] ?> </p>
                 <?php
                         }
                     }
@@ -56,7 +56,7 @@
                             echo '0';
                         }else{
                 ?>
-                <p class="text-center"> <?= htmlspecialchars($data['nbre_reports']) ?> </p>
+                <p class="text-center"> <?= $data['nbre_reports'] ?> </p>
                 <?php
                         }
                     }
@@ -73,7 +73,7 @@
                     if($data == null){
                         echo ' : ' . '0';
                     }else{
-                        echo ' : ' . htmlspecialchars($data['nbre_posts']);
+                        echo ' : ' . $data['nbre_posts'];
                     }
                 }
                 $totalPostsAwaiting->closeCursor();
@@ -84,8 +84,8 @@
                     while($data = $showPostsAwaiting->fetch()){
                 ?>
                 <li class="list-group-item d-flex align-items-center justify-content-between"> 
-                    <?= $data['title'] ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> 
-                    <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Awaiting&id=<?= htmlspecialchars($data['id']) ?>"> <?= $linkSeePostAwaiting ?> </a>
+                    <?= $data['title'] ?> le <?= $data['creation_date_fr'] ?> 
+                    <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Awaiting&id=<?= $data['id'] ?>"> <?= $linkSeePostAwaiting ?> </a>
                 </li>
                 <?php
                     }
@@ -100,7 +100,7 @@
                     if($data == null){
                         echo ' : ' . '0';
                     }else{
-                        echo ' : ' . htmlspecialchars($data['nbre_posts']);
+                        echo ' : ' . $data['nbre_posts'];
                     }
                 }
                 $totalPosts->closeCursor();
@@ -111,8 +111,8 @@
                     while($data = $showPostsList->fetch()){
                 ?>
                 <li class="list-group-item d-flex align-items-center justify-content-between"> 
-                    <?= htmlspecialchars($data['title']) ?> le <?= htmlspecialchars($data['creation_date_fr']) ?> 
-                    <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Dashboard&id=<?= htmlspecialchars($data['id']) ?>"> <?= $linkSeePost ?> </a>
+                    <?= $data['title'] ?> le <?= $data['creation_date_fr'] ?> 
+                    <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Dashboard&id=<?= $data['id'] ?>"> <?= $linkSeePost ?> </a>
                 </li>
                 <?php 
                     }

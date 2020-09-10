@@ -1,7 +1,6 @@
 <?php
 
 namespace p4\blog\controller;
-use p4\blog\model\MemberManager as MemberManager;
 use p4\blog\model\DashboardManager as DashboardManager;
 use p4\blog\model\DashboardPostManager as DashboardPostManager;
 use p4\blog\model\PostManager as PostManager;
@@ -23,43 +22,43 @@ class DashboardController{
         $h3 = 'Billets publiés';
         $linkSeePostAwaiting = 'Voir le billet enregistré';
         $linkSeePost = 'Voir le billet publié';
-        $totalMembers = self::totalMembers();
-        $totalCommentsAwaiting = self::totalCommentsAwaiting();
-        $totalReports = self::totalReports();
-        $totalPostsAwaiting = self::totalPostsAwaiting();
-        $showPostsAwaiting = self::getPostsAwaiting();
-        $totalPosts = self::totalPosts();
-        $showPostsList = self::getPosts();
+        $totalMembers = $this->totalMembers();
+        $totalCommentsAwaiting = $this->totalCommentsAwaiting();
+        $totalReports = $this->totalReports();
+        $totalPostsAwaiting = $this->totalPostsAwaiting();
+        $showPostsAwaiting = $this->getPostsAwaiting();
+        $totalPosts = $this->totalPosts();
+        $showPostsList = $this->getPosts();
         $content = require 'view/backOffice/dashboard.php';
         require 'view/backOffice/template.php';
     }
 
     // WIDGETS
-    public function totalMembers(){
+    private function totalMembers(){
         $dashboardManager = new DashboardManager();
         $getTotalMembers = $dashboardManager->countMembers();
         return $getTotalMembers;
     }
 
-    public function totalCommentsAwaiting(){
+    private function totalCommentsAwaiting(){
         $dashboardManager = new DashboardManager();
         $totalCommentsAwaiting = $dashboardManager->countCommentsAwaiting();
         return $totalCommentsAwaiting;
     }
 
-    public function totalReports(){
+    private function totalReports(){
         $dashboardManager = new DashboardManager();
         $totalReports = $dashboardManager->countReports();
         return $totalReports;
     }
 
-    public function totalPostsAwaiting(){
+    private function totalPostsAwaiting(){
         $dashboardManager = new DashboardManager();
         $totalPostsAwaiting = $dashboardManager->countPostsAwaiting();
         return $totalPostsAwaiting;
     }
 
-    public function totalPosts(){
+    private function totalPosts(){
         $dashboardManager = new DashboardManager();
         $totalPosts = $dashboardManager->countPosts();
         return $totalPosts;
@@ -67,8 +66,8 @@ class DashboardController{
     // END WIDGETS
 
     public function getPosts(){
-        $postManager = new PostManager();
-        $showPostsList = $postManager->getPosts();
+        $dashboardPostManager = new DashboardPostManager();
+        $showPostsList = $dashboardPostManager->getPostsInDashboard();
         return $showPostsList;
     }
     

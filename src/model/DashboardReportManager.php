@@ -7,7 +7,12 @@ class DashboardReportManager extends DbManager{
 
     public function getReports(){
         $db = $this->dbConnexion();
-        $req = $db->prepare('SELECT reports.id AS rid, posts.title AS title, reports.member_pseudo AS pseudo, DATE_FORMAT(report_date, \'%d/%m/%Y à %Hh%imin%ss\') AS report_date_fr FROM reports LEFT JOIN posts ON reports.post_concerned_id = posts.id LEFT JOIN comments ON reports.comment_id = comments.id');
+        $req = $db->prepare(
+            'SELECT reports.id AS rid, posts.title AS title, reports.member_pseudo AS pseudo, DATE_FORMAT(report_date, \'%d/%m/%Y à %Hh%imin%ss\') AS report_date_fr 
+            FROM reports 
+            LEFT JOIN posts ON reports.post_concerned_id = posts.id 
+            LEFT JOIN comments ON reports.comment_id = comments.id'
+        );
         $req->execute(array());
         $getReports = $req;
         return $getReports;
@@ -15,32 +20,66 @@ class DashboardReportManager extends DbManager{
 
     public function getReportedComment($rid){
         $db = $this->dbConnexion();
-        $req = $db->prepare('SELECT * FROM comments LEFT JOIN reports ON comments.id = reports.comment_id WHERE reports.id = ' . $rid);
-        $req->execute(array($rid));
+        $req = $db->prepare(
+            'SELECT * 
+            FROM comments 
+            LEFT JOIN reports ON comments.id = reports.comment_id 
+            WHERE reports.id = ' . $rid
+        );
+        $req->bindValue(':rid', $rid, \PDO::PARAM_INT);
+        $req->execute(array(
+            'rid' => $rid
+        ));
         $getReport = $req;
         return $getReport;
-        var_dump($getReport);
-        die;
     }
 
     public function deleteReport($rid){
         $db = $this->dbConnexion();
-        $req = $db->prepare('DELETE FROM reports WHERE id = ?');
+        $req = $db->prepare(
+            'DELETE FROM reports 
+            WHERE id LIKE ' . "'" . $rid . "'"
+        );
+        $req->bindValue(':rid', $rid, \PDO::PARAM_INT);
         $req->execute(array($rid));
+        return $req;
+    }
+
+    public function deleteMemberReports($pseudo){
+        $db = $this->dbConnexion();
+        $req = $db->prepare(
+            'DELETE FROM reports 
+            WHERE pseudo = :pseudo'
+        );
+        $req->bindValue(':pseudo', $pseudo, \PDO::PARAM_STR);
+        $req->execute(array($pseudo));
         return $req;
     }
 
     public function deleteComment($id){
         $db = $this->dbConnexion();
-        $req = $db->prepare('DELETE FROM comments WHERE id LIKE ' . "'" . $id . "'");
-        $req->execute(array($id));
+        $req = $db->prepare(
+            'DELETE FROM comments 
+            WHERE id LIKE :id'
+        );
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->execute(array(
+            'id' => $id
+        ));
         return $req;
     }
 
     public function keepComment($id){
         $db = $this->dbConnexion();
-        $req = $db->prepare('DELETE FROM reports WHERE id = ?');
-        $req->execute(array($id));
+        var_dump($id);
+        $req = $db->prepare(
+            'DELETE FROM reports 
+            WHERE id LIKE :id'
+        );
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->execute(array(
+            'id' => $id
+        ));
         return $req;
     }
 }

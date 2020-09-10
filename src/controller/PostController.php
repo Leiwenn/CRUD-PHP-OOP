@@ -11,9 +11,9 @@ class PostController{
         return $posts;
     }
 
-    public function getPost(){
+    public function getPost($postId){
         $postManager = new PostManager();
-        $post = $postManager->getPost($_GET['id']);
+        $post = $postManager->getPost($postId);
         return $post;
     }
 }

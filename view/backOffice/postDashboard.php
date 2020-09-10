@@ -8,11 +8,11 @@
         while($data = $showPostDashboard->fetch()){
     ?>
     <article class="card mt-4 w-100 p-5 shadow">
-        <img src="public/img/<?= htmlspecialchars($data['file_name']) ?>" class="card-img-top mt-3 mx-auto img-fluid" alt="<?= htmlspecialchars($data['file_description']) ?>" />
-        <h3 class="card-title text-center m-3"> <?= htmlspecialchars($data['title']) ?></h3>
-        <p class="card-text m-3"> <?= htmlspecialchars($data['content']) ?> </p>
-        <p class="m-3"> <?= ' le ' . htmlspecialchars($data['creation_date_fr']) ?> </p>
-        <?php $postId = htmlspecialchars($data['id']) ?>
+        <img src="public/img/<?= $data['file_name'] ?>" class="card-img-top mt-3 mx-auto img-fluid" alt="<?= $data['file_description'] ?>" />
+        <h3 class="card-title text-center m-3"> <?= $data['title'] ?></h3>
+        <p class="card-text m-3"> <?= $data['content'] ?> </p>
+        <p class="m-3"> <?= ' le ' . $data['creation_date_fr'] ?> </p>
+        <?php $postId = $data['id'] ?>
         <a href="index.php?action=edit_Post&id=<?= $data['id'] ?>" class="btn btn-warning"> <?= $linkEdit ?> </a>
         <a href="index.php?action=delete_Post&id=<?= $data['id'] ?>" class="btn btn-danger"> <?= $linkDelete ?> </a>
     </article>

@@ -13,7 +13,7 @@
 <body>
 
     <section class="container-fluid d-flex bg-white notfound">
-        <div class="container mt-5 rounded d-flex bg-white">
+        <div class="container d-flex bg-white">
             <div class="bg-white">
                 <img class="img-fluid rounded" src="public/img/book_lover.png" alt="" />
             </div>

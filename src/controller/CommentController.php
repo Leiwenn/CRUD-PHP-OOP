@@ -5,9 +5,9 @@ use p4\blog\model\CommentManager as CommentManager;
 
 class CommentController{
 
-    public function showComments(){
+    public function showComments($postId){
         $commentManager = new CommentManager();
-        $showComments = $commentManager->getComments($_GET['id']);
+        $showComments = $commentManager->getComments($postId);
         return $showComments;
     }
 
@@ -17,9 +17,9 @@ class CommentController{
         return $addComment;
     }
 
-    public function getComments(){
+    public function getComments($postId){
         $commentManager = new CommentManager();
-        $comments = $commentManager->getComments($_GET['id']);
+        $comments = $commentManager->getComments($postId);
         return $comments;
     }
 

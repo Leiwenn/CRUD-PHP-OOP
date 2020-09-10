@@ -7,22 +7,53 @@ class CommentManager extends DbManager{
 
     public function setComment($pseudo, $title, $comment, $postId){
         $db = $this->dbConnexion();
-        $req = $db->prepare('INSERT INTO comments(pseudo, title, comment, comment_date, post_id, published) VALUES(?, ?, ?, NOW(), ?, 0)');
-        $req->execute(array($pseudo, $title, $comment, $postId));
+        $req = $db->prepare(
+            'INSERT INTO comments(pseudo, title, comment, comment_date, post_id, published) 
+            VALUES(:pseudo, :title, :comment, NOW(), :postId, 0)'
+        );
+        $req->bindValue(':pseudo', $pseudo, \PDO::PARAM_STR);
+        $req->bindValue(':title', $title, \PDO::PARAM_STR);
+        $req->bindValue(':comment', $comment, \PDO::PARAM_STR);
+        $req->bindValue(':post_id', $postId, \PDO::PARAM_INT);
+        $req->execute(array(
+            'pseudo' => $pseudo, 
+            'title' => $title, 
+            'comment' => $comment, 
+            'postId' => $postId
+        ));
         return $req;
     }
 
     public function getComments($postId){
+        $post_id = $postId;
         $db = $this->dbConnexion();
-        $req = $db->prepare('SELECT id AS comment_id, pseudo, title, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr, post_id FROM comments WHERE published = 1 AND post_id = ? ORDER BY comment_date DESC');
-        $req->execute(array($postId));
+        $req = $db->prepare(
+            'SELECT id AS comment_id, pseudo, title, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr, post_id 
+            FROM comments 
+            WHERE published = 1 AND post_id = :post_id 
+            ORDER BY comment_date DESC'
+        );
+        $req->bindValue(':post_id', $post_id, \PDO::PARAM_INT);
+        $req->execute(array(
+            'post_id' => $post_id
+        ));
         return $req;
     }
 
     public function setReport($comment_id, $member_pseudo, $post_concerned_id){
         $db = $this->dbConnexion();
-        $req = $db->prepare('INSERT INTO reports(comment_id, member_pseudo, post_concerned_id) VALUES(?, ?, ?)');
-        $req->execute(array($comment_id, $member_pseudo, $post_concerned_id));
+        $req = $db->prepare(
+            'INSERT INTO reports(comment_id, member_pseudo, post_concerned_id) 
+            VALUES(:comment_id, :member_pseudo, :post_concerned_id, NOW()'
+        );
+        $req->bindValue(':comment_id', $comment_id, \PDO::PARAM_INT);
+        $req->bindValue(':member_pseudo', $member_pseudo, \PDO::PARAM_STR);
+        $req->bindValue(':post_concerned_id', $post_concerned_id, \PDO::PARAM_INT);
+        $req->execute(array(
+            'comment_id' => $comment_id, 
+            'member_pseudo' => $member_pseudo, 
+            'post_concerned_id' => $post_concerned_id
+        ));
         return $req;
     }
 }

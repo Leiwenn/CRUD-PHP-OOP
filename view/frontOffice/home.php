@@ -4,12 +4,12 @@
         while($data = $showLastPost->fetch()){
     ?>
         <article class="rounded p-3">
-            <h3 class="text-center m-3"> <?= htmlspecialchars($data['title']) ?> </h3>
+            <h3 class="text-center m-3"> <?= $data['title'] ?> </h3>
             <div class="p-3 row">
-                <img src="public/img/<?= htmlspecialchars($data['file_name']) ?>" class="img-fluid col-12 col-md-6 mx-auto mb-2" alt="<?= $data['file_description'] ?>" />
+                <img src="public/img/<?= $data['file_name'] ?>" class="img-fluid col-12 col-md-6 mx-auto mb-2" alt="<?= $data['file_description'] ?>" />
                 <p class="col-12">
-                    <?= '<i class="fas fa-quote-left fa-2x mr-2"></i>' . ' ' . substr(htmlspecialchars($data['content']), 0, 700) . '...' ?>
-                    <a href="index.php?action=viewPost&id=<?= htmlspecialchars($data['id']) ?>" class="ml-2">Lire la suite</a>
+                    <?= '<i class="fas fa-quote-left fa-2x mr-2"></i>' . ' ' . substr($data['content'], 0, 700) . '...' ?>
+                    <a href="index.php?action=viewPost&id=<?= $data['id'] ?>" class="ml-2">Lire la suite</a>
                 </p>
             </div>
         </article>

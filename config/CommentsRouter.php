@@ -6,55 +6,20 @@ use Exception;
 class CommentsRouter{
 
     public function commentsRouter(){
-        try{
+        
             if(isset($_GET['action'])){
                 if($_GET['action'] == 'comment'){
-                    if(isset($_SESSION['pseudo'])){
-                        $pseudo = $_SESSION['pseudo'];
-                        $title = $_POST['title'];
-                        $comment = $_POST['comment'];
-                        $postId = $_GET['postId'];
-                        $commentController = new \p4\blog\controller\CommentController();
-                        $commentController->addComment($pseudo, $title, $comment, $postId);
-                        $_GET['id'] = $postId;
-                        $frontController = new \p4\blog\controller\FrontController();
-                        $frontController->showPost();
-                    }
+                    $this->commentRoute();
                 }elseif($_GET['action'] == 'comments_awaiting'){
-                    if($_SESSION['admin'] = true){
-                        $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
-                        $dashboardCommentController->showCommentsAwaiting();
-                    }
+                    $this->commentsAwaitingRoute();
                 }elseif($_GET['action'] == 'publish_comment'){
-                    if($_SESSION['admin'] = true){
-                        $id = $_GET['id'];
-                        $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
-                        $dashboardCommentController->publishComment($id);
-                        $dashboardCommentController->showCommentsAwaiting();
-                    }
+                    $this->publishCommentRoute();
                 }elseif($_GET['action'] == 'delete_comment_awaiting'){
-                    if($_SESSION['admin'] = true){
-                        $id = $_GET['id'];
-                        $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
-                        $dashboardCommentController->deleteCommentAwaiting($id);
-                        $dashboardCommentController->showCommentsAwaiting();
-                    }
+                    $this->deleteCommentAwaitingRoute();
                 }elseif($_GET['action'] == 'keep_comment'){
-                    if($_SESSION['admin'] = true){
-                        $dashboardReportController = new \p4\blog\controller\DashboardReportController();
-                        $id = $_GET['comment_id'];
-                        $dashboardReportController->keepAComment($id);
-                        $dashboardReportController->showReports();
-                    }
+                    $this->keepCommentRoute();
                 }elseif($_GET['action'] == 'delete_comment'){
-                    if($_SESSION['admin'] = true){
-                        $dashboardReportController = new \p4\blog\controller\DashboardReportController();
-                        $rid = $_GET['rid'];
-                        $dashboardReportController->deleteReport($rid);
-                        $id = $_GET['comment_id'];
-                        $dashboardReportController->deleteComment($id);
-                        $dashboardReportController->showReports();
-                    }
+                    $this->deleteCommentRoute();
                 }else{
                     http_response_code(404);
                     require '404.php';
@@ -63,9 +28,65 @@ class CommentsRouter{
                 $frontController = new \p4\blog\controller\FrontController();
                 $frontController->showHome();
             }
-        }catch(Exception $e){
-            echo 'erreur : ' . $e->getMessage();
-            require 'error.php';
+    }
+
+    private function commentRoute(){
+        if(isset($_SESSION['pseudo'])){
+            sleep(1);
+            $pseudo = htmlspecialchars($_SESSION['pseudo']);
+            $title = htmlspecialchars($_POST['title']);
+            $comment = htmlspecialchars($_POST['comment']);
+            $postId = htmlspecialchars($_GET['postId']);
+            $commentController = new \p4\blog\controller\CommentController();
+            $commentController->addComment($pseudo, $title, $comment, $postId);
+            $_GET['id'] = $postId;
+            $frontController = new \p4\blog\controller\FrontController();
+            $frontController->showPost($postId);
+        }
+    }
+
+    private function commentsAwaitingRoute(){
+        if($_SESSION['admin'] == true){
+            $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
+            $dashboardCommentController->showCommentsAwaiting();
+        }
+    }
+
+    private function publishCommentRoute(){
+        if($_SESSION['admin'] == true){
+            $id = htmlspecialchars($_GET['id']);
+            $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
+            $dashboardCommentController->publishComment($id);
+            $dashboardCommentController->showCommentsAwaiting();
+        }
+    }
+
+    private function deleteCommentAwaitingRoute(){
+        if($_SESSION['admin'] == true){
+            $id = htmlspecialchars($_GET['id']);
+            $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
+            $dashboardCommentController->deleteCommentAwaiting($id);
+            $dashboardCommentController->showCommentsAwaiting();
+        }
+    }
+
+    private function keepCommentRoute(){
+        if($_SESSION['admin'] == true){
+            $dashboardReportController = new \p4\blog\controller\DashboardReportController();
+            $rid = htmlspecialchars($_GET['rid']);
+            $dashboardReportController->keepAComment($rid);
+            $dashboardReportController->showReports();
+        }
+    }
+
+    private function deleteCommentRoute(){
+        if($_SESSION['admin'] == true){
+            $dashboardReportController = new \p4\blog\controller\DashboardReportController();
+            $rid = htmlspecialchars($_GET['rid']);
+            $dashboardReportController->deleteReport($rid);
+            $id = htmlspecialchars($_GET['comment_id']);
+            $dashboardReportController->deleteComment($id);
+            $dashboardReportController->showReports();
         }
     }
 }

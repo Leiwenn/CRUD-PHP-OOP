@@ -6,12 +6,12 @@
     <h2 class="ombre text-white text-center p-2"> <?= $h2 ?> </h2>
     <?php 
         while($data = $showPostAwaiting->fetch()){
-            $postId = htmlspecialchars($data['id']);
+            $postId = $data['id'];
             $title = $data['title'];
             $content = $data['content'];
-            $file_name = htmlspecialchars($data['file_name']);
-            $file_description = htmlspecialchars($data['file_description']);
-            $creation_date = htmlspecialchars($data['creation_date_fr']);
+            $file_name = $data['file_name'];
+            $file_description = $data['file_description'];
+            $creation_date = $data['creation_date_fr'];
     ?>
     <article class="card w-100 p-5 shadow">
         <img src="public/img/<?= $file_name ?>" class="card-img-top mt-3 mx-auto img-fluid" alt="<?= $file_description ?>" />

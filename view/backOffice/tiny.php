@@ -4,11 +4,11 @@
         <div class="form-group border rounded bg-white mt-4 p-2">
             <div class="row p-2">
                 <input type="hidden" name="MAX_FILE_SIZE" value="10000000">
-                <label class="m-2 p-2 col shadow rounded text-info" for="img"><i class="far fa-file-image"></i> IMAGE
-                    <input type="file" class="form-control-file pt-3" id="img" name="img">
+                <label class="m-2 p-2 col shadow rounded text-info" for="file_name"><i class="far fa-file-image"></i> IMAGE
+                    <input type="file" class="form-control-file pt-3" id="file_name" name="file_name">
                 </label>
-                <label class="m-2 p-2 col shadow rounded text-info" for="alt_text">Texte alternatif à l'image
-                    <input type="text" class="form-control pt-3" id="alt_text" name="alt_text" aria-describedby="altHelp">
+                <label class="m-2 p-2 col shadow rounded text-info" for="file_description">Texte alternatif à l'image
+                    <input type="text" class="form-control pt-3" id="file_description" name="file_description" aria-describedby="altHelp">
                 </label>
             </div>
             <small id="altHelp" class="form-text text-muted m-2"> <?= $help ?> </small>

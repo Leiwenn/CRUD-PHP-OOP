@@ -6,13 +6,13 @@ use p4\blog\model\PostManager as PostManager;
 
 class DashboardPostController{
 
-    public const TITLE = 'Billets';
-    public const H1 = 'Dashboard';
-    public const HOMEDASHBOARD = 'Accueil Dashboard';
-    public const LINKTINY = 'Editeur de texte';
-    public const LINKCOMMENTS = 'Commentaires à publier';
-    public const LINKREPORTS = 'Modération';
-    public const LINKHOME = 'Voir le site';
+    private const TITLE = 'Billets';
+    private const H1 = 'Dashboard';
+    private const HOMEDASHBOARD = 'Accueil Dashboard';
+    private const LINKTINY = 'Editeur de texte';
+    private const LINKCOMMENTS = 'Commentaires à publier';
+    private const LINKREPORTS = 'Modération';
+    private const LINKHOME = 'Voir le site';
 
     public function showPostDashboard($postId){
         $title = self::TITLE;
@@ -25,10 +25,11 @@ class DashboardPostController{
         $h2 = 'Modifier le billet';
         $linkEdit = 'Editer';
         $linkDelete = 'Supprimer';
-        $showPostDashboard = self::getPostDashboard($postId);
+        $showPostDashboard = $this->getPostDashboard($postId);
         $content = require 'view/backOffice/postDashboard.php';
         require 'view/backOffice/template.php'; 
     }
+
     public function getPostDashboard($postId){
         $postManager = new PostManager();
         $getPostDashboard = $postManager->getPost($postId);
@@ -49,11 +50,12 @@ class DashboardPostController{
         $linkComments = self::LINKCOMMENTS;
         $linkReports = self::LINKREPORTS;
         $linkHome = self::LINKHOME;
-        $showPostAwaiting = self::getPostAwaiting($id);
+        $showPostAwaiting = $this->getPostAwaiting($id);
         $h2 = 'Billet en attente de publication';
         $content = require 'view/backOffice/postAwaiting.php';
         require 'view/backOffice/template.php'; 
     }
+
     public function getPostAwaiting($id){
         $dashboardPostManager = new DashboardPostManager();
         $getPostsAwaiting = $dashboardPostManager->getPostAwaiting($id);
@@ -79,8 +81,15 @@ class DashboardPostController{
 
     public function publishPost($title, $content, $file_name, $file_description){
         $dashboardPostManager = new DashboardPostManager();
-        $publishNewPost = $dashboardPostManager->setPost($title, $content, $file_name, $file_description);
-        return $publishNewPost;
+        if(empty($file_name) || empty($file_description)){
+            $file_name = 'cover.png';
+            $file_description = 'Paysage de l\'alaska, montagne avec sapins qui surplombe une rivière, photo de la couverture du livre';
+            $publishNewPost = $dashboardPostManager->setPost($title, $content, $file_name, $file_description);
+            return $publishNewPost;
+        }else{
+            $publishNewPost = $dashboardPostManager->setPost($title, $content, $file_name, $file_description);
+            return $publishNewPost;
+        }
     }
 
     public function publishPostAwaiting($id){
@@ -98,12 +107,14 @@ class DashboardPostController{
     public function deletePostAwaiting($id){
         $dashboardPostManager = new DashboardPostManager();
         $deletePostAwaiting = $dashboardPostManager->deletePostAwaiting($id);
+        //+ delete comments && reports associés
         return $deletePostAwaiting;
     }
 
     public function deletePost($id){
         $dashboardPostManager = new DashboardPostManager();
         $deletePost = $dashboardPostManager->deletePost($id);
+        //+ delete comments && reports associés
         return $deletePost;
     }
 }

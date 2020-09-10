@@ -37,7 +37,7 @@ h2, h3, h4{
 .last h3{
 	font-size: 22px;
 }
-.headerConnect{
+.headerConnect, .fa-user-circle{
 	font-size: 20px;
 }
 h1{
@@ -94,21 +94,26 @@ nav a:hover{
 	border-radius: 0;
 	border-top-left-radius: 20px;
 	border-bottom-right-radius: 20px;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-#callToAction, article .btn{
 	background: #2c4444;
 	border-color: transparent;
 	color: white;
-}
-#callToAction:hover, article .btn:hover{
-	background: #577367;
-	color: white;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 #callToAction:hover{
+	background: #577367;
+	color: white;
 	letter-spacing: 1px;
 	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
 	transition: all 0.4s ease 0s;
+}
+
+article .back{
+	background: #2c4444;
+	padding: 2px 10px;
+}
+article .back:hover{
+	background: #577367;
+	color: white;
 }
 
 .ombre{
@@ -144,6 +149,9 @@ article img, .cover{
 }
 .last a:hover{
 	color: #17A2B8;
+}
+.fa-user-circle, .fa-comments{
+	color: #3A534D;
 }
 
 /* --- FOOTER --- */
@@ -195,7 +203,7 @@ body, .wrapper{
 .onePostContainer article{
 	width: 100%;
 }
-.posts{
+.posts, .btn_group{
 	display: flex;
 	justify-content: space-around;
 	align-items: center;

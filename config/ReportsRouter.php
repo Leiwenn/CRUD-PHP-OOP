@@ -6,31 +6,14 @@ use Exception;
 class ReportsRouter{
 
     public function reportsRouter(){
-        try{
+
             if(isset($_GET['action'])){
                 if($_GET['action'] == 'report'){
-                    if(isset($_SESSION['pseudo'])){
-                        $commentController = new \p4\blog\controller\CommentController();
-                        $comment_id = $_GET['comment_id'];
-                        $member_pseudo = $_SESSION['pseudo'];
-                        $post_concerned_id = $_GET['post_concerned_id'];
-                        $commentController->addReport($comment_id, $member_pseudo, $post_concerned_id);
-                        $postController = new \p4\blog\controller\PostController();
-                        $_GET['id'] = $_GET['post_concerned_id'];
-                        $frontController = new \p4\blog\controller\FrontController();
-                        $frontController->showPost();
-                    }
+                        $this->addReportRoute();
                 }elseif($_GET['action'] == 'show_reports'){
-                    if($_SESSION['admin'] = true){
-                        $dashboardReportController = new \p4\blog\controller\DashboardReportController();
-                        $dashboardReportController->showReports();
-                    }
+                    $this->showReportsRoute();
                 }elseif($_GET['action'] == 'show_a_report'){
-                    if($_SESSION['admin'] = true){
-                        $rid = $_GET['rid'];
-                        $dashboardReportController = new \p4\blog\controller\DashboardReportController();
-                        $dashboardReportController->showReportedComment($rid);
-                    }
+                    $this->showAReportRoute();
                 }else{
                     http_response_code(404);
                     require '404.php';
@@ -39,9 +22,33 @@ class ReportsRouter{
                 $frontController = new \p4\blog\controller\FrontController();
                 $frontController->showHome();
             }
-        }catch(Exception $e){
-            echo 'erreur : ' . $e->getMessage();
-            require 'error.php';
+    }
+
+    private function addReportRoute(){
+        if(isset($_SESSION['pseudo'])){
+            $commentController = new \p4\blog\controller\CommentController();
+            $comment_id = htmlspecialchars($_GET['comment_id']);
+            $member_pseudo = htmlspecialchars($_SESSION['pseudo']);
+            $post_concerned_id = htmlspecialchars($_GET['post_concerned_id']);
+            $commentController->addReport($comment_id, $member_pseudo, $post_concerned_id);
+            $postId = htmlspecialchars($_GET['post_concerned_id']);
+            $frontController = new \p4\blog\controller\FrontController();
+            $frontController->showPost($postId);
+        }
+    }
+
+    private function showReportsRoute(){
+        if($_SESSION['admin'] == true){
+            $dashboardReportController = new \p4\blog\controller\DashboardReportController();
+            $dashboardReportController->showReports();
+        }
+    }
+
+    private function showAReportRoute(){
+        if($_SESSION['admin'] == true){
+            $rid = htmlspecialchars($_GET['rid']);
+            $dashboardReportController = new \p4\blog\controller\DashboardReportController();
+            $dashboardReportController->showReportedComment($rid);
         }
     }
 }

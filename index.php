@@ -1,8 +1,5 @@
 <?php
 
-//mettre index dans public
-//define('ROOT', dirname(__DIR__));
-
 require 'vendor/autoload.php'; 
 
 require 'config/Router.php';

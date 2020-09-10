@@ -75,3 +75,9 @@ Etape 5 TinyMCE et optimisation DB
 - correction delete_comment & change_password
 
 Etape 6 Refactoring
+
+Etape 7 Security
+- refactorisation routers et controllers
+- protection -> faille XSS _ injections SQL
+- ajout sleep(1) dans des functions d'envoi de formulaire
+- installation tarteaucitron RGPD

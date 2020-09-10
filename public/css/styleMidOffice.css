@@ -60,6 +60,10 @@ span{
     font-weight: bold;
 }
 
+.fa-comment-dots{
+    color: #3A534D;
+}
+
 /* ------------------------------------------------------------------------ LAYOUT */
 body{
     margin: 0;

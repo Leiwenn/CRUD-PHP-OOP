@@ -7,8 +7,8 @@ use p4\blog\controller\CommentController as CommentController;
 
 class FrontController{
 
-    public const TITLE = 'Blog de Jean FORTEROCHE';
-    public const H1 = 'JEAN FORTEROCHE';
+    private const TITLE = 'Blog de Jean FORTEROCHE';
+    private const H1 = 'JEAN FORTEROCHE';
 
     public function showHome(){
         $title = self::TITLE;
@@ -17,7 +17,6 @@ class FrontController{
         $h4 = 'A PROPOS';
         $linkHome = 'Accueil';
         $linkPostsList = 'Liste des épisodes';
-        
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
             $linkLogin = 'Connection';
             $header = require 'view/frontOffice/header.php';
@@ -34,11 +33,12 @@ class FrontController{
             $message = 'Qu\'allez vous lire aujourd\'hui ?';
             $header = require 'view/frontOffice/headerConnect.php';
         }
-        $showLastPost = self::showLastPost();
+        $showLastPost = $this->showLastPost();
         $content = require 'view/frontOffice/home.php';
         require 'view/frontOffice/template.php';
     }
-    public function showLastPost(){
+
+    private function showLastPost(){
         $frontManager = new FrontManager();
         $showLastPost = $frontManager->getLastPost();
         return $showLastPost;
@@ -68,13 +68,18 @@ class FrontController{
             $message = 'Qu\'allez vous lire aujourd\'hui ?';
             $header = require 'view/frontOffice/headerConnect.php';
         }
-        $postController = new PostController();
-        $posts = $postController->getPosts();
+        $posts = $this->getAllPosts();
         $content = require 'view/frontOffice/postsView.php';
         require 'view/frontOffice/template.php';
     }
 
-    public function showPost(){
+    private function getAllPosts(){
+        $postController = new PostController();
+        $getAllPosts = $postController->getPosts();
+        return $getAllPosts;
+    }
+
+    public function showPost($postId){
         $title = self::TITLE;
         $h1 = self::H1;
         $linkHome = 'Accueil';
@@ -99,11 +104,21 @@ class FrontController{
             $message = 'Bonne lecture !';
             $header = require 'view/frontOffice/headerConnect.php';
         }
-        $postController = new PostController();
-        $post = $postController->getPost($_GET['id']);
-        $commentController = new CommentController();
-        $comments = $commentController->getComments($_GET['id']);
+        $post = $this->getAPost($postId);
+        $comments = $this->getTheComments($postId);
         $content = require 'view/frontOffice/postView.php';
         require 'view/frontOffice/template.php';
+    }
+
+    private function getAPost($postId){
+        $postController = new PostController();
+        $getAPost = $postController->getPost($postId);
+        return $getAPost;
+    }
+
+    private function getTheComments($postId){
+        $commentController = new CommentController();
+        $getTheComments = $commentController->getComments($postId);
+        return $getTheComments;
     }
 }

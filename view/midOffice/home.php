@@ -4,9 +4,9 @@
         <?php  
             while($data = $getOneMember->fetch()){
         ?>
-            <p><span>Pseudo:</span> <?= htmlspecialchars($data['pseudo']) ?> </p>
-            <p><span>Mail:</span> <?= htmlspecialchars($data['mail']) ?> </p>
-            <p><span>Date d'inscription:</span> <?= htmlspecialchars($data['registration_date']) ?> </p>
+            <p><span>Pseudo:</span> <?= $data['pseudo'] ?> </p>
+            <p><span>Mail:</span> <?= $data['mail'] ?> </p>
+            <p><span>Date d'inscription:</span> <?= $data['registration_date'] ?> </p>
         <?php
             }
             $getOneMember->closeCursor();
@@ -24,9 +24,9 @@
             while($data = $getComments->fetch()){
         ?>
             <div class="card p-2">
-                <p class="card-title font-weight-bold"><i class="far fa-comment-dots text-warning mr-2"></i> <?= htmlspecialchars($data['title']) ?> </p>
-                <p class="card-text"> <?= htmlspecialchars($data['comment']) ?> </p>
-                <p class="card-text">le: <?= htmlspecialchars($data['comment_date']) ?> </p>
+                <p class="card-title font-weight-bold"><i class="far fa-comment-dots mr-2"></i> <?= $data['title'] ?> </p>
+                <p class="card-text"> <?= $data['comment'] ?> </p>
+                <p class="card-text">le: <?= $data['comment_date'] ?> </p>
             </div>
         <?php
             }

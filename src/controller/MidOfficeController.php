@@ -18,20 +18,20 @@ class MidOfficeController{
         $link3 = 'Changer de mot de passe';
         $link4 = 'Désinscription';
         $button = 'Fermer';
-        $getOneMember = self::getMember($pseudo);
-        $getComments = self::getComments($pseudo);
+        $getOneMember = $this->getMember($pseudo);
+        $getComments = $this->getComments($pseudo);
         $header = require 'view/midOffice/header.php';
         $content = require 'view/midOffice/home.php';
         require 'view/midOffice/template.php';
     }
 
-    public function getMember($pseudo){
+    private function getMember($pseudo){
         $memberManager = new MemberManager();
         $getOneMember = $memberManager->getMember($pseudo);
         return $getOneMember;
     }
 
-    public function getComments($pseudo){
+    private function getComments($pseudo){
         $midOfficeManager = new MidOfficeManager();
         $getComments = $midOfficeManager->getMemberComments($pseudo);
         return $getComments;

@@ -5,13 +5,13 @@ use p4\blog\model\DashboardReportManager as DashboardReportManager;
 
 class DashboardReportController{
 
-    public const TITLE = 'Modération';
-    public const H1 = 'Dashboard';
-    public const HOMEDASHBOARD = 'Accueil Dashboard';
-    public const LINKTINY = 'Editeur de texte';
-    public const LINKCOMMENTS = 'Commentaires à publier';
-    public const LINKREPORTS = 'Modération';
-    public const LINKHOME = 'Voir le site';
+    private const TITLE = 'Modération';
+    private const H1 = 'Dashboard';
+    private const HOMEDASHBOARD = 'Accueil Dashboard';
+    private const LINKTINY = 'Editeur de texte';
+    private const LINKCOMMENTS = 'Commentaires à publier';
+    private const LINKREPORTS = 'Modération';
+    private const LINKHOME = 'Voir le site';
 
     public function deleteComment($id){
         $dashboardReportManager = new DashboardReportManager();
@@ -19,8 +19,9 @@ class DashboardReportController{
         return $deleteAComment;
     }
 
-    public function keepAComment($id){
+    public function keepAComment($rid){
         $dashboardReportManager = new DashboardReportManager();
+        $id = $rid;
         $keepAComment = $dashboardReportManager->keepComment($id);
         return $keepAComment;
     }
@@ -35,10 +36,15 @@ class DashboardReportController{
         $linkHome = self::LINKHOME;
         $h2 = 'Demandes de modération';
         $link = 'Voir le commentaire';
-        $dashboardReportManager = new DashboardReportManager();
-        $getAllReports = $dashboardReportManager->getReports();
+        $getAllReports = $this->getTheReports();
         $content = require 'view/backOffice/reports.php';
         require 'view/backOffice/template.php';
+    }
+
+    private function getTheReports(){
+        $dashboardReportManager = new DashboardReportManager();
+        $getTheReports = $dashboardReportManager->getReports();
+        return $getTheReports;
     }
 
     public function showReportedComment($rid){
@@ -50,10 +56,15 @@ class DashboardReportController{
         $linkReports = self::LINKREPORTS;
         $linkHome = self::LINKHOME;
         $h2 = 'Modération';
-        $dashboardReportManager = new DashboardReportManager();
-        $getReportedComment = $dashboardReportManager->getReportedComment($rid);
+        $getReportedComment = $this->getTheReportedComment($rid);
         $content = require 'view/backOffice/oneReport.php';
         require 'view/backOffice/template.php';
+    }
+
+    private function getTheReportedComment($rid){
+        $dashboardReportManager = new DashboardReportManager();
+        $getTheReportedComment = $dashboardReportManager->getReportedComment($rid);
+        return $getTheReportedComment;
     }
 
     public function deleteReport($rid){
