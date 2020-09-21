@@ -5,58 +5,55 @@
         <script type="text/javascript">
             tarteaucitron.init({
                 "privacyUrl": "", /* Privacy policy url => A REDIGER cf .txt */
-
-                "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+                "hashtag": "#tarteaucitron",
                 "cookieName": "tarteaucitron", /* Cookie name */
-
-                "orientation": "middle", /* Banner position (top - bottom) */
-                "showAlertSmall": true, /* Show the small banner on bottom right */
-                "cookieslist": true, /* Show the cookie list */
-
-                "adblocker": false, /* Show a Warning if an adblocker is detected */
-                "DenyAllCta" : true, /* Show the deny all button */
-                "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
-                "highPrivacy": true, /* Disable auto consent is forbiden in UE */
-                "handleBrowserDNTRequest": false, /* If Do Not Track set in browser == 1, disallow all */
-
-                "removeCredit": false, /* Remove credit link if true */
-                "moreInfoLink": true, /* Show more info link */
-                "useExternalCss": false, /* If false, the tarteaucitron.css (css line 514 and after) file will be loaded else{my css file} */
-
-                //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for subdomain website */
-
+                "orientation": "middle",
+                "showAlertSmall": true,
+                "cookieslist": true,
+                "adblocker": false,
+                "DenyAllCta" : true,
+                "AcceptAllCta" : true,
+                "highPrivacy": true,
+                "handleBrowserDNTRequest": false,
+                "removeCredit": false,
+                "moreInfoLink": true,
+                "useExternalCss": false,
                 "readmoreLink": "/cookiespolicy", /* Change the default readmore link pointing to tarteaucitron.io */
-        
-                "mandatory": false /* Show a message about mandatory cookies */
+                "mandatory": false
             });
             (tarteaucitron.job = tarteaucitron.job || []).push('facebook');
         </script>
-	    <meta charset="utf-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/f2c3a49501.js"></script>
-	    <link rel="stylesheet" type="text/css" href="public/css/styleDashboard.css">
+        <link rel="stylesheet" type="text/css" href="public/css/styleDashboard.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
 	    <title> <?= $title ?> </title>
     </head>
 
     <body>
         <div class="bloc_page">
-            <nav class="navbar bg-dark d-flex flex-column justify-content-around fixed-top h-100">
-                <img class="navbar-brand img-fluid rounded-circle" src="public/img/jeanAdmin.jpg" alt="photo de Jean Forteroche" />
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info p-2" role="button" href="index.php?action=dashboard"> <?= $linkHomeDashboard ?> </a>
+            <nav class="navbar bg-dark fixed-top h-100">
+                <ul class="navbar-nav nav-justified flex-column">
+                    <img class="navbar-brand rounded img-fluid w-75 mx-auto" src="public/img/jeanAdmin.jpg" alt="photo de Jean Forteroche" />
+                    <li class="nav-item bg-light">
+                        <a class="nav-link" role="button" href="index.php?action=dashboard">
+                            <?= $linkHomeDashboard ?>
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-light  p-2 mt-3" role="button" href="index.php?action=text_editor"> <?= $linkTiny ?> </a>
+                    <li class="nav-item bg-light">
+                        <a class="nav-link" role="button" href="index.php?action=text_editor">
+                            <?= $linkTiny ?>
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-warning  p-2 mt-3" role="button" href="index.php?action=comments_awaiting"> <?= $linkComments ?> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-danger p-2 mt-3" role="button" href="index.php?action=show_reports"> <?= $linkReports ?> </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-info p-2 mt-3" role="button" href="index.php"> <?= $linkHome ?> </a>
+                    <li class="nav-item bg-light">
+                        <a class="nav-link" role="button" href="index.php">
+                            <?= $linkHome ?>
+                        </a>
                     </li>
                 </ul>
             </nav>

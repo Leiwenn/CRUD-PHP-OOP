@@ -39,13 +39,12 @@ class MidOfficeController{
 
     public function updatePseudo($oldPseudo, $newPseudo){
         $midOfficeManager = new MidOfficeManager();
-        $updatePseudo = $midOfficeManager->setNewPseudo($oldPseudo, $newPseudo);
-        return $updatePseudo;
+        $midOfficeManager->setNewPseudo($oldPseudo, $newPseudo);
+        $_SESSION['pseudo'] = $newPseudo;
     }
 
     public function changePassword($pseudo, $newPassword){
         $midOfficeManager = new MidOfficeManager();
-        $changePassword = $midOfficeManager->changePassword($pseudo, $newPassword);
-        return $changePassword;
+        $midOfficeManager->changePassword($pseudo, $newPassword);
     }
 }

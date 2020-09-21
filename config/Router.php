@@ -12,22 +12,29 @@ class Router{
                     $memberRouter = new \p4\blog\config\MemberRouter();
                     $memberRouter->memberRouter($_GET['action']);
 
-                }elseif(($_GET['action'] == 'viewPosts') || ($_GET['action'] == 'viewPost') || ($_GET['action'] == 'create_new_post') || ($_GET['action'] == 'edit_Post_Awaiting') || ($_GET['action'] == 'update_post_awaiting') || ($_GET['action'] == 'edit_Post') || ($_GET['action'] == 'change_post') || ($_GET['action'] == 'delete_Post') || ($_GET['action'] == 'publish_Post_Awaiting') || ($_GET['action'] == 'delete_Post_Awaiting')){
-                    $postsRouter = new \p4\blog\config\PostsRouter();
-                    $postsRouter->postsRouter($_GET['action']);
+                }elseif(($_GET['action'] == 'viewPosts') || ($_GET['action'] == 'viewPost')){
+                    $frontRouter = new \p4\blog\config\FrontRouter();
+                    $frontRouter->frontRouter($_GET['action']);
 
                 }elseif(($_GET['action'] == 'comment') || ($_GET['action'] == 'comments_awaiting') || ($_GET['action'] == 'publish_comment') || ($_GET['action'] == 'delete_comment_awaiting') || ($_GET['action'] == 'keep_comment') || ($_GET['action'] == 'delete_comment')){
                     $commentsRouter = new \p4\blog\config\CommentsRouter();
                     $commentsRouter->commentsRouter($_GET['action']);
 
-                }elseif(($_GET['action'] == 'dashboard') || ($_GET['action'] == 'view_Post_Awaiting') || ($_GET['action'] == 'view_Post_Dashboard')  ||  ($_GET['action'] == 'text_editor')){
-                    $dashboardRouter = new \p4\blog\config\DashboardRouter();
-                    $dashboardRouter->dashboardRouter($_GET['action']);
-                    
                 }elseif(($_GET['action'] == 'report') || ($_GET['action'] == 'show_reports') || ($_GET['action'] == 'show_a_report')){
                     $reportsRouter = new \p4\blog\config\ReportsRouter();
                     $reportsRouter->reportsRouter($_GET['action']);
 
+                }elseif(($_GET['action'] == 'dashboard') || ($_GET['action'] == 'view_post_dashboard') || ($_GET['action'] == 'text_editor') || ($_GET['action'] == 'member_list')){
+                    $dashboardRouter = new \p4\blog\config\DashboardRouter();
+                    $dashboardRouter->dashboardRouter($_GET['action']);
+                    
+                }elseif(($_GET['action'] == 'create_new_post') || ($_GET['action'] == 'update_post') || ($_GET['action'] == 'edit_post') || ($_GET['action'] == 'delete_post') || ($_GET['action'] == 'publish_post_awaiting')){
+                    $postsRouter = new \p4\blog\config\PostsRouter();
+                    $postsRouter->postsRouter($_GET['action']);
+
+                }elseif($_GET['action'] == 'legalNotice'){
+                    $frontController = new \p4\blog\controller\FrontController();
+                    $frontController->showLegalNotice();
                 }else{
                     http_response_code(404);
                     require '404.php';

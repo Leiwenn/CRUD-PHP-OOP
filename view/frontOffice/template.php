@@ -5,39 +5,34 @@
         <script type="text/javascript">
             tarteaucitron.init({
                 "privacyUrl": "", /* Privacy policy url => A REDIGER cf .txt */
-
-                "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+                "hashtag": "#tarteaucitron",
                 "cookieName": "tarteaucitron", /* Cookie name */
-
-                "orientation": "middle", /* Banner position (top - bottom) */
-                "showAlertSmall": true, /* Show the small banner on bottom right */
-                "cookieslist": true, /* Show the cookie list */
-
-                "adblocker": false, /* Show a Warning if an adblocker is detected */
-                "DenyAllCta" : true, /* Show the deny all button */
-                "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
-                "highPrivacy": true, /* Disable auto consent is forbiden in UE */
-                "handleBrowserDNTRequest": false, /* If Do Not Track set in browser == 1, disallow all */
-
-                "removeCredit": false, /* Remove credit link if true */
-                "moreInfoLink": true, /* Show more info link */
-                "useExternalCss": false, /* If false, the tarteaucitron.css (css line 514 and after) file will be loaded else{my css file} */
-
-                //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for subdomain website */
-
+                "orientation": "middle",
+                "showAlertSmall": true,
+                "cookieslist": true,
+                "adblocker": false,
+                "DenyAllCta" : true,
+                "AcceptAllCta" : true,
+                "highPrivacy": true,
+                "handleBrowserDNTRequest": false,
+                "removeCredit": false,
+                "moreInfoLink": true,
+                "useExternalCss": false,
                 "readmoreLink": "/cookiespolicy", /* Change the default readmore link pointing to tarteaucitron.io */
-        
-                "mandatory": false /* Show a message about mandatory cookies */
+                "mandatory": false
             });
             (tarteaucitron.job = tarteaucitron.job || []).push('facebook');
         </script>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/f2c3a49501.js"></script>
         <link rel="stylesheet" type="text/css" href="public/css/styleFrontOffice.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
         <title> <?= $title ?> </title>
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     </head>
 
     <body>
@@ -47,10 +42,7 @@
 
             <?= $content ?>
             
-            <footer id="footer" class="p-4">
-                <p>Mentions légales</p>
-                <p>Images</p>
-            </footer>
+            <?= $footer ?>
             
         </div>
 

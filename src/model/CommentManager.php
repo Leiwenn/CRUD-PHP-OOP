@@ -39,21 +39,4 @@ class CommentManager extends DbManager{
         ));
         return $req;
     }
-
-    public function setReport($comment_id, $member_pseudo, $post_concerned_id){
-        $db = $this->dbConnexion();
-        $req = $db->prepare(
-            'INSERT INTO reports(comment_id, member_pseudo, post_concerned_id) 
-            VALUES(:comment_id, :member_pseudo, :post_concerned_id, NOW()'
-        );
-        $req->bindValue(':comment_id', $comment_id, \PDO::PARAM_INT);
-        $req->bindValue(':member_pseudo', $member_pseudo, \PDO::PARAM_STR);
-        $req->bindValue(':post_concerned_id', $post_concerned_id, \PDO::PARAM_INT);
-        $req->execute(array(
-            'comment_id' => $comment_id, 
-            'member_pseudo' => $member_pseudo, 
-            'post_concerned_id' => $post_concerned_id
-        ));
-        return $req;
-    }
 }

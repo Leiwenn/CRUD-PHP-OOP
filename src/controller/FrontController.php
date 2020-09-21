@@ -2,6 +2,7 @@
 
 namespace p4\blog\controller;
 use p4\blog\model\FrontManager as FrontManager;
+use p4\blog\model\DashboardManager as DashboardManager;
 use p4\blog\controller\PostController as PostController;
 use p4\blog\controller\CommentController as CommentController;
 
@@ -35,6 +36,7 @@ class FrontController{
         }
         $showLastPost = $this->showLastPost();
         $content = require 'view/frontOffice/home.php';
+        $footer = require 'view/frontOffice/footer.php';
         require 'view/frontOffice/template.php';
     }
 
@@ -70,6 +72,7 @@ class FrontController{
         }
         $posts = $this->getAllPosts();
         $content = require 'view/frontOffice/postsView.php';
+        $footer = require 'view/frontOffice/footer.php';
         require 'view/frontOffice/template.php';
     }
 
@@ -107,6 +110,7 @@ class FrontController{
         $post = $this->getAPost($postId);
         $comments = $this->getTheComments($postId);
         $content = require 'view/frontOffice/postView.php';
+        $footer = require 'view/frontOffice/footer.php';
         require 'view/frontOffice/template.php';
     }
 
@@ -120,5 +124,19 @@ class FrontController{
         $commentController = new CommentController();
         $getTheComments = $commentController->getComments($postId);
         return $getTheComments;
+    }
+
+    public function showLegalNotice(){
+        $title = self::TITLE;
+        $h1 = 'Jean Forteroche';
+        $h2 = 'Mentions Légales';
+        $linkHome = null;
+        $linkPostsList = null;
+        $linkLogin = null;
+        $linkSuscribe = null;
+        $header = require 'view/frontOffice/headerSingle.php';
+        $content = require 'view/frontOffice/LegalNotice.php';
+        $footer = null;
+        require 'view/frontOffice/template.php';
     }
 }

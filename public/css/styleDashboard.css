@@ -48,7 +48,7 @@ span, h2, h3, h4{
 .bloc_page{
     color: #2D2D2D;
 }
-.bloc_page, .reports, .widgets, .comments, .postAwaiting{
+.bloc_page, .reports, .widgets, .comments, .postAwaiting, .memberList{
     background: url("../img/typewriter.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -58,9 +58,7 @@ span, h2, h3, h4{
 .navbar, .w_users, .w_comments, .w_reports{
     color: white;
 }
-.navbar img{
-    width: auto;
-}
+
 .ombre{
     text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em grey;
 }
@@ -84,7 +82,7 @@ header{
     width: auto;
 }
 
-.reports, .widgets, .comments, .postAwaiting{
+.reports, .widgets, .comments, .postAwaiting, .memberList{
     min-height: 100%;
     margin: 0 0 0 14%;
 }

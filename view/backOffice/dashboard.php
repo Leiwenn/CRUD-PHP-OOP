@@ -6,7 +6,9 @@
     <div class="d-flex justify-content-around">
         <div class="d-flex carte">
             <div class="w_users d-flex align-items-center justify-content-around bg-success">
-                <i class="fas fa-users"></i>
+                <a class="text-white" role="button" href="index.php?action=member_list">
+                    <i class="fas fa-users"></i>
+                </a>
             </div>
             <div class="m-3">
                 <p> <?= $membersTitle ?> </p>
@@ -26,7 +28,10 @@
         </div>
         <div class="d-flex carte">
             <div class="w_comments d-flex align-items-center justify-content-around bg-warning">
-                <i class="fas fa-comments"></i>
+                <a class="text-white" role="button" href="index.php?action=comments_awaiting">
+                    <i class="fas fa-comments"></i>
+                </a>
+                
             </div>
             <div class="m-3">
                 <p> <?= $commentsTitle ?> </p>
@@ -46,7 +51,9 @@
         </div>
         <div class="d-flex carte">
             <div class="w_reports d-flex align-items-center justify-content-around bg-danger">
-                <i class="far fa-bell"></i>
+                <a class="text-white" role="button" href="index.php?action=show_reports">
+                    <i class="far fa-bell"></i>
+                </a>
             </div>
             <div class="m-3">
                 <p> <?= $reportsTitle ?> </p>
@@ -85,7 +92,7 @@
                 ?>
                 <li class="list-group-item d-flex align-items-center justify-content-between"> 
                     <?= $data['title'] ?> le <?= $data['creation_date_fr'] ?> 
-                    <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Awaiting&id=<?= $data['id'] ?>"> <?= $linkSeePostAwaiting ?> </a>
+                    <a class="btn btn-outline-info ml-3" href="index.php?action=view_post_dashboard&id=<?= $data['id'] ?>"> <?= $linkSeePostAwaiting ?> </a>
                 </li>
                 <?php
                     }
@@ -112,7 +119,7 @@
                 ?>
                 <li class="list-group-item d-flex align-items-center justify-content-between"> 
                     <?= $data['title'] ?> le <?= $data['creation_date_fr'] ?> 
-                    <a class="btn btn-outline-info ml-3" href="index.php?action=view_Post_Dashboard&id=<?= $data['id'] ?>"> <?= $linkSeePost ?> </a>
+                    <a class="btn btn-outline-info ml-3" href="index.php?action=view_post_dashboard&id=<?= $data['id'] ?>"> <?= $linkSeePost ?> </a>
                 </li>
                 <?php 
                     }

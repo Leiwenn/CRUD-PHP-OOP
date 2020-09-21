@@ -81,3 +81,13 @@ Etape 7 Security
 - protection -> faille XSS _ injections SQL
 - ajout sleep(1) dans des functions d'envoi de formulaire
 - installation tarteaucitron RGPD
+
+Etape 8 tests/corrections
+- test de chaque $_GET['action']
+- correction requete setReport
+- correction deletePost($id)
+- correction deleteMember($pseudo)
+- refactorisation
+- création "mentions légales", "liste des membres"
+
+

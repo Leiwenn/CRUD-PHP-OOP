@@ -10,8 +10,6 @@ class DashboardCommentController{
         $h1 = 'Dashboard';
         $linkHomeDashboard = 'Accueil Dashboard';
         $linkTiny = 'Editeur de texte';
-        $linkComments = 'Commentaires à publier';
-        $linkReports = 'Modération';
         $linkHome = 'Voir le site';
         $h2 = 'Commentaires en attente de publication';
         $postNumber = 'Lié au billet n°';
@@ -34,13 +32,11 @@ class DashboardCommentController{
 
     public function publishComment($id){
         $dashboardCommentManager = new DashboardCommentManager();
-        $addComment = $dashboardCommentManager->postComment($id);
-        return $addComment;
+        $dashboardCommentManager->postComment($id);
     }
 
     public function deleteCommentAwaiting($id){
         $dashboardCommentManager = new DashboardCommentManager();
-        $deleteCommentAwait = $dashboardCommentManager->deleteCommentAwaiting($id);
-        return $deleteCommentAwait;
+        $dashboardCommentManager->deleteCommentAwaiting($id);
     }
 }

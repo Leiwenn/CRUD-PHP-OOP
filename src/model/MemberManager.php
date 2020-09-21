@@ -57,4 +57,16 @@ class MemberManager extends DbManager{
         session_destroy();
         unset($_SESSION);
     }
+
+    public function getMemberList(){
+        $db = $this->dbConnexion();
+        $req = $db->prepare(
+            'SELECT pseudo, DATE_FORMAT(registration_date, \'%d/%m/%Y\') AS registration_date_fr
+            FROM members
+            WHERE members_category = 2
+            ORDER BY id'
+        );
+        $req->execute(array());
+        return $req;
+    }
 }

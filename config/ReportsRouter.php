@@ -26,11 +26,12 @@ class ReportsRouter{
 
     private function addReportRoute(){
         if(isset($_SESSION['pseudo'])){
-            $commentController = new \p4\blog\controller\CommentController();
+            $reportController = new \p4\blog\controller\ReportController();
             $comment_id = htmlspecialchars($_GET['comment_id']);
             $member_pseudo = htmlspecialchars($_SESSION['pseudo']);
             $post_concerned_id = htmlspecialchars($_GET['post_concerned_id']);
-            $commentController->addReport($comment_id, $member_pseudo, $post_concerned_id);
+            $comment_author = htmlspecialchars($_GET['comment_author']);
+            $reportController->addReport($comment_id, $member_pseudo, $post_concerned_id, $comment_author);
             $postId = htmlspecialchars($_GET['post_concerned_id']);
             $frontController = new \p4\blog\controller\FrontController();
             $frontController->showPost($postId);

@@ -48,22 +48,22 @@ class MemberRouter{
                 if($pseudo == $data['pseudo']){
                     throw new Exception('Ce pseudo est déja utilisé, merci d\'en choisir un autre.');
                 }
-                if(!preg_match('#^[a-zA-Z0-9_]{3,16}$#', $pseudo)){
-                    throw new Exception('Le pseudo ne doit contenir que des lettres et des chiffres, et doit contenir entre 3 et 16 caractères.');
-                }
-                if($password == $paswordConfirm){
-                    if(preg_match('#^[a-zA-Z0-9]+$#', $password) !== 1){
-                        throw new Exception('Le mot de passe ne peut contenir que des lettres minuscules, majuscules et des chiffres');
-                    }
-                }else{
-                    throw new Exception('Les deux mots de passe doivent être identiques !');
-                }
                 if($mail == $data['mail']){
-                    throw new Exception('Cet EMAIL est déja utilisé, peut être êtes-vous déja membre !');
+                    throw new Exception('Cette adresse mail est déja utilisée, peut être êtes-vous déja membre !');
                 }
-                if(!preg_match('#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', $mail)){
-                    throw new Exception('L\'adresse ' . $mail . ' n\'est pas valide');
+            }
+            if(!preg_match('#^[a-zA-Z0-9_]{3,16}$#', $pseudo)){
+                throw new Exception('Le pseudo ne doit contenir que des lettres et des chiffres, et doit contenir entre 3 et 16 caractères.');
+            }
+            if($password == $paswordConfirm){
+                if(preg_match('#^[a-zA-Z0-9]+$#', $password) !== 1){
+                    throw new Exception('Le mot de passe ne peut contenir que des lettres minuscules, majuscules et des chiffres');
                 }
+            }else{
+                throw new Exception('Les deux mots de passe doivent être identiques !');
+            }
+            if(!preg_match('#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', $mail)){
+                throw new Exception('L\'adresse ' . $mail . ' n\'est pas valide');
             }
             $_SESSION['admin'] = false;
             $memberController->newMember($pseudo, $mail, $password);
@@ -129,12 +129,23 @@ class MemberRouter{
     private function changePseudoRoute(){
         if(isset($_SESSION['pseudo'])){
             sleep(1);
+            $pseudo = $_SESSION['pseudo'];
             $oldPseudo = $_SESSION['pseudo'];
             $newPseudo = htmlspecialchars($_POST['newPseudo']);
-            $midOfficeController = new \p4\blog\controller\MidOfficeController();
-            $midOfficeController->updatePseudo($oldPseudo, $newPseudo);
-            $pseudo = $newPseudo;
-            $midOfficeController->showMemberArea($pseudo);
+            $memberController = new \p4\blog\controller\MemberController();
+            $memberController->getMember($pseudo);
+            $dataDb = $memberController->getMember($pseudo);
+            while($data = $dataDb->fetch()){
+                if($newPseudo !== $data['pseudo']){
+                    $midOfficeController = new \p4\blog\controller\MidOfficeController();
+                    $midOfficeController->updatePseudo($oldPseudo, $newPseudo);
+                    $pseudo = $newPseudo;
+                    $midOfficeController->showMemberArea($pseudo);
+                }else{
+                    throw new Exception('Ce pseudo est déja utilisé, merci d\'en choisir un autre.');
+                    
+                }
+            }
         }
     }
 
@@ -191,14 +202,9 @@ class MemberRouter{
 
     private function excludeMemberRoute(){
         if($_SESSION['admin'] == true){
-            $dashboardReportController = new \p4\blog\controller\DashboardReportController();
-            $pseudo = htmlspecialchars($_GET['pseudo']);
-            $id = htmlspecialchars($_GET['comment_id']);
-            $rid = htmlspecialchars($_GET['rid']);
-            $memberController = new \p4\blog\controller\MemberController();
+            $memberController = new \p4\blog\controller\memberController();
+            $pseudo = htmlspecialchars($_GET['pseudo']);    //$pseudo = auteur du comment à modérer
             $memberController->deleteMember($pseudo);
-            $dashboardReportController->deleteComment($id);
-            $dashboardReportController->deleteReport($rid);
             $dashboardController = new \p4\blog\controller\DashboardController();
             $dashboardController->showDashboard();
         }

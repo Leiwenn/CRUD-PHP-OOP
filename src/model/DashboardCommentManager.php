@@ -44,6 +44,20 @@ class DashboardCommentManager extends DbManager{
         return $req;
     }
 
+    public function deletePostComments($id){
+        $post_id = $id;
+        $db = $this->dbConnexion();
+        $req = $db->prepare(
+            'DELETE FROM comments 
+            WHERE post_id LIKE :post_id'
+        );
+        $req->bindValue(':post_id', $post_id, \PDO::PARAM_INT);
+        $req->execute(array(
+            'post_id' => $post_id
+        ));
+        return $req;
+    }
+
     public function deleteMemberComments($pseudo){
         $db = $this->dbConnexion();
         $req = $db->prepare(

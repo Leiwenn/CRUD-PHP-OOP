@@ -21,32 +21,29 @@ class MemberController{
     }
 
     public function deleteMember($pseudo){
-        $this->deleteAllReports($pseudo);
-        $this->deleteAllComments($pseudo);
-        $this->deleteAmember($pseudo);
+        $this->deleteAllReportsFromMember($pseudo);
+        $this->deleteAllCommentsFromMember($pseudo);
+        $this->deleteThemember($pseudo);
     }
 
-    private function deleteAllReports($pseudo){
+    private function deleteAllReportsFromMember($pseudo){
+        $comment_author = $pseudo;
         $dashboardReportManager = new DashboardReportManager();
-        $deleteReports = $dashboardReportManager->deleteMemberReports($pseudo);
-        return $deleteReports;
+        $dashboardReportManager->deleteMemberReports($comment_author);
     }
 
-    private function deleteAllComments($pseudo){
+    private function deleteAllCommentsFromMember($pseudo){
         $dashboardCommentManager = new DashboardCommentManager();
-        $deleteComments = $dashboardCommentManager->deleteMemberComments($pseudo);
-        return $deleteComments;
+        $dashboardCommentManager->deleteMemberComments($pseudo);
     }
     
-    private function deleteAmember($pseudo){
+    private function deleteThemember($pseudo){
         $memberManager = new MemberManager();
-        $deleteMember = $memberManager->deleteMember($pseudo);
-        return $deleteMember;
+        $memberManager->deleteMember($pseudo);
     }
 
     public function disconnectMember(){
         $memberManager = new MemberManager();
-        $disconnectMember = $memberManager->disconnect();
-        return $disconnectMember;
+        $memberManager->disconnect();
     }
 }

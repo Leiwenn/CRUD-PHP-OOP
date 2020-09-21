@@ -11,12 +11,12 @@ class DashboardRouter{
                 if(isset($_SESSION['admin']) && $_SESSION['admin'] == true){
                     if($_GET['action'] == 'dashboard'){
                         $this->dashboardRoute();
-                    }elseif($_GET['action'] == 'view_Post_Dashboard'){
+                    }elseif($_GET['action'] == 'view_post_dashboard'){
                         $this->viewPostDashboardRoute();
-                    }elseif($_GET['action'] == 'view_Post_Awaiting'){
-                        $this->viewPostAwaitingRoute();
                     }elseif($_GET['action'] == 'text_editor'){
                         $this->textEditorRoute();
+                    }elseif($_GET['action'] == 'member_list'){
+                        $this->memberListRoute();
                     }else{
                         http_response_code(404);
                         require '404.php';
@@ -39,20 +39,12 @@ class DashboardRouter{
     private function viewPostDashboardRoute(){
         if($_SESSION['admin'] == true){
             if (isset($_GET['id']) && $_GET['id'] > 0){
-                $postId = htmlspecialchars($_GET['id']);
+                $id = htmlspecialchars($_GET['id']);
                 $dashboardPostController = new \p4\blog\controller\DashboardPostController();
-                $dashboardPostController->showPostDashboard($postId);
+                $dashboardPostController->showPostDashboard($id);
             }else{
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        }
-    }
-
-    private function viewPostAwaitingRoute(){
-        if($_SESSION['admin'] == true){
-            $id = htmlspecialchars($_GET['id']);
-            $dashboardPostController = new \p4\blog\controller\DashboardPostController();
-            $dashboardPostController->showPostAwaiting($id);
         }
     }
 
@@ -60,6 +52,13 @@ class DashboardRouter{
         if($_SESSION['admin'] == true){
             $tinyController = new \p4\blog\controller\TinyController();
             $tinyController->showEditor();
+        }
+    }
+
+    private function memberListRoute(){
+        if($_SESSION['admin'] == true){
+            $dashboardController = new \p4\blog\controller\DashboardController();
+            $dashboardController->showMemberList();
         }
     }
 }

@@ -30,7 +30,7 @@
 .container-fluid{
 	font-family: 'robotoregular';
 }
-h2, h3, h4{
+h2, h3, h4, h5, h6{
 	font-family: 'cinzelbold';
 	font-size: 30px;
 }
@@ -163,6 +163,11 @@ footer{
 	border-top: 1px solid grey;
 }
 
+.notice{
+	background: #2c4444;
+	color: white;
+}
+
 
 /* ------------------------------------------------------------------------ LAYOUT */
 body, .wrapper{
@@ -239,9 +244,6 @@ body, .wrapper{
 /* --- FOOTER --- */
 footer{
 	height: auto;
-}
-#footer p:first-of-type{
-	max-width: 45vw;
 }
 
 /* --- MEDIA QUERIES --- */

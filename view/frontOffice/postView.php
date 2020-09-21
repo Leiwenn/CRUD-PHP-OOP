@@ -61,8 +61,9 @@
                 <p><span class="text-info">Commentaire</span></br> <?= nl2br($data['comment']) ?></p>
                 <?php
                     if(isset($_SESSION['pseudo'])){
+                        $comment_author = $data['pseudo'];
                 ?>
-                <a href="index.php?action=report&post_concerned_id=<?= $post_concerned_id ?>&comment_id=<?= $comment_id ?>"  class="mt-2 btn btn-danger"><i class="far fa-bell"></i></a>
+                <a href="index.php?action=report&post_concerned_id=<?= $post_concerned_id ?>&comment_id=<?= $comment_id ?>&comment_author=<?= $comment_author ?>"  class="mt-2 btn btn-danger"><i class="far fa-bell"></i></a>
                 <?php
                     }
                 ?>

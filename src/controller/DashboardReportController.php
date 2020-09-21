@@ -9,21 +9,17 @@ class DashboardReportController{
     private const H1 = 'Dashboard';
     private const HOMEDASHBOARD = 'Accueil Dashboard';
     private const LINKTINY = 'Editeur de texte';
-    private const LINKCOMMENTS = 'Commentaires à publier';
-    private const LINKREPORTS = 'Modération';
     private const LINKHOME = 'Voir le site';
 
     public function deleteComment($id){
         $dashboardReportManager = new DashboardReportManager();
-        $deleteAComment = $dashboardReportManager->deleteComment($id);
-        return $deleteAComment;
+        $dashboardReportManager->deleteComment($id);
     }
 
     public function keepAComment($rid){
         $dashboardReportManager = new DashboardReportManager();
         $id = $rid;
-        $keepAComment = $dashboardReportManager->keepComment($id);
-        return $keepAComment;
+        $dashboardReportManager->keepComment($id);
     }
     
     public function showReports(){
@@ -31,8 +27,6 @@ class DashboardReportController{
         $h1 = self::H1;
         $linkHomeDashboard = self::HOMEDASHBOARD;
         $linkTiny = self::LINKTINY;
-        $linkComments = self::LINKCOMMENTS;
-        $linkReports = self::LINKREPORTS;
         $linkHome = self::LINKHOME;
         $h2 = 'Demandes de modération';
         $link = 'Voir le commentaire';
@@ -52,8 +46,6 @@ class DashboardReportController{
         $h1 = self::H1;
         $linkHomeDashboard = self::HOMEDASHBOARD;
         $linkTiny = self::LINKTINY;
-        $linkComments = self::LINKCOMMENTS;
-        $linkReports = self::LINKREPORTS;
         $linkHome = self::LINKHOME;
         $h2 = 'Modération';
         $getReportedComment = $this->getTheReportedComment($rid);
@@ -69,7 +61,6 @@ class DashboardReportController{
 
     public function deleteReport($rid){
         $dashboardReportManager = new DashboardReportManager();
-        $deleteReport = $dashboardReportManager->deleteReport($rid);
-        return $deleteReport;
+        $dashboardReportManager->deleteReport($rid);
     }
 }

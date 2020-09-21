@@ -24,11 +24,13 @@ class MidOfficeManager extends DbManager{
         $req = $db->prepare(
             'UPDATE members 
             SET pseudo = :newPseudo 
-            WHERE pseudo LIKE ' . "'" . $oldPseudo . "'"
+            WHERE pseudo LIKE :oldPseudo'
         );
         $req->bindValue(':newPseudo', $newPseudo, \PDO::PARAM_STR);
+        $req->bindValue(':oldPseudo', $oldPseudo, \PDO::PARAM_STR);
         $req->execute(array(
-            'pseudo' => $newPseudo
+            'oldPseudo' => $oldPseudo,
+            'newPseudo' => $newPseudo
         ));
         return $req;
     }

@@ -3,7 +3,7 @@
 namespace p4\blog\controller;
 use p4\blog\model\DashboardManager as DashboardManager;
 use p4\blog\model\DashboardPostManager as DashboardPostManager;
-use p4\blog\model\PostManager as PostManager;
+use p4\blog\model\MemberManager as MemberManager;
 
 class DashboardController{
 
@@ -12,12 +12,10 @@ class DashboardController{
         $h1 = 'Dashboard';
         $linkHomeDashboard = 'Accueil Dashboard';
         $linkTiny = 'Editeur de texte';
-        $linkComments = 'Commentaires à publier';
-        $linkReports = 'Modération';
         $linkHome = 'Voir le site';
         $membersTitle = 'Membres';
-        $commentsTitle = 'Commentaires à publier';
-        $reportsTitle = 'Demandes de modération';
+        $commentsTitle = 'Commentaires';
+        $reportsTitle = 'Modération';
         $h2 = 'Billets en attente de publication';
         $h3 = 'Billets publiés';
         $linkSeePostAwaiting = 'Voir le billet enregistré';
@@ -71,9 +69,27 @@ class DashboardController{
         return $showPostsList;
     }
     
-    public function getPostsAwaiting(){
-        $dashboardPostManager = new DashboardPostManager();
-        $showPostsAwaiting = $dashboardPostManager->getPostsAwaiting();
+    private function getPostsAwaiting(){
+        $dashboardPostController = new DashboardPostController();
+        $showPostsAwaiting = $dashboardPostController->getPostsAwaitingList();
         return $showPostsAwaiting;
+    }
+
+    public function showMemberList(){
+        $title = 'Dashboard';
+        $h1 = 'Liste des membres';
+        $h2 = 'Membres actuels';
+        $linkHomeDashboard = 'Accueil Dashboard';
+        $linkTiny = 'Editeur de texte';
+        $linkHome = 'Voir le site';
+        $memberList = $this->getMembersList();
+        $content = require 'view/backOffice/memberList.php';
+        require 'view/backOffice/template.php';
+    }
+
+    private function getMembersList(){
+        $memberManager = new MemberManager();
+        $getMembersList = $memberManager->getMemberList();
+        return $getMembersList;
     }
 }

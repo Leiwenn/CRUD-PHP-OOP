@@ -45,14 +45,29 @@ class DashboardReportManager extends DbManager{
         return $req;
     }
 
-    public function deleteMemberReports($pseudo){
+    public function deletePostReports($post_concerned_id){
         $db = $this->dbConnexion();
         $req = $db->prepare(
             'DELETE FROM reports 
-            WHERE pseudo = :pseudo'
+            WHERE post_concerned_id = :post_concerned_id'
         );
-        $req->bindValue(':pseudo', $pseudo, \PDO::PARAM_STR);
-        $req->execute(array($pseudo));
+        $req->bindValue(':post_concerned_id', $post_concerned_id, \PDO::PARAM_INT);
+        $req->execute(array(
+            'post_concerned_id' => $post_concerned_id
+        ));
+        return $req;
+    }
+
+    public function deleteMemberReports($comment_author){
+        $db = $this->dbConnexion();
+        $req = $db->prepare(
+            'DELETE FROM reports 
+            WHERE comment_author = :comment_author'
+        );
+        $req->bindValue(':comment_author', $comment_author, \PDO::PARAM_STR);
+        $req->execute(array(
+            'comment_author' => $comment_author
+        ));
         return $req;
     }
 
@@ -71,7 +86,6 @@ class DashboardReportManager extends DbManager{
 
     public function keepComment($id){
         $db = $this->dbConnexion();
-        var_dump($id);
         $req = $db->prepare(
             'DELETE FROM reports 
             WHERE id LIKE :id'

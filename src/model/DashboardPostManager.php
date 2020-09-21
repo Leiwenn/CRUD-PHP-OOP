@@ -31,20 +31,6 @@ class DashboardPostManager extends DbManager{
         return $showPostsAwaiting;
     }
 
-    public function getPostAwaiting($id){
-        $db = $this->dbConnexion();
-        $req = $db->prepare(
-            'SELECT id, title, content, file_name, file_description, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr 
-            FROM posts 
-            WHERE published = 0 AND id = :id'
-        );
-        $req->execute(array(
-            'id' => $id
-        ));
-        $showPostAwaiting = $req;
-        return $showPostAwaiting;
-    }
-
     /**
      * controller : recordPost()
      *
@@ -52,19 +38,22 @@ class DashboardPostManager extends DbManager{
      * @param [type] $content
      * @return void
      */
-    public function setPostAwaiting($title, $content){
+    public function setPostAwaiting($title, $content, $file_name, $file_description){
         $db = $this->dbConnexion();
         $req = $db->prepare(
-            'INSERT INTO posts(title, content, date_creation, published) 
-            VALUES(:title, :content, NOW(), 0)'
+            'INSERT INTO posts(title, content, file_name, file_description, date_creation, published) 
+            VALUES(:title, :content, :file_name, :file_description, NOW(), 0)'
         );
         $req->bindValue(':title', $title, \PDO::PARAM_STR);
         $req->bindValue(':content', $content, \PDO::PARAM_STR);
+        $req->bindValue(':file_name', $file_name, \PDO::PARAM_STR);
+        $req->bindValue(':file_description', $file_description, \PDO::PARAM_STR);
         $req->execute(array(
             'title' => $title, 
-            'content' => $content
+            'content' => $content,
+            'file_name' => $file_name,
+            'file_description' => $file_description
         ));
-        return $req;
     }
     
     /**
@@ -94,6 +83,7 @@ class DashboardPostManager extends DbManager{
         ));
         return $req;
     }
+    
     public function setPostAwait($id){
         $db = $this->dbConnexion();
         $req = $db->prepare(
@@ -128,24 +118,11 @@ class DashboardPostManager extends DbManager{
         return $req;
     }
 
-    public function deletePostAwaiting($id){
-        $db = $this->dbConnexion();
-        $req = $db->prepare(
-            'DELETE FROM posts 
-            WHERE published = 0 AND id = :id'
-        );
-        $req->bindValue(':id', $id, \PDO::PARAM_INT);
-        $req->execute(array(
-            'id' => $id
-        ));
-        return $req;
-    }
-
     public function deletePost($id){
         $db = $this->dbConnexion();
         $req = $db->prepare(
             'DELETE FROM posts 
-            WHERE published = 1 AND id = :id'
+            WHERE id = :id'
         );
         $req->bindValue(':id', $id, \PDO::PARAM_INT);
         $req->execute(array(

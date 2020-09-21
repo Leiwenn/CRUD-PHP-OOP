@@ -6,12 +6,14 @@
                 <input type="hidden" name="MAX_FILE_SIZE" value="10000000">
                 <label class="m-2 p-2 col shadow rounded text-info" for="file_name"><i class="far fa-file-image"></i> IMAGE
                     <input type="file" class="form-control-file pt-3" id="file_name" name="file_name">
+                    <small id="imgHelp" class="form-text text-muted m-2"> <?= $imgHelp ?> </small>
                 </label>
                 <label class="m-2 p-2 col shadow rounded text-info" for="file_description">Texte alternatif à l'image
                     <input type="text" class="form-control pt-3" id="file_description" name="file_description" aria-describedby="altHelp">
+                    <small id="altHelp" class="form-text text-muted m-2"> <?= $altHelp ?> </small>
                 </label>
             </div>
-            <small id="altHelp" class="form-text text-muted m-2"> <?= $help ?> </small>
+            
         </div>
         <div class="form-group border rounded bg-white mt-4 p-2">
             <label class="m-2 text-info" for="title"><i class="fas fa-paragraph"></i> TITRE</label>
