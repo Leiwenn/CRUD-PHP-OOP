@@ -49,7 +49,7 @@ class FrontController{
     public function showPosts(){
         $title = self::TITLE;
         $h1 = self::H1;
-        $h2 = 'BILLET SIMPLE POUR L\'ALASKA';
+        $h2 = 'Liste des épisodes';
         $linkReadMore = 'Lire la suite';
         $linkHome = 'Accueil';
         $linkPostsList = 'Liste des épisodes';
@@ -89,7 +89,7 @@ class FrontController{
         $linkPostsList = 'Liste des épisodes';
         $linkBack = 'Retour à la liste';
         $h3 = 'Ajouter un commentaire';
-        $h4 = 'Commentaires';
+        $h4 = 'Vos Commentaires';
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
             $linkLogin = 'Connection';
             $linkSuscribe = 'S\'inscrire';
@@ -130,13 +130,27 @@ class FrontController{
         $title = self::TITLE;
         $h1 = 'Jean Forteroche';
         $h2 = 'Mentions Légales';
-        $linkHome = null;
-        $linkPostsList = null;
-        $linkLogin = null;
-        $linkSuscribe = null;
-        $header = require 'view/frontOffice/headerSingle.php';
+        $linkHome = 'Accueil';
+        $linkPostsList = 'Liste des épisodes';
+        if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
+            $linkLogin = 'Connection';
+            $linkSuscribe = 'S\'inscrire';
+            $header = require 'view/frontOffice/headerSingle.php';
+        }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == true){
+            $linkArea = '<a class="nav-link text-white" href="index.php?action=dashboard">Dashboard</a>';
+            $linkDisconnect = 'Déconnexion';
+            $hello = null;
+            $message = 'Bonne lecture !';
+            $header = require 'view/frontOffice/headerConnect.php';
+        }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == false){
+            $linkArea = '<a class="nav-link text-white" href="index.php?action=member_area">Mon profil</a>';
+            $linkDisconnect = 'Déconnexion';
+            $hello = null;
+            $message = 'Bonne lecture !';
+            $header = require 'view/frontOffice/headerConnect.php';
+        }
         $content = require 'view/frontOffice/LegalNotice.php';
-        $footer = null;
+        $footer = require 'view/frontOffice/footer.php';
         require 'view/frontOffice/template.php';
     }
 }

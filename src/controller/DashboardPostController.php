@@ -23,6 +23,7 @@ class DashboardPostController{
         $linkEdit = 'Editer';
         $linkDelete = 'Supprimer';
         $showPostDashboard = $this->getPostDashboard($id);
+        $nav = require 'view/backOffice/nav.php';
         $content = require 'view/backOffice/postDashboard.php';
         require 'view/backOffice/template.php'; 
     }

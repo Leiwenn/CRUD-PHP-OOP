@@ -26,7 +26,7 @@
 	font-display: auto;
 }
 
-.bloc_page{
+.container-fluid{
     font-family: 'robotoregular';
 }
 .cinzeld{
@@ -40,8 +40,7 @@
 }
 
 /* ---------------------------------------------------------------- COLORS AND IMG */
-.bloc_page{
-    height: 100%;
+.container-fluid{
     background: url("../img/typewriter.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -68,6 +67,12 @@ span{
 body{
     margin: 0;
     padding: 0;
+}
+
+.container-fluid{
+	max-width: 1920px;
+	margin: auto;
+	padding: 0;
 }
 
 .card{

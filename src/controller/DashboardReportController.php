@@ -31,6 +31,7 @@ class DashboardReportController{
         $h2 = 'Demandes de modération';
         $link = 'Voir le commentaire';
         $getAllReports = $this->getTheReports();
+        $nav = require 'view/backOffice/nav.php';
         $content = require 'view/backOffice/reports.php';
         require 'view/backOffice/template.php';
     }
@@ -49,6 +50,7 @@ class DashboardReportController{
         $linkHome = self::LINKHOME;
         $h2 = 'Modération';
         $getReportedComment = $this->getTheReportedComment($rid);
+        $nav = require 'view/backOffice/nav.php';
         $content = require 'view/backOffice/oneReport.php';
         require 'view/backOffice/template.php';
     }

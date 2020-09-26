@@ -61,7 +61,7 @@ class MemberManager extends DbManager{
     public function getMemberList(){
         $db = $this->dbConnexion();
         $req = $db->prepare(
-            'SELECT pseudo, DATE_FORMAT(registration_date, \'%d/%m/%Y\') AS registration_date_fr
+            'SELECT pseudo, mail, DATE_FORMAT(registration_date, \'%d/%m/%Y\') AS registration_date_fr
             FROM members
             WHERE members_category = 2
             ORDER BY id'

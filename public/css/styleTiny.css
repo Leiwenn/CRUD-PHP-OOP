@@ -8,14 +8,6 @@
 
 }
 @font-face {
-    font-family: 'cinzelbold';
-    src: url('../font/cinzel-bold-webfont.woff2') format('woff2'),
-         url('../font/cinzel-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
     font-family: 'robotoregular';
     src: url('../font/roboto-regular-webfont.woff2') format('woff2'),
          url('../font/roboto-regular-webfont.woff') format('woff');
@@ -24,7 +16,7 @@
 	font-display: auto;
 }
 
-.bloc_page{
+.container-fluid{
     font-family: 'robotoregular';
 }
 
@@ -38,7 +30,7 @@ label{
 }
 
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
-.bloc_page{
+.container-fluid{
     color: #2D2D2D;
 }
 .ombre{
@@ -56,4 +48,29 @@ section{
 body{
     margin: 0;
     padding: 0;
+}
+
+/* ---- MEDIA QUERIES ---- */
+.container-fluid{
+	max-width: 1920px;
+	margin: auto;
+	padding: 0;
+}
+
+@media (max-width: 767.98px){
+
+    .btn_tiny_header{
+        margin-bottom: 5px;
+    }
+
+    .editor{
+        padding: 0 !important;
+    }
+    .editor .btn-group{
+        display: flex;
+    }
+
+    .billets{
+        padding: 0;
+    }
 }

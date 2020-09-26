@@ -90,4 +90,7 @@ Etape 8 tests/corrections
 - refactorisation
 - création "mentions légales", "liste des membres"
 
-
+Etape 8 CSS-JS
+- css/responsive
+- Meta Tags
+- bouton backToTop

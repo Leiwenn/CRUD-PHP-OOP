@@ -20,6 +20,7 @@ class DashboardCommentController{
         $publish = 'Publier';
         $delete = 'Supprimer';
         $showCommentsAwaiting = $this->getAllCommentsAwaiting();
+        $nav = require 'view/backOffice/nav.php';
         $content = require 'view/backOffice/commentsAwaiting.php';
         require 'view/backOffice/template.php';
     }

@@ -24,8 +24,8 @@
 	font-display: auto;
 }
 
-.bloc_page{
-    font-family: 'robotoregular';
+.container-fluid{
+    font-family: 'robotoregular', sans-serif;
 }
 
 h1{
@@ -45,10 +45,10 @@ span, h2, h3, h4{
 }
 
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
-.bloc_page{
+.container-fluid{
     color: #2D2D2D;
 }
-.bloc_page, .reports, .widgets, .comments, .postAwaiting, .memberList{
+.container-fluid, .reports, .widgets, .comments, .postAwaiting, .memberList{
     background: url("../img/typewriter.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -56,14 +56,17 @@ span, h2, h3, h4{
 	background-size: cover;
 }
 .navbar, .w_users, .w_comments, .w_reports{
-    color: white;
+    color: #FFFFF0;
+}
+nav a:hover{
+    text-decoration: underline white !important;
 }
 
 .ombre{
     text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em grey;
 }
 .carte{
-    background: white;
+    background: #FFFFF0;
 }
 
 /* ------------------------------------------------------------------------ LAYOUT */
@@ -71,6 +74,7 @@ body{
     margin: 0;
     padding: 0;
 }
+
 .navbar{
     width: 14%;
 }
@@ -89,4 +93,80 @@ header{
 
 .w_users, .w_comments, .w_reports{
     width: 90px;
+}
+
+/* ---- MEDIA QUERIES ---- */
+.container-fluid{
+    max-width: 1920px;
+    margin: auto;
+    padding: 0;
+}
+
+@media (max-width: 767.98px){
+    .widgets .carte{
+        width: 80%;
+    }
+
+    .table thead{
+        display: none;
+    }
+    .table tr{
+        display: block;
+        margin-bottom: 40px;
+    }
+    .table td {
+        display: block;
+        text-align: center;
+    }
+    .table td:before {
+        float: left;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 991.98px){
+    
+    .widgets .carte{
+        width: 60%;
+    }
+}
+
+@media (max-width: 991.98px){
+    
+    .navbar, header, section{
+        width: 100%;
+        height: auto;
+    }
+
+    header{
+        margin-left: 0;
+        margin-top: 50px;
+    }
+
+    .container-fluid, .reports, .widgets, .comments, .postAwaiting, .memberList{
+        margin: 0;
+        height: auto;
+    }
+
+    .img_dashboard{
+        width: 25% !important;
+    }
+
+    .postAwaiting article{
+       padding: 0 !important;
+    }
+    .postAwaiting article img{
+        margin-top: 0 !important;
+    }
+    
+}
+
+@media (min-width: 992px){
+
+    .navbar{
+        height: 100%;
+    }
+    .navbar li, .navbar-brand{
+        margin-bottom: 50px;
+    }
 }

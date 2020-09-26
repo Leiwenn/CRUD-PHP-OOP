@@ -1,4 +1,4 @@
-<section class="card-deck onePostContainer bg-white mx-auto">
+<section class="card-deck onePostContainer bg-white mx-auto mb-4">
     <h2 class="notice w-100 text-center p-2"> <?= $h2 ?> </h2>
     <article class="p-2">
         <h3>Editeur et hébergement</h3>
@@ -13,13 +13,13 @@
 
     <article class="p-2">
         <h5>Collecte de données</h5>
-        <p>Les informations et données personnelles (nom, prénom, email) collectées par le site le sont pour un usage exclusivement interne. Je m’engage à ne pas transmettre ces données à des tiers. Vous disposez d’un droit d’accès, d’interrogation et de rectification en me contactant par email à fictif-editions-jf@fictif.com</p>
+        <p>Les informations et données personnelles (pseudo, email, date d'inscription) collectées par le site le sont pour un usage exclusivement interne. Je m’engage à ne pas transmettre ces données à des tiers. Vous disposez d’un droit d’accès, d’interrogation et de rectification en me contactant par email à fictif-editions-jf@fictif.com</p>
     </article>
  
     <article class="p-2">
         <h6>Modération des commentaires</h6>
         <p>Les commentaires postés sur le blog sont modérés par Jean Forteroche avant publication.</p>
-        <p>Les membres inscrits peuvent aussi signaler les commentaires qu'ils jugent irrespectueux</p>
+        <p>Les membres inscrits peuvent aussi signaler les commentaires qu'ils jugent irrespectueux.</p>
     </article>
 
     <article class="p-2">

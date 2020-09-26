@@ -27,6 +27,7 @@ class DashboardController{
         $showPostsAwaiting = $this->getPostsAwaiting();
         $totalPosts = $this->totalPosts();
         $showPostsList = $this->getPosts();
+        $nav = require 'view/backOffice/nav.php';
         $content = require 'view/backOffice/dashboard.php';
         require 'view/backOffice/template.php';
     }
@@ -83,6 +84,7 @@ class DashboardController{
         $linkTiny = 'Editeur de texte';
         $linkHome = 'Voir le site';
         $memberList = $this->getMembersList();
+        $nav = require 'view/backOffice/nav.php';
         $content = require 'view/backOffice/memberList.php';
         require 'view/backOffice/template.php';
     }

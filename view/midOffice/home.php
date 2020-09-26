@@ -1,41 +1,41 @@
-<section class="container-fluid pt-5 pb-4">
-    <div class="row col-11 col-md-5 p-4 mb-4 mx-auto d-flex flex-column bg-light rounded shadow">
-        <h2 class="text-center cinzeld"> <?= $h2 ?> </h2>
-        <?php  
-            while($data = $getOneMember->fetch()){
-        ?>
-            <p><span>Pseudo:</span> <?= $data['pseudo'] ?> </p>
-            <p><span>Mail:</span> <?= $data['mail'] ?> </p>
-            <p><span>Date d'inscription:</span> <?= $data['registration_date'] ?> </p>
-        <?php
-            }
-            $getOneMember->closeCursor();
-        ?>
-        <div class="btn-group shadow" role="group" aria-label="changer le pseudo, changer le mot de pass, se désinscrire">
-            <a class="btn btn-info border" role="button" data-toggle="modal" data-target="#changePseudo" href="#"> <?= $link2 ?> </a>
-            <a class="btn btn-info border" role="button" data-toggle="modal" data-target="#changePassword" href="#"> <?= $link3 ?> </a>
-            <a class="btn btn-warning border" role="button" href="index.php?action=unregistration"> <?= $link4 ?> </a>
-        </div>
-    </div>
-
-    <div class="row col-11 col-md-8 p-4 mx-auto d-flex flex-column bg-light rounded shadow">
-        <h3 class="mx-auto cinzeld"> <?= $h3 ?> </h3>
-        <?php
-            while($data = $getComments->fetch()){
-        ?>
-            <div class="card p-2">
-                <p class="card-title font-weight-bold"><i class="far fa-comment-dots mr-2"></i> <?= $data['title'] ?> </p>
-                <p class="card-text"> <?= $data['comment'] ?> </p>
-                <p class="card-text">le: <?= $data['comment_date'] ?> </p>
+    <section class="container-fluid pt-5 pb-4">
+        <div class="row col-11 col-md-5 p-4 mb-4 mx-auto d-flex flex-column bg-light rounded shadow">
+            <h2 class="text-center cinzeld"> <?= $h2 ?> </h2>
+            <?php  
+                while($data = $getOneMember->fetch()){
+            ?>
+                <p><span>Pseudo:</span> <?= $data['pseudo'] ?> </p>
+                <p><span>Mail:</span> <?= $data['mail'] ?> </p>
+                <p><span>Date d'inscription:</span> <?= $data['registration_date'] ?> </p>
+            <?php
+                }
+                $getOneMember->closeCursor();
+            ?>
+            <div class="btn-group shadow" role="group" aria-label="changer le pseudo, changer le mot de pass, se désinscrire">
+                <a class="btn btn-info btn-sm border" role="button" data-toggle="modal" data-target="#changePseudo" href="#"> <?= $link2 ?> </a>
+                <a class="btn btn-info btn-sm border" role="button" data-toggle="modal" data-target="#changePassword" href="#"> <?= $link3 ?> </a>
+                <a class="btn btn-warning btn-sm border" role="button" href="index.php?action=unregistration"> <?= $link4 ?> </a>
             </div>
-        <?php
-            }
-            $getComments->closeCursor();
-        ?>
-    </div>
-</section>
+        </div>
 
-<!-- end DIV bloc_page -->
+        <div class="row col-11 col-md-8 p-4 mx-auto d-flex flex-column bg-light rounded shadow">
+            <h3 class="mx-auto cinzeld"> <?= $h3 ?> </h3>
+            <?php
+                while($data = $getComments->fetch()){
+            ?>
+                <div class="card p-2">
+                    <p class="card-title font-weight-bold"><i class="far fa-comment-dots mr-2" aria-hidden="true"></i> <?= $data['title'] ?> </p>
+                    <p class="card-text"> <?= $data['comment'] ?> </p>
+                    <p class="card-text">le: <?= $data['comment_date'] ?> </p>
+                </div>
+            <?php
+                }
+                $getComments->closeCursor();
+            ?>
+        </div>
+    </section>
+
+<!-- end div container-fluid -->
 </div>
 
 <!-- MODAL -->
