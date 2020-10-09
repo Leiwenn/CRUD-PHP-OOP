@@ -53,17 +53,9 @@
         <div>
             <h4 class="text-center bg-dark text-white rounded"> <?= $h4 ?> </h4>
             <?php
-                if(($comments->fetch()) == false){
-            ?>
-                <div class="bg-light shadow p-3 m-3 rounded">
-                    <p class="font-weight-bold">Cet article n'a pas encore été commenté.</p>
-                    <p>Soyez le/la premier/e !</p>
-                </div>
-            <?php
-                }else{
-                    while ($data = $comments->fetch()){
-                        $post_concerned_id = $data['post_id'];
-                        $comment_id = $data['comment_id'];
+                while($data = $comments->fetch()){
+                    $post_concerned_id = $data['post_id'];
+                    $comment_id = $data['comment_id'];
             ?>
                 <div class="bg-light shadow p-3 m-3 rounded">
                     <p class="font-weight-bold"><i class="fas fa-user-circle" aria-hidden="true"></i> <?= $data['pseudo'] ?>, le <?= $data['comment_date_fr'] ?></p>
@@ -75,11 +67,18 @@
                     ?>
                     <a href="index.php?action=report&post_concerned_id=<?= $post_concerned_id ?>&comment_id=<?= $comment_id ?>&comment_author=<?= $comment_author ?>"  class="mt-2 btn btn-danger"><i class="far fa-bell"></i></a>
                 </div>
-                <?php
+            <?php
                         }
-                    }
                 }
-                $comments->closeCursor();
+                if(!isset($comment_id)){
+            ?>
+                <div class="bg-light shadow p-3 m-3 rounded">
+                    <p class="font-weight-bold">Cet article n'a pas encore été commenté.</p>
+                    <p>Soyez le/la premier/e !</p>
+                </div>
+            <?php
+                }
+            $comments->closeCursor();
             ?>
         </div>
     </div>

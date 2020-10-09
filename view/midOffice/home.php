@@ -24,14 +24,8 @@
             <div class="card-body">
                 <h3 class="card-title text-center cinzeld h2 text-white"> <?= $h3 ?> </h3>
                 <?php
-                if(($getComments->fetch()) == false){
-                ?>
-                    <div class="card mb-4 p-2">
-                        <p><i class="far fa-comment-dots text-info mr-2" aria-hidden="true"></i> Pas de commentaires enregistrés</p>
-                    </div>
-                <?php
-                }else{
                     while($data = $getComments->fetch()){
+                        $comment = $data['comment'];
                 ?>
                     <div class="card mb-2">
                         <ul class="list-group list-group-flush">
@@ -48,7 +42,13 @@
                     </div>
                 <?php
                     }
-                }
+                    if(!isset($comment)){
+                ?>
+                        <div class="card mb-4 p-2">
+                            <p><i class="far fa-comment-dots text-info mr-2" aria-hidden="true"></i> Pas de commentaires enregistrés</p>
+                        </div>
+                <?php
+                    }
                 $getComments->closeCursor();
                 ?>
             </div>
