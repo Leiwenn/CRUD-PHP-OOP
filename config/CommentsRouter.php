@@ -39,7 +39,6 @@ class CommentsRouter{
             $postId = htmlspecialchars($_GET['postId']);
             $commentController = new \p4\blog\controller\CommentController();
             $commentController->addComment($pseudo, $title, $comment, $postId);
-            $_GET['id'] = $postId;
             $frontController = new \p4\blog\controller\FrontController();
             $frontController->showPost($postId);
         }
@@ -72,9 +71,10 @@ class CommentsRouter{
 
     private function keepCommentRoute(){
         if($_SESSION['admin'] == true){
-            $dashboardReportController = new \p4\blog\controller\DashboardReportController();
+            $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
             $rid = htmlspecialchars($_GET['rid']);
-            $dashboardReportController->keepAComment($rid);
+            $dashboardCommentController->keepAComment($rid);
+            $dashboardReportController = new \p4\blog\controller\DashboardReportController();
             $dashboardReportController->showReports();
         }
     }
@@ -82,10 +82,11 @@ class CommentsRouter{
     private function deleteCommentRoute(){
         if($_SESSION['admin'] == true){
             $dashboardReportController = new \p4\blog\controller\DashboardReportController();
-            $rid = htmlspecialchars($_GET['rid']);
-            $dashboardReportController->deleteReport($rid);
+            $comment_id = htmlspecialchars($_GET['comment_id']);
+            $dashboardReportController->deleteCommentReports($comment_id);
+            $dashboardCommentController = new \p4\blog\controller\DashboardCommentController();
             $id = htmlspecialchars($_GET['comment_id']);
-            $dashboardReportController->deleteComment($id);
+            $dashboardCommentController->deleteComment($id);
             $dashboardReportController->showReports();
         }
     }

@@ -18,8 +18,6 @@ class TinyController{
         $link = self::LINK;
         $imgHelp = self::IMGHELP;
         $altHelp = self::HELP;
-        $header = require 'view/backOffice/tinyHeader.php';
-        $content = require 'view/backOffice/tinyContent.php';
         require 'view/backOffice/tinyTemplate.php';
     }
 
@@ -31,8 +29,6 @@ class TinyController{
         $altHelp = self::HELP;
         $link = self::LINK;
         $editPost = $this->getAPost($id);
-        $header = require 'view/backOffice/tinyHeader.php';
-        $content = require 'view/backOffice/tinyEditPost.php';
         require 'view/backOffice/tinyTemplate.php';
     }
 

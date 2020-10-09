@@ -1,5 +1,5 @@
     <header class="p-2 bg-dark text-white">
-        <h1 class="text-center"> <?= $h1 ?></h1>
+        <h1 class="text-center"><i class="fas fa-feather-alt mr-2" aria-hidden="true"></i> <?= $h1 ?></h1>
     </header>
 
     <section class="widgets p-3">
@@ -7,7 +7,7 @@
             <div class="d-flex carte">
                 <div class="w_users d-flex align-items-center justify-content-around bg-success">
                     <a class="text-white" role="button" href="index.php?action=member_list">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-users" title="liste des membres" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="m-3">
@@ -29,7 +29,7 @@
             <div class="d-flex carte">
                 <div class="w_comments d-flex align-items-center justify-content-around bg-warning">
                     <a class="text-white" role="button" href="index.php?action=comments_awaiting">
-                        <i class="fas fa-comments"></i>
+                        <i class="fas fa-comments" title="commentaires en attente de publication" aria-hidden="true"></i>
                     </a>
                     
                 </div>
@@ -52,7 +52,7 @@
             <div class="d-flex carte">
                 <div class="w_reports d-flex align-items-center justify-content-around bg-danger">
                     <a class="text-white" role="button" href="index.php?action=show_reports">
-                        <i class="far fa-bell"></i>
+                        <i class="far fa-bell" title="commentaires signalés" aria-hidden="true"></i>
                     </a>
                 </div>
                 <div class="m-3">

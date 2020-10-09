@@ -8,7 +8,7 @@
             while($data = $showCommentsAwaiting->fetch()){
                 $id = $data['id'];
                 $pseudo = $data['pseudo'];
-                $title = $data['title'];
+                $commentTitle = $data['title'];
                 $comment = $data['comment'];
                 $comment_date = $data['comment_date_fr'];
                 $post_id = $data['post_id'];
@@ -16,7 +16,7 @@
         <div class="m-3 p-3 shadow rounded bg-light">
             <p><i class="far fa-comment-dots text-info m-2" aria-hidden="true"></i> <span class="font-weight-bold"> <?= $postNumber ?> </span> <?= $post_id ?></p>
             <p><span class="font-weight-bold"> <?= $theAuthor ?> </span> <?= $pseudo ?></p> 
-            <p><span class="font-weight-bold"> <?= $theTitle ?> </span> <?= $title ?></p>
+            <p><span class="font-weight-bold"> <?= $theTitle ?> </span> <?= $commentTitle ?></p>
             <p><span class="font-weight-bold"> <?= $theComment ?> </span> <?= $comment ?></p>
             <p><span class="font-weight-bold"> <?= $theDate ?> </span> <?= $comment_date ?></p>
             <a class="btn btn-outline-info" role="button" href="index.php?action=publish_comment&id=<?= $id ?>"> <?= $publish ?> </a>

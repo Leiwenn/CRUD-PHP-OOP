@@ -24,7 +24,12 @@ class FrontRouter{
 
     private function viewPostsRoute(){
         $frontController = new \p4\blog\controller\FrontController();
-        $frontController->showPosts();
+        if(isset($_GET['page']) && !empty($_GET['page'])){
+            $currentPage = htmlspecialchars($_GET['page']);
+        }else{
+            $currentPage = 1;
+        }
+        $frontController->showPostsWithPagination($currentPage);
     }
 
     private function viewPostRoute(){

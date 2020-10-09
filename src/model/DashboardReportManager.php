@@ -34,14 +34,14 @@ class DashboardReportManager extends DbManager{
         return $getReport;
     }
 
-    public function deleteReport($rid){
+    public function deleteTheCommentReports($comment_id){
         $db = $this->dbConnexion();
         $req = $db->prepare(
             'DELETE FROM reports 
-            WHERE id LIKE ' . "'" . $rid . "'"
+            WHERE comment_id LIKE ' . "'" . $comment_id . "'"
         );
-        $req->bindValue(':rid', $rid, \PDO::PARAM_INT);
-        $req->execute(array($rid));
+        $req->bindValue(':comment_id', $comment_id, \PDO::PARAM_INT);
+        $req->execute(array($comment_id));
         return $req;
     }
 
@@ -58,42 +58,17 @@ class DashboardReportManager extends DbManager{
         return $req;
     }
 
-    public function deleteMemberReports($comment_author){
+    public function deleteMemberReports($member_pseudo){
         $db = $this->dbConnexion();
         $req = $db->prepare(
             'DELETE FROM reports 
-            WHERE comment_author = :comment_author'
+            WHERE member_pseudo = :member_pseudo'
         );
-        $req->bindValue(':comment_author', $comment_author, \PDO::PARAM_STR);
+        $req->bindValue(':member_pseudo', $member_pseudo, \PDO::PARAM_STR);
         $req->execute(array(
-            'comment_author' => $comment_author
+            'member_pseudo' => $member_pseudo
         ));
         return $req;
     }
 
-    public function deleteComment($id){
-        $db = $this->dbConnexion();
-        $req = $db->prepare(
-            'DELETE FROM comments 
-            WHERE id LIKE :id'
-        );
-        $req->bindValue(':id', $id, \PDO::PARAM_INT);
-        $req->execute(array(
-            'id' => $id
-        ));
-        return $req;
-    }
-
-    public function keepComment($id){
-        $db = $this->dbConnexion();
-        $req = $db->prepare(
-            'DELETE FROM reports 
-            WHERE id LIKE :id'
-        );
-        $req->bindValue(':id', $id, \PDO::PARAM_INT);
-        $req->execute(array(
-            'id' => $id
-        ));
-        return $req;
-    }
 }

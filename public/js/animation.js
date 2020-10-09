@@ -9,5 +9,4 @@ $(document).ready(function(){
     $('#backToTop').on('click', function(){
         $('body').scrollTop(0);
     });
-    
 });

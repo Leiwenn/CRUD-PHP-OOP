@@ -1,16 +1,16 @@
-    <section class="last bg-white rounded w-75 mx-auto home_article">
-        <h2 class="font-weight-bold mt-5 p-3 text-center text-white ombre bg-dark rounded"><i class="fas fa-feather-alt mr-2" aria-hidden="true"></i> <?= $h2 ?> </h2>
+    <section class="last w-75 mx-auto home_article pt-4">
+        <h2 class="font-weight-bold mt-2 p-3 text-center text-white ombre bg-dark rounded"><i class="fas fa-feather-alt mr-2" aria-hidden="true"></i> <?= $h2 ?> </h2>
         <?php
             while($data = $showLastPost->fetch()){
         ?>
-            <article class="rounded p-3">
-                <h3 class="text-center m-3"> <?= $data['title'] ?> </h3>
-                <div class="p-3 row">
-                    <img src="public/img/<?= $data['file_name'] ?>" class="img-fluid col-12 col-md-6 mx-auto mb-2" alt="<?= $data['file_description'] ?>" />
-                    <p class="col-12">
-                        <?= '<i class="fas fa-quote-left fa-2x mr-2"></i>' . ' ' . substr($data['content'], 0, 700) . '...' ?>
-                        <a href="index.php?action=viewPost&id=<?= $data['id'] ?>" class="ml-2 btn btn-info btn-sm">Lire la suite</a>
+            <article class="rounded card col-12 col-md-8 mx-auto">
+                <img src="public/img/<?= $data['file_name'] ?>" class="img-fluid card-img-top rounded" alt="<?= $data['file_description'] ?>" />
+                <div class="card-body">
+                    <h3 class="card-title text-center"> <?= $data['title'] ?> </h3>
+                    <p class="card-text text-left">
+                        <?= substr(html_entity_decode($data['content']), 0, 1000) . '...' ?>
                     </p>
+                    <a href="index.php?action=viewPost&id=<?= $data['id'] ?>" class="ml-2 btn btn-info btn-sm">Lire la suite</a>
                 </div>
             </article>
         <?php  
@@ -27,6 +27,4 @@
         <p class="font-italic">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, autem perferendis obcaecati perspiciatis expedita, voluptate quod mollitia omnis exercitationem enim esse illum porro asperiores architecto! Velit corporis cum facere aliquid, fugit dolorum quos nisi! Explicabo, reiciendis? Earum vel nam expedita maxime quos fugit sapiente eligendi, quis quisquam? Ut cupiditate voluptas, natus et repudiandae ipsa magni dolor deserunt corporis, tempora in necessitatibus quis, temporibus labore! Beatae, tenetur ex consectetur nihil atque eveniet pariatur possimus sapiente, ducimus ipsam quos architecto?</p>
         <p class="cinzelD font-weight-bold">JEAN FORTEROCHE</p>
     </section>
-
-<!-- end div wrapper -->
-</div>
+    <a id="backToTop" class="btn" role="btn"><i class="fas fa-arrow-circle-up"></i></a>

@@ -46,6 +46,10 @@
 	background-position: center center;
 	background-attachment: fixed;
     background-size: cover;
+    height: auto;
+}
+body{
+	background: #343A40;;
 }
 .ombre{
     text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em grey;
@@ -53,6 +57,10 @@
 
 h1{
     color: white;
+}
+
+nav a:hover{
+	text-decoration: underline !important;
 }
 
 span{
@@ -72,9 +80,18 @@ body{
 .container-fluid{
 	max-width: 1920px;
 	margin: auto;
-	padding: 0;
+    padding: 0;
+    height: 100%;
 }
 
 .card{
     width: 100%;
+}
+
+/* ---- MEDIA QUERIES ----  */
+@media (max-width: 767.98px){
+    h1{
+        font-size: 30px;
+    }
+
 }

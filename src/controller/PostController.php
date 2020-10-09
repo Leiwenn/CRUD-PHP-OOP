@@ -13,7 +13,8 @@ class PostController{
 
     public function getPost($postId){
         $postManager = new PostManager();
-        $post = $postManager->getPost($postId);
+        $id =$postId;
+        $post = $postManager->getPost($id);
         return $post;
     }
 }

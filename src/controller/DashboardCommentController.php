@@ -11,6 +11,7 @@ class DashboardCommentController{
         $linkHomeDashboard = 'Accueil Dashboard';
         $linkTiny = 'Editeur de texte';
         $linkHome = 'Voir le site';
+        $linkDisconnect = '<i class="fas fa-sign-out-alt" title="déconnexion" aria-hidden="true"></i>';
         $h2 = 'Commentaires en attente de publication';
         $postNumber = 'Lié au billet n°';
         $theAuthor = 'Auteur du commentaire:';
@@ -20,8 +21,6 @@ class DashboardCommentController{
         $publish = 'Publier';
         $delete = 'Supprimer';
         $showCommentsAwaiting = $this->getAllCommentsAwaiting();
-        $nav = require 'view/backOffice/nav.php';
-        $content = require 'view/backOffice/commentsAwaiting.php';
         require 'view/backOffice/template.php';
     }
 
@@ -39,5 +38,15 @@ class DashboardCommentController{
     public function deleteCommentAwaiting($id){
         $dashboardCommentManager = new DashboardCommentManager();
         $dashboardCommentManager->deleteCommentAwaiting($id);
+    }
+
+    public function deleteComment($id){
+        $dashboardCommentManager = new DashboardCommentManager();
+        $dashboardCommentManager->deleteComment($id);
+    }
+    public function keepAComment($rid){
+        $dashboardCommentManager = new DashboardCommentManager();
+        $id = $rid;
+        $dashboardCommentManager->keepComment($id);
     }
 }

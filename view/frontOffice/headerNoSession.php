@@ -1,28 +1,8 @@
-<div class="container-fluid">
-    <div class="text-center bg-dark text-white p-3">
-        <h1 class="ombre"> <?= $h1 ?> </h1>
-        <nav class="navbar navbar-expand-md">
-            <button class="navbar-toggler mx-auto text-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span></button>
-            <div class="collapse navbar-collapse ml-3" id="navbarSupportedContent">
-                <ul class="navbar-nav row col-12 mx-auto">
-                    <li class="nav-item col-12 col-md-3">
-                        <a class="nav-link text-white" href="index.php"> <?= $linkHome ?> </a>
-                    </li>
-                    <li class="nav-item col-12 col-md-3">
-                        <a class="nav-link text-white" href="index.php?action=viewPosts"> <?= $linkPostsList ?> </a>
-                    </li>
-                    <li class="nav-item col-12 col-md-3">
-                        <a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#"> <?= $linkLogin ?> </a>
-                    </li>
-                    <li class="nav-item col-12 col-md-3">
-                        <a class="nav-link text-white" type="button" data-toggle="modal" data-target="#registration" href="#"> <?= $linkSuscribe ?> </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="wrapper pt-5 pb-5">
-
+<header class="text-center pt-4 mb-4">
+    <button type="button" id="callToAction" data-toggle="modal" data-target="#registration" class="btn btn-lg btn-info mt-2">
+        <i id="feather" class="fas fa-feather-alt mr-2" aria-hidden="true"></i> S'inscrire
+    </button>
+</header>
 
 <!-- MODAL -->
 
@@ -41,7 +21,7 @@
                     <input class="form-control" type="password" name="password" id="password" placeholder="password" required>
                     <div class="form-group form-check">
 					    <label class="pt-4 form-check-label" for="checkbox">
-                            <input class="form-check-input" type="checkbox" name="checkbox">
+                            <input class="form-check-input" type="checkbox" name="checkbox"> 
                             se souvenir de moi
                         </label>
                         <small class="text-muted">(Enregistrement sous forme de cookies)</small>
@@ -66,10 +46,12 @@
             <div class="modal-body">
                 <form action="index.php?action=registration" method="post">
                     <label class="pb-1" for="pseudo">Votre pseudo</label>
+                    <button title="Le pseudo ne doit contenir que des lettres et des chiffres, et doit contenir entre 3 et 16 caractères" class="tips bg-secondary text-white">?</button>
                     <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" required>
                     <label class="pb-1 pt-2" for="mail">Votre adresse mail</label>
                     <input class="form-control" type="mail" name="mail" id="mail" placeholder="adresse@mail.fr" required>
                     <label class="pb-1 pt-2" for="password">Mot de passe</label>
+                    <button title="Le mot de passe ne peut contenir que des lettres minuscules, majuscules et des chiffres" class="tips bg-secondary text-white">?</button>
                     <input class="form-control" type="password" name="password" id="password" placeholder="password" required>
                     <label class="pt-2" for="passwordConfirm">Confirmer votre mot de passe</label>
                     <input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" placeholder="password" required>

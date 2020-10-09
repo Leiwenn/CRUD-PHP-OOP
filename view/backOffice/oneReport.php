@@ -8,16 +8,14 @@
             while($data = $getReportedComment->fetch()){
                 $comment_id = $data['comment_id'];
         ?>
-            <div class="border bg-light rounded shadow m-3 p-2 mb-4">
+            <div class="border bg-light rounded shadow m-3 p-2 mb-4 oneReport">
                 <p><i class="far fa-comment-dots text-warning" aria-hidden="true"></i> <span>Auteur du commentaire:</span> <?= $data['pseudo'] ?> </p>
                 <p><span>Titre du commentaire:</span> <?= $data['title'] ?> </p>
                 <p><span>Commentaire:</span> <?= $data['comment'] ?> </p>
                 <p><span>Date du commentaire:</span> <?= $data['comment_date'] ?> </p>
-                <div class="btn-group" role="group" aria-label="garder le commentaire ou le supprimer ou exclure le membre">
-                    <a class="btn btn-info" role="button" href="index.php?action=keep_comment&rid=<?= $rid ?>">Le garder</a>
-                    <a class="btn btn-warning" role="button" href="index.php?action=delete_comment&comment_id=<?= $comment_id ?>&rid=<?= $rid ?>">Le supprimer</a>
-                    <a class="btn btn-danger" role="button" href="index.php?action=exclude_member&pseudo=<?= $data['pseudo'] ?>"><i class="fa fa-user-times" aria-hidden="true"></i> Supprimer le commentaire et exclure le membre</a>
-                </div>
+                <a class="btn btn-info mx-auto" role="button" href="index.php?action=keep_comment&rid=<?= $rid ?>">Garder</a>
+                <a class="btn btn-warning mx-auto" role="button" href="index.php?action=delete_comment&comment_id=<?= $comment_id ?>&rid=<?= $rid ?>">Supprimer</a>
+                <a class="btn btn-danger mx-auto" role="button" href="index.php?action=exclude_member&pseudo=<?= $data['pseudo'] ?>"><i class="fa fa-user-times" aria-hidden="true"></i> Supprimer et Exclure le membre</a>
             </div>
         <?php
             }

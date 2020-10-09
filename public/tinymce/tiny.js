@@ -1,11 +1,18 @@
 tinymce.init({
     selector: 'textarea#tiny_post, textarea#tiny_post_content',
     language: 'fr_FR',
-    menubar: 'file edit view',
-    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | spellchecker | blockquote | wordcount | help',
-    toolbar_sticky: true,
-    plugins: 'advlist core autolink link charmap print preview hr anchor pagebreak help spellchecker wordcount',
-    toolbar_mode: 'floating wrap',
+    height: 500,
+    menubar: false,
+    plugins: [
+      'advlist autolink lists link image charmap print preview anchor',
+      'searchreplace visualblocks code fullscreen',
+      'insertdatetime media table paste code help wordcount'
+    ],
+    toolbar: 'undo redo | formatselect | ' +
+    'bold italic backcolor | alignleft aligncenter ' +
+    'alignright alignjustify | bullist numlist outdent indent | ' +
+    'removeformat | help',
+    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
     mobile: {
         menubar: true
     }

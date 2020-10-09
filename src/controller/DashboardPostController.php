@@ -5,26 +5,19 @@ use p4\blog\model\DashboardPostManager as DashboardPostManager;
 use p4\blog\model\PostManager as PostManager;
 use p4\blog\model\DashboardReportManager as DashboardReportManager;
 use p4\blog\model\DashboardCommentManager as DashboardCommentManager;
-class DashboardPostController{
-
-    private const TITLE = 'Billets';
-    private const H1 = 'Dashboard';
-    private const HOMEDASHBOARD = 'Accueil Dashboard';
-    private const LINKTINY = 'Editeur de texte';
-    private const LINKHOME = 'Voir le site';
+class DashboardPostController{ 
 
     public function showPostDashboard($id){
-        $title = self::TITLE;
-        $h1 = self::H1;
-        $linkHomeDashboard = self::HOMEDASHBOARD;
-        $linkTiny = self::LINKTINY;
-        $linkHome = self::LINKHOME;
+        $title = 'Billets';
+        $h1 = 'Dashboard';
+        $linkHomeDashboard = 'Accueil Dashboard';
+        $linkTiny = 'Editeur de texte';
+        $linkHome = 'Voir le site';
+        $linkDisconnect = '<i class="fas fa-sign-out-alt" title="déconnexion" aria-hidden="true"></i>';
         $h2 = 'Modifier le billet';
         $linkEdit = 'Editer';
         $linkDelete = 'Supprimer';
         $showPostDashboard = $this->getPostDashboard($id);
-        $nav = require 'view/backOffice/nav.php';
-        $content = require 'view/backOffice/postDashboard.php';
         require 'view/backOffice/template.php'; 
     }
 

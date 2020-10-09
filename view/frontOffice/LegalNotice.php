@@ -1,5 +1,5 @@
-<section class="card-deck onePostContainer bg-white mx-auto mb-4">
-    <h2 class="notice w-100 text-center p-2"> <?= $h2 ?> </h2>
+<section class="onePostContainer bg-white rounded mx-auto">
+    <h2 class="notice w-100 text-center p-2 rounded"> <?= $h2 ?> </h2>
     <article class="p-2">
         <h3>Editeur et hébergement</h3>
         <p>Ce site est édité par Jean Forteroche. Vous pouvez me contacter par email à fictif-editions-jf@fictif.com Ce site est hébergé par O2switch, 222 Boulevard Gustave Flaubert, 63000 Clermont-Ferrand.</p>
@@ -13,6 +13,7 @@
 
     <article class="p-2">
         <h5>Collecte de données</h5>
+        <p>Le site "Blog de Jean Forteroche" s’engage à ce que la collecte et le traitement de vos données soient conformes au règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés.</p>
         <p>Les informations et données personnelles (pseudo, email, date d'inscription) collectées par le site le sont pour un usage exclusivement interne. Je m’engage à ne pas transmettre ces données à des tiers. Vous disposez d’un droit d’accès, d’interrogation et de rectification en me contactant par email à fictif-editions-jf@fictif.com</p>
     </article>
  
@@ -24,9 +25,10 @@
 
     <article class="p-2">
         <h6>Cookies</h6>
-        <p>Si lors de votre connexion sur le site vous cochez la case "se souvenir de moi", un cookie sera enregistré dans votre navigateur. Le cookie sert à enregistrer vos informations de connexion pour vous connecter plus rapidement la prochaine fois. Cet enregistrement est valable un an.</p>
-        <p>Ce site dispose d'un gestionnaire de cookies. Vous pouvez accéder à la gestion de vos cookies en cliquant sur le bandeau en bas à droite</p>
+        <p class="pl-2">1- Nous utilisons "google analytics" pour analyser le trafic sur le site.</p>
+        <p class="pl-2">2- Si lors de votre connexion sur le site vous cochez la case "se souvenir de moi", un cookie sera enregistré dans votre navigateur. Le cookie sert à enregistrer vos informations de connexion pour vous connecter plus rapidement la prochaine fois. Cet enregistrement est valable un an.</p>
+        <p>Vous disposez d'un gestionnaire de cookies. Vous pouvez accéder à cette gestion en cliquant sur le lien "Gestion de cookies" en bas du site.</p>
     </article>
 
-    <a class="btn btn-info btn-block" role="button" href="index.php">Retour vers le blog</a>
+    <a id="backToTop" class="btn" role="btn"><i class="fas fa-arrow-circle-up"></i></a>
 </section>

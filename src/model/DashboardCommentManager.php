@@ -70,4 +70,30 @@ class DashboardCommentManager extends DbManager{
         ));
         return $req;
     }
+
+    public function deleteComment($id){
+        $db = $this->dbConnexion();
+        $req = $db->prepare(
+            'DELETE FROM comments 
+            WHERE id LIKE :id'
+        );
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->execute(array(
+            'id' => $id
+        ));
+        return $req;
+    }
+
+    public function keepComment($id){
+        $db = $this->dbConnexion();
+        $req = $db->prepare(
+            'DELETE FROM reports 
+            WHERE id LIKE :id'
+        );
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->execute(array(
+            'id' => $id
+        ));
+        return $req;
+    }
 }

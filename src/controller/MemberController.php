@@ -27,9 +27,9 @@ class MemberController{
     }
 
     private function deleteAllReportsFromMember($pseudo){
-        $comment_author = $pseudo;
+        $member_pseudo = $pseudo;
         $dashboardReportManager = new DashboardReportManager();
-        $dashboardReportManager->deleteMemberReports($comment_author);
+        $dashboardReportManager->deleteMemberReports($member_pseudo);
     }
 
     private function deleteAllCommentsFromMember($pseudo){

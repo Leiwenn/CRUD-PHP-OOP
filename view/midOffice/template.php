@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-    <script type="text/javascript" src="public/tarteaucitron/tarteaucitron.js"></script>
+        <script type="text/javascript" src="public/tarteaucitron/tarteaucitron.js"></script>
         <script type="text/javascript">
             tarteaucitron.init({
-                "privacyUrl": "", /* Privacy policy url => A REDIGER cf .txt */
+                "privacyUrl": "http://localhost/P4_GOUAULT_EMELINE/index.php?action=legalNotice",                           
                 "hashtag": "#tarteaucitron",
-                "cookieName": "tarteaucitron", /* Cookie name */
+                "cookieName": "tarteaucitron",
                 "orientation": "middle",
-                "showAlertSmall": true,
+                "showAlertSmall": false,
                 "cookieslist": true,
                 "adblocker": false,
                 "DenyAllCta" : true,
@@ -18,10 +18,9 @@
                 "removeCredit": false,
                 "moreInfoLink": true,
                 "useExternalCss": false,
-                "readmoreLink": "/cookiespolicy", /* Change the default readmore link pointing to tarteaucitron.io */
+                "readmoreLink": "http://localhost/P4_GOUAULT_EMELINE/index.php?action=legalNotice", /* URL A CHANGER */
                 "mandatory": false
             });
-            (tarteaucitron.job = tarteaucitron.job || []).push('facebook');
         </script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,12 +51,22 @@
     </head>
 
     <body>
-        <?= $header ?>    
+        <div class="container-fluid">
 
-        <?= $content ?>
+            <?php include 'view/midOffice/nav.php'; ?>    
+
+            <?php include 'view/midOffice/home.php'; ?>
+
+        </div>
         
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            tarteaucitron.user.gtagUa = 'UA-XXXXXXXX-X';
+            tarteaucitron.user.gtagMore = function () { };
+            (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+            (tarteaucitron.job = tarteaucitron.job || []).push('facebook');
+        </script>
     </body>
 </html>

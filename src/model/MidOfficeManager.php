@@ -35,6 +35,38 @@ class MidOfficeManager extends DbManager{
         return $req;
     }
 
+    public function setNewPseudoInComments($oldPseudo, $newPseudo){
+        $db = $this->dbConnexion();
+        $req = $db->prepare(
+            'UPDATE comments
+            SET pseudo = :newPseudo
+            WHERE pseudo LIKE :oldPseudo'
+        );
+        $req->bindValue(':newPseudo', $newPseudo, \PDO::PARAM_STR);
+        $req->bindValue(':oldPseudo', $oldPseudo, \PDO::PARAM_STR);
+        $req->execute(array(
+            'oldPseudo' => $oldPseudo,
+            'newPseudo' => $newPseudo
+        ));
+        return $req;
+    }
+
+    public function setNewPseudoInReports($oldPseudo, $newPseudo){
+        $db = $this->dbConnexion();
+        $req = $db->prepare(
+            'UPDATE reports
+            SET member_pseudo = :newPseudo
+            WHERE member_pseudo LIKE :oldPseudo'
+        );
+        $req->bindValue(':newPseudo', $newPseudo, \PDO::PARAM_STR);
+        $req->bindValue(':oldPseudo', $oldPseudo, \PDO::PARAM_STR);
+        $req->execute(array(
+            'oldPseudo' => $oldPseudo,
+            'newPseudo' => $newPseudo
+        ));
+        return $req;
+    }
+
     public function changePassword($pseudo, $newPassword){
         $passwordHache = password_hash($newPassword, PASSWORD_DEFAULT);
         $db = $this->dbConnexion();

@@ -20,8 +20,6 @@ class MidOfficeController{
         $button = 'Fermer';
         $getOneMember = $this->getMember($pseudo);
         $getComments = $this->getComments($pseudo);
-        $header = require 'view/midOffice/header.php';
-        $content = require 'view/midOffice/home.php';
         require 'view/midOffice/template.php';
     }
 
@@ -41,6 +39,18 @@ class MidOfficeController{
         $midOfficeManager = new MidOfficeManager();
         $midOfficeManager->setNewPseudo($oldPseudo, $newPseudo);
         $_SESSION['pseudo'] = $newPseudo;
+        $this->updatePseudoInComments($oldPseudo, $newPseudo);
+        $this->updatePseudoInReports($oldPseudo, $newPseudo);
+    }
+
+    private function updatePseudoInComments($oldPseudo, $newPseudo){
+        $midOfficeManager = new MidOfficeManager();
+        $midOfficeManager->setNewPseudoInComments($oldPseudo, $newPseudo);
+    }
+
+    private function updatePseudoInReports($oldPseudo, $newPseudo){
+        $midOfficeManager = new MidOfficeManager();
+        $midOfficeManager->setNewPseudoInReports($oldPseudo, $newPseudo);
     }
 
     public function changePassword($pseudo, $newPassword){

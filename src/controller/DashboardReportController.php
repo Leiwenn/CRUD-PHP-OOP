@@ -10,29 +10,24 @@ class DashboardReportController{
     private const HOMEDASHBOARD = 'Accueil Dashboard';
     private const LINKTINY = 'Editeur de texte';
     private const LINKHOME = 'Voir le site';
+    private const LINKDISCONNECT = '<i class="fas fa-sign-out-alt" title="déconnexion" aria-hidden="true"></i>';
 
-    public function deleteComment($id){
+
+    public function deleteCommentReports($comment_id){
         $dashboardReportManager = new DashboardReportManager();
-        $dashboardReportManager->deleteComment($id);
+        $dashboardReportManager->deleteTheCommentReports($comment_id);
     }
 
-    public function keepAComment($rid){
-        $dashboardReportManager = new DashboardReportManager();
-        $id = $rid;
-        $dashboardReportManager->keepComment($id);
-    }
-    
     public function showReports(){
         $title = self::TITLE;
         $h1 = self::H1;
         $linkHomeDashboard = self::HOMEDASHBOARD;
         $linkTiny = self::LINKTINY;
         $linkHome = self::LINKHOME;
+        $linkDisconnect = self::LINKDISCONNECT;
         $h2 = 'Demandes de modération';
         $link = 'Voir le commentaire';
         $getAllReports = $this->getTheReports();
-        $nav = require 'view/backOffice/nav.php';
-        $content = require 'view/backOffice/reports.php';
         require 'view/backOffice/template.php';
     }
 
@@ -48,10 +43,9 @@ class DashboardReportController{
         $linkHomeDashboard = self::HOMEDASHBOARD;
         $linkTiny = self::LINKTINY;
         $linkHome = self::LINKHOME;
+        $linkDisconnect = self::LINKDISCONNECT;
         $h2 = 'Modération';
         $getReportedComment = $this->getTheReportedComment($rid);
-        $nav = require 'view/backOffice/nav.php';
-        $content = require 'view/backOffice/oneReport.php';
         require 'view/backOffice/template.php';
     }
 
@@ -61,8 +55,4 @@ class DashboardReportController{
         return $getTheReportedComment;
     }
 
-    public function deleteReport($rid){
-        $dashboardReportManager = new DashboardReportManager();
-        $dashboardReportManager->deleteReport($rid);
-    }
 }

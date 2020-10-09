@@ -33,29 +33,36 @@ class PostsRouter{
             if(isset($_POST['record'])){
                 $title = htmlspecialchars($_POST['title']);
                 $content = htmlspecialchars($_POST['content']);
-                if((!isset($_POST['file_name'])) && (!isset($_POST['file_description']))){
+                $file_name = htmlspecialchars($_POST['file_name']);
+                $file_description = htmlspecialchars($_POST['file_description']);
+                if((!empty($_POST['file_name'])) && (!empty($_POST['file_description']))){
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->recordPost($title, $content, $file_name, $file_description);
+                    $this->showDashboardRoute();
+                }else{
                     $file_name = 'cover.png';
                     $file_description = 'Paysage de l\'alaska, montagne avec sapins qui surplombe une rivière, photo de la couverture du livre';
-                }else{
-                    $file_name = htmlspecialchars($_POST['file_name']);
-                    $file_description = htmlspecialchars($_POST['file_description']);
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->recordPost($title, $content, $file_name, $file_description);
+                    $this->showDashboardRoute();
                 }
-                $dashboardPostController = new \p4\blog\controller\DashboardPostController();
-                $dashboardPostController->recordPost($title, $content, $file_name, $file_description);
-                $this->showDashboardRoute();
             }elseif(isset($_POST['publish'])){
                 $title = htmlspecialchars($_POST['title']);
                 $content = htmlspecialchars($_POST['content']);
-                if((!isset($_POST['file_name'])) && (!isset($_POST['file_description']))){
+                $file_name = htmlspecialchars($_POST['file_name']);
+                $file_description = htmlspecialchars($_POST['file_description']);
+                if((!empty($_POST['file_name'])) && (!empty($_POST['file_description']))){
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->publishPost($title, $content, $file_name, $file_description);
+                    $this->showDashboardRoute();
+                }else{
                     $file_name = 'cover.png';
                     $file_description = 'Paysage de l\'alaska, montagne avec sapins qui surplombe une rivière, photo de la couverture du livre';
-                }else{
-                    $file_name = htmlspecialchars($_POST['file_name']);
-                    $file_description = htmlspecialchars($_POST['file_description']);
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->publishPost($title, $content, $file_name, $file_description);
+                    $this->showDashboardRoute();
                 }
-                $dashboardPostController = new \p4\blog\controller\DashboardPostController();
-                $dashboardPostController->publishPost($title, $content, $file_name, $file_description);
-                $this->showDashboardRoute();
+                
             }
         }
     }
@@ -76,9 +83,17 @@ class PostsRouter{
                 $content = htmlspecialchars($_POST['content']);
                 $file_name = htmlspecialchars($_POST['file_name']);
                 $file_description = htmlspecialchars($_POST['file_description']);
-                $dashboardPostController = new \p4\blog\controller\DashboardPostController();
-                $dashboardPostController->updatePost($id, $title, $content, $file_name, $file_description);
-                $this->showDashboardRoute();
+                if(!empty($_POST['file_name'])){
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->updatePost($id, $title, $content, $file_name, $file_description);
+                    $this->showDashboardRoute();
+                }else{
+                    $file_name = 'cover.png';
+                    $dashboardPostController = new \p4\blog\controller\DashboardPostController();
+                    $dashboardPostController->updatePost($id, $title, $content, $file_name, $file_description);
+                    $this->showDashboardRoute();
+                }
+                
             }elseif(isset($_POST['delete'])){
                 $id = htmlspecialchars($_GET['id']);
                 $dashboardPostController = new \p4\blog\controller\DashboardPostController();

@@ -91,6 +91,14 @@ Etape 8 tests/corrections
 - création "mentions légales", "liste des membres"
 
 Etape 8 CSS-JS
-- css/responsive
-- Meta Tags
+- css/responsive/Meta Tags
+- accessibilité
 - bouton backToTop
+
+Etape 9 corrections et mise en ligne
+- correction deleteCommentRoute()
+- correction TinyController()
+- php pagination
+- clean des require / include pour les templates
+- vérification du cross browser
+            

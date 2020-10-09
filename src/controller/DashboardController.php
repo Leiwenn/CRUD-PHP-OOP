@@ -7,12 +7,18 @@ use p4\blog\model\MemberManager as MemberManager;
 
 class DashboardController{
 
+    private const LINKHOMEDASHBOARD = 'Accueil Dashboard';
+    private const LINKTINY = 'Editeur de texte';
+    private const LINKHOME = 'Voir le site';
+    private const LINKDISCONNECT = '<i class="fas fa-sign-out-alt" title="déconnexion" aria-hidden="true"></i>';
+
     public function showDashboard(){
         $title = 'Dashboard';
         $h1 = 'Dashboard';
-        $linkHomeDashboard = 'Accueil Dashboard';
-        $linkTiny = 'Editeur de texte';
-        $linkHome = 'Voir le site';
+        $linkHomeDashboard = self::LINKHOMEDASHBOARD;
+        $linkTiny = self::LINKTINY;
+        $linkHome = self::LINKHOME;
+        $linkDisconnect = self::LINKDISCONNECT;
         $membersTitle = 'Membres';
         $commentsTitle = 'Commentaires';
         $reportsTitle = 'Modération';
@@ -27,8 +33,6 @@ class DashboardController{
         $showPostsAwaiting = $this->getPostsAwaiting();
         $totalPosts = $this->totalPosts();
         $showPostsList = $this->getPosts();
-        $nav = require 'view/backOffice/nav.php';
-        $content = require 'view/backOffice/dashboard.php';
         require 'view/backOffice/template.php';
     }
 
@@ -77,15 +81,14 @@ class DashboardController{
     }
 
     public function showMemberList(){
-        $title = 'Dashboard';
+        $title = 'Membres';
+        $linkHomeDashboard = self::LINKHOMEDASHBOARD;
+        $linkTiny = self::LINKTINY;
+        $linkHome = self::LINKHOME;
+        $linkDisconnect = self::LINKDISCONNECT;
         $h1 = 'Liste des membres';
         $h2 = 'Membres actuels';
-        $linkHomeDashboard = 'Accueil Dashboard';
-        $linkTiny = 'Editeur de texte';
-        $linkHome = 'Voir le site';
         $memberList = $this->getMembersList();
-        $nav = require 'view/backOffice/nav.php';
-        $content = require 'view/backOffice/memberList.php';
         require 'view/backOffice/template.php';
     }
 

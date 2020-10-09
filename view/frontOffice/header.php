@@ -1,33 +1,12 @@
-<div class="container-fluid">
-    <div class="text-center bg-dark text-white p-3">
-        <h1 class="ombre"> <?= $h1 ?> </h1>
-        <nav class="navbar navbar-expand-md">
-            <button class="navbar-toggler mx-auto text-white" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="fa fa-bars" aria-hidden="true"></i></span></button>
-            <div class="collapse navbar-collapse ml-3" id="navbarSupportedContent">
-                <ul class="navbar-nav row col-12 mx-auto">
-                    <li class="nav-item col-12 col-md-4">
-                        <a class="nav-link text-white" href="index.php"> <?= $linkHome ?> </a>
-                    </li>
-                    <li class="nav-item col-12 col-md-4">
-                        <a class="nav-link text-white" href="index.php?action=viewPosts"> <?= $linkPostsList ?> </a>
-                    </li>
-                    <li class="nav-item col-12 col-md-4">
-                        <a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#"> <?= $linkLogin ?> </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<header class="hero d-flex justify-content-center align-items-center pt-4 mb-4">
+    <div class="text-center">
+        <img class="img-fluid" src="public/img/book_cover.png" alt="" />
     </div>
-    <div class="wrapper">
-        <header class="hero d-flex justify-content-around align-items-center">
-            <div class="w-50 text-center mx-auto pt-4">
-                <img class="img-fluid" src="public/img/book_cover.png" alt="" />
-            </div>
-            <div class="w-50 text-center d-flex flex-column justify-content-center align-items-center pt-5 p-3 heroP">
-                <p class="h3 p-2 rounded">Inscrivez vous pour commenter</br>vos épisodes préférés !</p>
-                <button type="button" id="callToAction" data-toggle="modal" data-target="#registration" class="btn btn-lg btn-info mr-2 mt-5"><i id="feather" class="fas fa-feather-alt mr-2" aria-hidden="true"></i> S'inscrire</button>
-            </div>
-        </header>
+    <div class="text-center d-flex flex-column justify-content-center align-items-center message">
+        <p class="h2 p-2 rounded">Inscrivez vous pour commenter</br>vos épisodes préférés !</p>
+        <button type="button" id="callToAction" data-toggle="modal" data-target="#registration" class="btn btn-lg btn-info mt-2"><i id="feather" class="fas fa-feather-alt mr-2" aria-hidden="true"></i> S'inscrire</button>
+    </div>
+</header>
 
 
 <!-- MODAL -->
@@ -72,10 +51,12 @@
             <div class="modal-body">
                 <form action="index.php?action=registration" method="post">
                     <label class="pb-1" for="pseudo">Votre pseudo</label>
+                    <button title="Le pseudo ne doit contenir que des lettres et des chiffres, et doit contenir entre 3 et 16 caractères" class="tips bg-secondary text-white">?</button>
                     <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" required>
                     <label class="pb-1 pt-2" for="mail">Votre adresse mail</label>
                     <input class="form-control" type="mail" name="mail" id="mail" placeholder="adresse@mail.fr" required>
                     <label class="pb-1 pt-2" for="password">Mot de passe</label>
+                    <button title="Le mot de passe ne peut contenir que des lettres minuscules, majuscules et des chiffres" class="tips bg-secondary text-white">?</button>
                     <input class="form-control" type="password" name="password" id="password" placeholder="password" required>
                     <label class="pt-2" for="passwordConfirm">Confirmer votre mot de passe</label>
                     <input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" placeholder="password" required>

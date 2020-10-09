@@ -197,13 +197,14 @@ class MemberRouter{
         $pseudo = $_SESSION['pseudo'];
         $memberController = new \p4\blog\controller\MemberController();
         $memberController->deleteMember($pseudo);
+        $memberController->disconnectMember();
         $this->showHomeRoute();
     }
 
     private function excludeMemberRoute(){
         if($_SESSION['admin'] == true){
             $memberController = new \p4\blog\controller\memberController();
-            $pseudo = htmlspecialchars($_GET['pseudo']);    //$pseudo = auteur du comment à modérer
+            $pseudo = htmlspecialchars($_GET['pseudo']);
             $memberController->deleteMember($pseudo);
             $dashboardController = new \p4\blog\controller\DashboardController();
             $dashboardController->showDashboard();

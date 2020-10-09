@@ -40,20 +40,20 @@ h1{
 span, h2, h3, h4{
     font-family: 'cinzelbold';
 }
-.fa-comment-dots{
+.fa-comment-dots, .fa-sign-out-alt{
     font-size: 20px;
 }
 
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
 .container-fluid{
-    color: #2D2D2D;
+    color: #343A40;
 }
-.container-fluid, .reports, .widgets, .comments, .postAwaiting, .memberList{
+body, .container-fluid, .reports, .widgets, .comments, .postAwaiting, .memberList{
     background: url("../img/typewriter.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
-	background-size: cover;
+    background-size: cover;
 }
 .navbar, .w_users, .w_comments, .w_reports{
     color: #FFFFF0;
@@ -65,8 +65,8 @@ nav a:hover{
 .ombre{
     text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em grey;
 }
-.carte{
-    background: #FFFFF0;
+article, .carte, .list-group-item{
+	background: #f5f5f0 !important;
 }
 
 /* ------------------------------------------------------------------------ LAYOUT */
@@ -97,7 +97,7 @@ header{
 
 /* ---- MEDIA QUERIES ---- */
 .container-fluid{
-    max-width: 1920px;
+    max-width: 1920px !important;
     margin: auto;
     padding: 0;
 }
@@ -120,6 +120,15 @@ header{
     }
     .table td:before {
         float: left;
+    }
+
+    .billets{
+        padding: 0 !important;
+    }
+
+    .oneReport a{
+        width: 100%;
+        margin: 5px;
     }
 
 }
