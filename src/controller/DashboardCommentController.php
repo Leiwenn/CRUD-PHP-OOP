@@ -11,13 +11,13 @@ class DashboardCommentController{
         $linkHomeDashboard = 'Accueil Dashboard';
         $linkTiny = 'Editeur de texte';
         $linkHome = 'Voir le site';
-        $linkDisconnect = '<i class="fas fa-sign-out-alt" title="déconnexion" aria-hidden="true"></i>';
+        $linkDisconnect = '<i class="fas fa-sign-out-alt" title="déconnexion"></i>';
         $h2 = 'Commentaires en attente de publication';
         $postNumber = 'Lié au billet n°';
-        $theAuthor = 'Auteur du commentaire:';
-        $theTitle = 'Titre du commentaire:';
+        $theAuthor = 'Auteur : ';
+        $theTitle = 'Titre : ';
         $theComment = 'Commentaire:';
-        $theDate = 'Date du commentaire:';
+        $theDate = 'Le : ';
         $publish = 'Publier';
         $delete = 'Supprimer';
         $showCommentsAwaiting = $this->getAllCommentsAwaiting();

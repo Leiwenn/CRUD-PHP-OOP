@@ -95,10 +95,17 @@ Etape 8 CSS-JS
 - accessibilité
 - bouton backToTop
 
-Etape 9 corrections et mise en ligne
+Etape 9 corrections
 - correction deleteCommentRoute()
 - correction TinyController()
 - php pagination
 - clean des require / include pour les templates
 - vérification du cross browser
-            
+
+ETAPE 10 
+- site ONLINE
+- https
+- mise à jour des URL du site dans le code
+- creation et ajout du sitemap/google search console
+- updateDate publish post awaiting
+- ajout toogle dark mode pour la lecture d'un article

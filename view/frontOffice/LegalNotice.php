@@ -27,8 +27,8 @@
         <h6>Cookies</h6>
         <p class="pl-2">1- Nous utilisons "google analytics" pour analyser le trafic sur le site.</p>
         <p class="pl-2">2- Si lors de votre connexion sur le site vous cochez la case "se souvenir de moi", un cookie sera enregistré dans votre navigateur. Le cookie sert à enregistrer vos informations de connexion pour vous connecter plus rapidement la prochaine fois. Cet enregistrement est valable un an.</p>
-        <p>Vous disposez d'un gestionnaire de cookies. Vous pouvez accéder à cette gestion en cliquant sur le lien "Gestion de cookies" en bas du site.</p>
+        <p>Vous disposez d'un gestionnaire de cookies. Vous pouvez accéder à cette gestion en cliquant sur le bandeau "Gestion des services" en bas à droite du site.</p>
     </article>
 
-    <a id="backToTop" class="btn" role="btn"><i class="fas fa-arrow-circle-up"></i></a>
+    <a id="backToTop" title="retour en haut de page" class="btn"><i class="fas fa-arrow-circle-up"></i></a>
 </section>

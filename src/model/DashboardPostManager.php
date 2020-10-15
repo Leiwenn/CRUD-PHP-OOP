@@ -98,6 +98,20 @@ class DashboardPostManager extends DbManager{
         return $req;
     }
 
+    public function setUpdatedDate($id){
+        $db = $this->dbConnexion();
+        $req = $db->prepare(
+            'UPDATE posts 
+            SET date_creation = NOW() 
+            WHERE id  LIKE :id'
+        );
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->execute(array(
+            'id' => $id
+        ));
+        return $req;
+    }
+
     public function setUpdatedPost($id, $title, $content, $file_name, $file_description){
         $db = $this->dbConnexion();
         $req = $db->prepare(

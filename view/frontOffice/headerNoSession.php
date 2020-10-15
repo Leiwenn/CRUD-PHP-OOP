@@ -15,10 +15,26 @@
 			</div>
 			<div class="modal-body">
 				<form action="index.php?action=login" method="post">
-                    <label class="pb-1" for="pseudo">Votre pseudo:</label>
-                    <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" required>
+                <label class="pb-1" for="pseudo">Votre pseudo:</label>
+                <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" 
+                    <?php
+                    if(isset($_COOKIE['pseudo'])){
+                    ?>
+                        value="<?= $_COOKIE['pseudo'] ?>"
+                    <?php
+                    }
+                    ?> 
+                    required>
                     <label class="pb-1 pt-2" for="password">Mot de passe:</label>
-                    <input class="form-control" type="password" name="password" id="password" placeholder="password" required>
+                    <input class="form-control" type="password" name="password" id="password" placeholder="password"
+                    <?php
+                        if(isset($_COOKIE['password'])){
+                        ?>
+                            value="<?= $_COOKIE['password'] ?>"
+                        <?php
+                        }
+                        ?> 
+                    required>
                     <div class="form-group form-check">
 					    <label class="pt-4 form-check-label" for="checkbox">
                             <input class="form-check-input" type="checkbox" name="checkbox"> 
@@ -45,14 +61,14 @@
             </div>
             <div class="modal-body">
                 <form action="index.php?action=registration" method="post">
-                    <label class="pb-1" for="pseudo">Votre pseudo</label>
+                    <label class="pb-1" for="registration_pseudo">Votre pseudo</label>
                     <button title="Le pseudo ne doit contenir que des lettres et des chiffres, et doit contenir entre 3 et 16 caractères" class="tips bg-secondary text-white">?</button>
-                    <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" required>
+                    <input class="form-control" type="text" name="registration_pseudo" id="registration_pseudo" placeholder="pseudo" required>
                     <label class="pb-1 pt-2" for="mail">Votre adresse mail</label>
-                    <input class="form-control" type="mail" name="mail" id="mail" placeholder="adresse@mail.fr" required>
-                    <label class="pb-1 pt-2" for="password">Mot de passe</label>
+                    <input class="form-control" type="email" name="mail" id="mail" placeholder="adresse@mail.fr" required>
+                    <label class="pb-1 pt-2" for="registration_password">Mot de passe</label>
                     <button title="Le mot de passe ne peut contenir que des lettres minuscules, majuscules et des chiffres" class="tips bg-secondary text-white">?</button>
-                    <input class="form-control" type="password" name="password" id="password" placeholder="password" required>
+                    <input class="form-control" type="password" name="registration_password" id="registration_password" placeholder="password" required>
                     <label class="pt-2" for="passwordConfirm">Confirmer votre mot de passe</label>
                     <input class="form-control" type="password" name="passwordConfirm" id="passwordConfirm" placeholder="password" required>
                     <input class="mt-3 btn btn-info btn-block" type="submit" value="s'inscrire">

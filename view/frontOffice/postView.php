@@ -2,17 +2,19 @@
     <?php
         while ($data = $post->fetch()){
     ?>
-    <article class="card mt-4 w-100 p-md-5 shadow single">
+    <article class="card mt-4 w-100 p-md-5 shadow single bg-white">
+        <div class="text-right p-0">
+            <a id="bright" class="btn btn-secondary">Luminosité</a>
+        </div>
         <img src="public/img/<?= $data['file_name'] ?>" class="card-img-top mt-3 mx-auto img-fluid" alt="<?= $data['file_description'] ?>" />
         <h2 class="card-title text-center m-3"> <?= $data['title'] ?> </h2>
-        <p class="card-text m-3"> <?= '<i class="fas fa-quote-left fa-2x mr-2" aria-hidden="true"></i>' . ' ' . html_entity_decode($data['content']) ?> </p>
+        <p class="card-text m-4"> <?= '<i class="fas fa-quote-left fa-2x mr-2" aria-hidden="true"></i>' . ' ' . html_entity_decode($data['content']) ?> </p>
         <p class="m-3 text-right"> <?= ' le ' . $data['creation_date_fr'] ?> </p>
         <?php
             $postId = $data['id'];
         ?>
         <div class="btn_group d-flex justify-content-around">
-            <!-- data-href="https://www.your-domain.com/your-page.html" -->
-            <div class="fb-like" data-layout="button_count" data-action="like" data-share="false" data-size="large"></div>
+            <div class="fb-like" data-href="https://p4blog.emeline-gouault.com/index.php?action=viewPost&id=$postId" data-layout="button_count" data-action="like" data-share="false" data-size="large"></div>
             <a href="index.php?action=viewPosts" class="btn btn-info btn-sm back"> <?= $linkBack ?> </a>
         </div>
     </article>
@@ -22,7 +24,7 @@
     <div>
         <h3 class="text-center bg-dark text-white rounded"> <?= $h3 ?> </h3>
         <form class="form_comment" action="index.php?action=comment&postId=<?= $postId ?>" method="post">
-            <fieldset class="bg-light shadow p-3 m-3 rounded">
+            <fieldset class="bg-white shadow p-3 m-3 rounded">
                 <p>Pseudo: 
                 <?php
                     if(isset($_SESSION['pseudo'])){
@@ -44,9 +46,9 @@
                 }
             ?>
         </form>
-        <?php 
-            }
-            $post->closeCursor();
+        <?php
+        }
+        $post->closeCursor();
         ?>
     </div>
     <div class="mt-4 pb-5">
@@ -57,7 +59,7 @@
                     $post_concerned_id = $data['post_id'];
                     $comment_id = $data['comment_id'];
             ?>
-                <div class="bg-light shadow p-3 m-3 rounded">
+                <div class="bg-white shadow p-3 m-3 rounded">
                     <p class="font-weight-bold"><i class="fas fa-user-circle" aria-hidden="true"></i> <?= $data['pseudo'] ?>, le <?= $data['comment_date_fr'] ?></p>
                     <p><span class="text-info">Titre</span></br> <?= $data['title'] ?></p>
                     <p><span class="text-info">Commentaire</span></br> <?= nl2br($data['comment']) ?></p>
@@ -72,7 +74,7 @@
                 }
                 if(!isset($comment_id)){
             ?>
-                <div class="bg-light shadow p-3 m-3 rounded">
+                <div class="bg-white shadow p-3 m-3 rounded">
                     <p class="font-weight-bold">Cet article n'a pas encore été commenté.</p>
                     <p>Soyez le/la premier/e !</p>
                 </div>
@@ -82,7 +84,7 @@
             ?>
         </div>
     </div>
-    <a id="backToTop" class="btn" role="btn"><i class="fas fa-arrow-circle-up"></i></a>
+    <a id="backToTop" title="retour en haut de page" class="btn"><i class="fas fa-arrow-circle-up"></i></a>
 </section>
 
 <!-- end div wrapper -->

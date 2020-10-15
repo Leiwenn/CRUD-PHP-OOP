@@ -27,7 +27,7 @@
 	font-display: auto;
 }
 
-.container-fluid{
+.container-fluid, .message{
 	font-family: 'robotoregular', sans-serif;
 }
 h2, h3, h4, h5, h6{
@@ -43,7 +43,7 @@ h2, h3, h4, h5, h6{
 h1{
 	font-size: 35px;
 }
-h1, #callToAction, .cinzelD, .last h2, .message{
+h1, #callToAction, .cinzelD, .last h2{
 	font-family: 'cinzel_decorativesemi_bold';
 }
 .cinzel{
@@ -56,16 +56,17 @@ h1, #callToAction, .cinzelD, .last h2, .message{
 /* ------------------------------------------------------------ COLOR, IMG AND BACKGROUND */
 .container-fluid{
 	color: #343A40;
-}
-body{
-	background: #343A40;
-}
-.wrapper{
 	background: url("../img/typewriter.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
 	background-size: cover;
+}
+body{
+	background: #343A40;
+}
+.wrapper{
+	background: rgba(0, 0, 0, 0.3);
 }
 
 /* --- HEADER --- */
@@ -83,7 +84,7 @@ nav a:hover{
 	text-decoration: none;
 }
 .hero img{
-	width: 40%;
+	width: 35%;
 	box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7), -1px 2px 20px rgba(255, 255, 255, 0.6) inset;
 }
 
@@ -127,25 +128,30 @@ article .back:hover, .last a:hover{
 	width: 20em;
   	height: auto;
   	float: left;
-	shape-outside: circle(45%);
 	clip-path: circle(38%);
 }
 
 /* --- POSTS --- */
+
+.darkMode{
+	background: #343A40 !important;
+	color: 	#FFFAFA;
+	transition: background-color 1s;
+}
 
 article{
 	border: none !important;
 	background: transparent !important;
 	color: #343A40;
 }
-.card-body, .single{
-	background: #f5f5f0 !important;
-}
 article img, .cover{
 	filter: grayscale(60%);
 }
 .single img{
 	width: 30%;
+}
+.single .card-text{
+	line-height: 2;
 }
 .fa-user-circle{
 	color: #3A534D;
@@ -164,7 +170,7 @@ article img, .cover{
 
 #backToTop{
 	opacity: 0;
-	color: #17A2B8;
+	color: white;
 }
 html{
 	scroll-behavior: smooth;
@@ -249,8 +255,6 @@ footer{
 
 	.jean{
 		width: 90%;
-  		float: none;
-		shape-outside: none;
 	}
 
 	.home h4{

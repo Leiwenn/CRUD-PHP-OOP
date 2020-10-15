@@ -10,7 +10,7 @@ class DashboardController{
     private const LINKHOMEDASHBOARD = 'Accueil Dashboard';
     private const LINKTINY = 'Editeur de texte';
     private const LINKHOME = 'Voir le site';
-    private const LINKDISCONNECT = '<i class="fas fa-sign-out-alt" title="déconnexion" aria-hidden="true"></i>';
+    private const LINKDISCONNECT = '<i class="fas fa-sign-out-alt" title="déconnexion"></i>';
 
     public function showDashboard(){
         $title = 'Dashboard';

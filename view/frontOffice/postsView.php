@@ -4,12 +4,12 @@
         <?php
             while($data = $postsPagination->fetch()){
         ?>
-        <article class="shadow rounded card">
+        <article class="shadow rounded card bg-white">
             <img src="public/img/<?= $data['file_name'] ?>" class="img-fluid rounded card-img-top" alt="<?= $data['file_description'] ?>" />
             <div class="card-body">
                 <h3 class="card-title text-center"> <?= $data['title'] ?> </h3>
                 <p class="card-text"> <?= substr(html_entity_decode($data['content']), 0, 300) ?> ...</p>
-                <a href="index.php?action=viewPost&id=<?= $data['id'] ?>" class="btn btn-info btn-sm" type="button"> <?= $linkReadMore ?> </a>
+                <a href="index.php?action=viewPost&id=<?= $data['id'] ?>" class="btn btn-info"> <?= $linkReadMore ?> </a>
             </div>
         </article>
         <?php
@@ -42,8 +42,6 @@
             </li>
         </ul>
     </nav>
-    
-    <a id="backToTop" class="btn" role="btn"><i class="fas fa-arrow-circle-up"></i></a>
 </section>
 
 <!-- end div wrapper -->

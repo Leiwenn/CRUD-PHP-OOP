@@ -2,8 +2,8 @@
         <h1 class="text-center"><i class="fas fa-feather-alt mr-2" aria-hidden="true"></i> <?= $h1 ?></h1>
     </header>
 
-    <section class="widgets p-3">
-        <div class="d-flex justify-content-around flex-wrap">
+    <section class="widgets">
+        <div class="d-flex justify-content-around flex-wrap cards p-3">
             <div class="d-flex carte">
                 <div class="w_users d-flex align-items-center justify-content-around bg-success">
                     <a class="text-white" role="button" href="index.php?action=member_list">
@@ -72,9 +72,9 @@
                 </div>
             </div>
         </div>
-        <div class="mt-3 p-2 text-center billets">
+        <div class="container mt-3 p-3 text-center billets">
             <section>
-                <h2 class="p-2 ombre text-white"> <?= $h2 ?>
+                <h2 class="p-2 text-dark font-weight-bold border-bottom"> <?= $h2 ?>
                 <?php
                     while($data = $totalPostsAwaiting->fetch()){
                         if($data == null){
@@ -86,13 +86,13 @@
                     $totalPostsAwaiting->closeCursor();
                 ?>
                 </h2>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush m-4">
                     <?php
                         while($data = $showPostsAwaiting->fetch()){
                     ?>
-                    <li class="list-group-item d-flex align-items-center justify-content-between"> 
-                        <?= $data['title'] ?> le <?= $data['creation_date_fr'] ?> 
-                        <a class="btn btn-outline-info ml-3" href="index.php?action=view_post_dashboard&id=<?= $data['id'] ?>"> <?= $linkSeePostAwaiting ?> </a>
+                    <li class="list-group-item d-flex align-items-center justify-content-between shadow">
+                        <i class="far fa-circle"> <?= $data['title'] ?> le <?= $data['creation_date_fr'] ?></i>
+                        <a class="btn btn-info ml-3" href="index.php?action=view_post_dashboard&id=<?= $data['id'] ?>"> <?= $linkSeePostAwaiting ?> </a>
                     </li>
                     <?php
                         }
@@ -101,7 +101,7 @@
                 </ul>
             </section>
             <section>
-                <h3 class="mt-2 p-2 ombre text-white"> <?= $h3 ?>
+                <h3 class="mt-2 p-2 text-dark font-weight-bold border-bottom"> <?= $h3 ?>
                 <?php
                     while($data = $totalPosts->fetch()){
                         if($data == null){
@@ -113,13 +113,13 @@
                     $totalPosts->closeCursor();
                 ?>
                 </h3>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush m-4">
                     <?php 
                         while($data = $showPostsList->fetch()){
                     ?>
-                    <li class="list-group-item d-flex align-items-center justify-content-between"> 
-                        <?= $data['title'] ?> le <?= $data['creation_date_fr'] ?> 
-                        <a class="btn btn-outline-info ml-3" href="index.php?action=view_post_dashboard&id=<?= $data['id'] ?>"> <?= $linkSeePost ?> </a>
+                    <li class="list-group-item d-flex align-items-center justify-content-between shadow"> 
+                        <i class="fas fa-circle"> <?= $data['title'] ?> le <?= $data['creation_date_fr'] ?></i> 
+                        <a class="btn btn-info ml-3" href="index.php?action=view_post_dashboard&id=<?= $data['id'] ?>"> <?= $linkSeePost ?> </a>
                     </li>
                     <?php 
                         }
@@ -128,6 +128,7 @@
                 </ul>
             </section>
         </div>
+        <a id="backToTop" title="retour en haut de page" class="btn"><i class="fas fa-arrow-circle-up"></i></a>
     </section>
 <!-- end div container-fluid -->
 </div>

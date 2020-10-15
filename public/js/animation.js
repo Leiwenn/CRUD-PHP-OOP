@@ -6,7 +6,8 @@ $(document).ready(function(){
             $('#backToTop').css('opacity', '1');
     });
 
-    $('#backToTop').on('click', function(){
-        $('body').scrollTop(0);
+    $('#backToTop').on('click', function(e){
+        e.preventDefault();
+        window.scrollTo(0,0);
     });
 });

@@ -2,8 +2,8 @@
         <h1 class="pt-2"> <?= $h1 ?> </h1>
     </header>
 
-    <section class="postAwaiting">
-        <h2 class="p-2 text-center text-white ombre"> <?= $h2 ?> </h2>
+    <section class="container postAwaiting">
+        <h2 class="p-2 text-center text-dark"> <?= $h2 ?> </h2>
         <?php 
             while($data = $showPostDashboard->fetch()){
         ?>
@@ -33,6 +33,7 @@
             }
             $showPostDashboard->closeCursor();
         ?>
+        <a id="backToTop" title="retour en haut de page" class="btn"><i class="fas fa-arrow-circle-up"></i></a>
     </section>
 <!-- end div container-fluid -->
 </div>

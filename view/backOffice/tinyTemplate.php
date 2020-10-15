@@ -13,13 +13,13 @@
         <meta name="description" content="Blog de l'auteur Jean Forteroche, publication inédite de son dernier roman directement en ligne">
             <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://p3velo.emeline-gouault.com/"><!-- URL A CHANGER -->
+        <meta property="og:url" content="https://p4blog.emeline-gouault.com/">
         <meta property="og:title" content="Blog de Jean Forteroche">
         <meta property="og:description" content="Blog de l'auteur Jean Forteroche, publication inédite de son dernier roman directement en ligne">
         <meta property="og:image" content="public/img/book_cover.png">
             <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="https://p3velo.emeline-gouault.com/"><!-- URL A CHANGER -->
+        <meta property="twitter:url" content="https://p4blog.emeline-gouault.com/">
         <meta property="twitter:title" content="Blog de Jean Forteroche">
         <meta property="twitter:description" content="Blog de l'auteur Jean Forteroche, publication inédite de son dernier roman directement en ligne">
         <meta property="twitter:image" content="public/img/book_cover.png">

@@ -44,7 +44,6 @@ class Router{
                 $frontController->showHome();
             }
         }catch(Exception $e){
-            echo 'erreur : ' . $e->getMessage();
             require 'error.php';
         }
     }

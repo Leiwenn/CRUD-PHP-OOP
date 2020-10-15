@@ -1,2 +1,2 @@
 <p class="text-center cinzeld pt-3"> <?= $h1 ?> </p>
-<p class="text-center pb-3">&copy; Fictif Editions | <a class="text-white" href="index.php?action=legalNotice">Mentions légales</a> | <a class="text-white" href="#" id="tarteaucitronManager" onclick="tarteaucitron.userInterface.openPanel();">Gestion des cookies</a> </p>
+<p class="text-center pb-3">&copy; Fictif Editions | <a class="text-white" href="index.php?action=legalNotice">Mentions légales</a> </p>

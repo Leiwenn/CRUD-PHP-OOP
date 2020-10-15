@@ -13,7 +13,7 @@ class DashboardPostController{
         $linkHomeDashboard = 'Accueil Dashboard';
         $linkTiny = 'Editeur de texte';
         $linkHome = 'Voir le site';
-        $linkDisconnect = '<i class="fas fa-sign-out-alt" title="déconnexion" aria-hidden="true"></i>';
+        $linkDisconnect = '<i class="fas fa-sign-out-alt" title="déconnexion"></i>';
         $h2 = 'Modifier le billet';
         $linkEdit = 'Editer';
         $linkDelete = 'Supprimer';
@@ -44,8 +44,18 @@ class DashboardPostController{
     }
 
     public function publishPostAwaiting($id){
+        $this->setThePostAwait($id);
+        $this->updateTheDate($id);
+    }
+
+    private function setThePostAwait($id){
         $dashboardPostManager = new DashboardPostManager();
         $dashboardPostManager->setPostAwait($id);
+    }
+
+    private function updateTheDate($id){
+        $dashboardPostManager = new DashboardPostManager();
+        $dashboardPostManager->setUpdatedDate($id);
     }
 
     public function updatePost($id, $title, $content, $file_name, $file_description){

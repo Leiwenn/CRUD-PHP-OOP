@@ -34,11 +34,11 @@ class MemberRouter{
     }
 
     private function registrationRoute(){
-        if(isset($_POST['pseudo'], $_POST['password'], $_POST['passwordConfirm'], $_POST['mail'])){
+        if(isset($_POST['registration_pseudo'], $_POST['registration_password'], $_POST['passwordConfirm'], $_POST['mail'])){
             sleep(1);
             $memberController = new \p4\blog\controller\MemberController();
-            $pseudo = htmlspecialchars($_POST['pseudo']);
-            $password = htmlspecialchars($_POST['password']);
+            $pseudo = htmlspecialchars($_POST['registration_pseudo']);
+            $password = htmlspecialchars($_POST['registration_password']);
             $paswordConfirm = htmlspecialchars($_POST['passwordConfirm']);
             $mail = htmlspecialchars($_POST['mail']);
             $memberController->getMember($pseudo);

@@ -18,7 +18,7 @@ class FrontController{
         $linkPostsList = 'Liste des épisodes';
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
             $linkArea = null;
-            $linkLog = '<a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#">Connexion</a>';
+            $linkLog = '<a class="nav-link text-white" data-toggle="modal" data-target="#connexion" href="#">Connexion</a>';
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == true){
             $linkArea = '<a class="nav-link text-white" href="index.php?action=dashboard">Dashboard</a>';
             $linkLog = '<a class="nav-link text-white" href="index.php?action=disconnect">Déconnexion</a>';
@@ -49,7 +49,7 @@ class FrontController{
         $linkPostsList = 'Liste des épisodes';
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
             $linkArea = null;
-            $linkLog = '<a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#">Connexion</a>';
+            $linkLog = '<a class="nav-link text-white" data-toggle="modal" data-target="#connexion" href="#">Connexion</a>';
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == true){
             $linkArea = '<a class="nav-link text-white" href="index.php?action=dashboard">Dashboard</a>';
             $linkLog = '<a class="nav-link text-white" href="index.php?action=disconnect">Déconnexion</a>';
@@ -80,7 +80,7 @@ class FrontController{
         $linkPostsList = 'Liste des épisodes';
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
             $linkArea = null;
-            $linkLog = '<a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#">Connexion</a>';
+            $linkLog = '<a class="nav-link text-white" data-toggle="modal" data-target="#connexion" href="#">Connexion</a>';
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == true){
             $linkArea = '<a class="nav-link text-white" href="index.php?action=dashboard">Dashboard</a>';
             $linkLog = '<a class="nav-link text-white" href="index.php?action=disconnect">Déconnexion</a>';
@@ -118,7 +118,7 @@ class FrontController{
         $h4 = 'Vos Commentaires';
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
             $linkArea = null;
-            $linkLog = '<a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#">Connexion</a>';
+            $linkLog = '<a class="nav-link text-white" data-toggle="modal" data-target="#connexion" href="#">Connexion</a>';
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == true){
             $linkArea = '<a class="nav-link text-white" href="index.php?action=dashboard">Dashboard</a>';
             $linkLog = '<a class="nav-link text-white" href="index.php?action=disconnect">Déconnexion</a>';
@@ -155,7 +155,7 @@ class FrontController{
         $linkPostsList = 'Liste des épisodes';
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
             $linkArea = null;
-            $linkLog = '<a class="nav-link text-white" type="button" data-toggle="modal" data-target="#connexion" href="#">Connexion</a>';
+            $linkLog = '<a class="nav-link text-white" data-toggle="modal" data-target="#connexion" href="#">Connexion</a>';
         }elseif(isset($_SESSION['pseudo']) && $_SESSION['admin'] == true){
             $linkArea = '<a class="nav-link text-white" href="index.php?action=dashboard">Dashboard</a>';
             $linkLog = '<a class="nav-link text-white" href="index.php?action=disconnect">Déconnexion</a>';

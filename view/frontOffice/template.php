@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <meta charset="utf-8">
         <script type="text/javascript" src="public/tarteaucitron/tarteaucitron.js"></script>
         <script type="text/javascript">
             tarteaucitron.init({
-                "privacyUrl": "http://localhost/P4_GOUAULT_EMELINE/index.php?action=legalNotice",                           /* URL A CHANGER */
+                "privacyUrl": "https://p4blog.emeline-gouault.com/index.php?action=legalNotice",
                 "hashtag": "#tarteaucitron",
                 "cookieName": "tarteaucitron",
                 "orientation": "middle",
-                "showAlertSmall": false,
+                "showAlertSmall": true,
                 "cookieslist": true,
                 "adblocker": false,
                 "DenyAllCta" : true,
@@ -18,11 +19,14 @@
                 "removeCredit": false,
                 "moreInfoLink": true,
                 "useExternalCss": false,
-                "readmoreLink": "http://localhost/P4_GOUAULT_EMELINE/index.php?action=legalNotice", /* URL A CHANGER */
+                "readmoreLink": "https://p4blog.emeline-gouault.com/index.php?action=legalNotice",
                 "mandatory": false
             });
+            tarteaucitron.user.gtagUa = 'UA-XXXXXXXX-X';
+            tarteaucitron.user.gtagMore = function () { };
+            (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+            (tarteaucitron.job = tarteaucitron.job || []).push('facebook');
         </script>
-        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/f2c3a49501.js"></script>
@@ -33,13 +37,13 @@
         <meta name="description" content="Blog de l'auteur Jean Forteroche, publication inédite de son dernier roman directement en ligne">
             <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
-        <meta property="og:url" content="https://p3velo.emeline-gouault.com/"><!-- URL A CHANGER -->
+        <meta property="og:url" content="https://p4blog.emeline-gouault.com/">
         <meta property="og:title" content="Blog de Jean Forteroche">
         <meta property="og:description" content="Blog de l'auteur Jean Forteroche, publication inédite de son dernier roman directement en ligne">
         <meta property="og:image" content="public/img/book_cover.png">
             <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="https://p3velo.emeline-gouault.com/"><!-- URL A CHANGER -->
+        <meta property="twitter:url" content="https://p4blog.emeline-gouault.com/">
         <meta property="twitter:title" content="Blog de Jean Forteroche">
         <meta property="twitter:description" content="Blog de l'auteur Jean Forteroche, publication inédite de son dernier roman directement en ligne">
         <meta property="twitter:image" content="public/img/book_cover.png">
@@ -126,11 +130,6 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <script type="text/javascript" src="public/js/animation.js"></script>
-        <script type="text/javascript">
-            tarteaucitron.user.gtagUa = 'UA-XXXXXXXX-X';
-            tarteaucitron.user.gtagMore = function () { };
-            (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
-            (tarteaucitron.job = tarteaucitron.job || []).push('facebook');
-        </script>
+        <script type="text/javascript" src="public/js/darkMode.js"></script>
     </body>
 </html>
