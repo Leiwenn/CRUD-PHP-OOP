@@ -103,9 +103,10 @@ Etape 9 corrections
 - vérification du cross browser
 
 ETAPE 10 
+- updateDate publish post awaiting
+- ajout toogle dark mode pour la lecture d'un article
+- upload img
 - site ONLINE
 - https
 - mise à jour des URL du site dans le code
 - creation et ajout du sitemap/google search console
-- updateDate publish post awaiting
-- ajout toogle dark mode pour la lecture d'un article

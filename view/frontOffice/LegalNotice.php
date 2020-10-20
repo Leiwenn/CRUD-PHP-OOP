@@ -7,7 +7,7 @@
 
     <article class="p-2">
         <h4>Copyright et propriété intellectuelle</h4>
-        <p>Le contenu de ce site (textes) n’est pas libre de droits. Il ne peut pas être reproduit, copié ou redistribué, même de façon partielle, sans mon autorisation préalable. Vous pouvez faire un lien vers une page si le contenu vous plait.</p>
+        <p>Le contenu de ce site (textes) provient du site <a href="https://fr.wikisource.org/wiki/Wikisource:Accueil">Wikisource</a>, livre <a href="https://fr.wikisource.org/wiki/Le_Grand_Silence_blanc">Le_Grand_Silence_blanc</a> de Louis-Frédéric Rouquette, sous licence <a href="https://creativecommons.org/licenses/by-sa/3.0/legalcode"><i class="fab fa-creative-commons"></i> Créative Commons</a>.</p>
         <p>Les images proviennent de <a href="https://pixabay.com/fr/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=801921">Pixabay.com</a> | <a href="https://undraw.co/">Undraw.co</a> </p>
     </article>
 
