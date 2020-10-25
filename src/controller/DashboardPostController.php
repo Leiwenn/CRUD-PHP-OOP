@@ -12,6 +12,7 @@ class DashboardPostController{
         $h1 = 'Dashboard';
         $linkHomeDashboard = 'Accueil Dashboard';
         $linkTiny = 'Editeur de texte';
+        $linkMedia = 'Images';
         $linkHome = 'Voir le site';
         $linkDisconnect = '<i class="fas fa-sign-out-alt" title="déconnexion"></i>';
         $h2 = 'Modifier le billet';

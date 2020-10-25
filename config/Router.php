@@ -24,7 +24,7 @@ class Router{
                     $reportsRouter = new \p4\blog\config\ReportsRouter();
                     $reportsRouter->reportsRouter($_GET['action']);
 
-                }elseif(($_GET['action'] == 'dashboard') || ($_GET['action'] == 'view_post_dashboard') || ($_GET['action'] == 'text_editor') || ($_GET['action'] == 'member_list')){
+                }elseif(($_GET['action'] == 'dashboard') || ($_GET['action'] == 'view_post_dashboard') || ($_GET['action'] == 'text_editor') || ($_GET['action'] == 'media') || ($_GET['action'] == 'member_list')){
                     $dashboardRouter = new \p4\blog\config\DashboardRouter();
                     $dashboardRouter->dashboardRouter($_GET['action']);
                     

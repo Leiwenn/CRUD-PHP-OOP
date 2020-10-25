@@ -9,6 +9,7 @@ class DashboardReportController{
     private const H1 = 'Dashboard';
     private const HOMEDASHBOARD = 'Accueil Dashboard';
     private const LINKTINY = 'Editeur de texte';
+    private const LINKMEDIA = 'Images';
     private const LINKHOME = 'Voir le site';
     private const LINKDISCONNECT = '<i class="fas fa-sign-out-alt" title="déconnexion"></i>';
 
@@ -23,6 +24,7 @@ class DashboardReportController{
         $h1 = self::H1;
         $linkHomeDashboard = self::HOMEDASHBOARD;
         $linkTiny = self::LINKTINY;
+        $linkMedia = self::LINKMEDIA;
         $linkHome = self::LINKHOME;
         $linkDisconnect = self::LINKDISCONNECT;
         $h2 = 'Demandes de modération';
@@ -42,6 +44,7 @@ class DashboardReportController{
         $h1 = self::H1;
         $linkHomeDashboard = self::HOMEDASHBOARD;
         $linkTiny = self::LINKTINY;
+        $linkMedia = self::LINKMEDIA;
         $linkHome = self::LINKHOME;
         $linkDisconnect = self::LINKDISCONNECT;
         $h2 = 'Commentaire à modérer';

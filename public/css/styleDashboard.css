@@ -40,8 +40,14 @@ h1{
 span, h2, h3, h4{
     font-family: 'cinzelbold';
 }
-.fa-comment-dots, .fa-sign-out-alt{
+.fa-bookmark{
+    font-size: 50px;
+}
+.fa-comment-dots{
     font-size: 20px;
+}
+.fa-sign-out-alt{
+    font-size: 30px;
 }
 .fa-arrow-circle-up{
 	font-size: 40px;
@@ -181,10 +187,6 @@ header{
     .container-fluid, .reports, .widgets, .comments, .postAwaiting, .memberList{
         margin: 0;
         height: auto;
-    }
-
-    .img_dashboard{
-        width: 25% !important;
     }
 
     .postAwaiting article{

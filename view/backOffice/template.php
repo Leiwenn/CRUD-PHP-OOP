@@ -63,6 +63,8 @@
             if(isset($_GET['action'])){
                 if($_GET['action'] == 'dashboard'){
                     include 'view/backOffice/dashboard.php';
+                }elseif($_GET['action'] == 'media'){
+                    include 'view/backOffice/media.php';
                 }elseif($_GET['action'] == 'view_post_dashboard'){
                     include 'view/backOffice/postDashboard.php';
                 }elseif($_GET['action'] == 'member_list'){

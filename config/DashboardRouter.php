@@ -15,6 +15,8 @@ class DashboardRouter{
                         $this->viewPostDashboardRoute();
                     }elseif($_GET['action'] == 'text_editor'){
                         $this->textEditorRoute();
+                    }elseif($_GET['action'] == 'media'){
+                        $this->mediaRoute();
                     }elseif($_GET['action'] == 'member_list'){
                         $this->memberListRoute();
                     }else{
@@ -52,6 +54,13 @@ class DashboardRouter{
         if($_SESSION['admin'] == true){
             $tinyController = new \p4\blog\controller\TinyController();
             $tinyController->showEditor();
+        }
+    }
+
+    private function mediaRoute(){
+        if($_SESSION['admin'] == true){
+            $dashboardMediaController = new \p4\blog\controller\DashboardMediaController();
+            $dashboardMediaController->showAllMedia();
         }
     }
 

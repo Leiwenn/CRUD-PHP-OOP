@@ -9,6 +9,7 @@ class DashboardController{
 
     private const LINKHOMEDASHBOARD = 'Accueil Dashboard';
     private const LINKTINY = 'Editeur de texte';
+    private const LINKMEDIA = 'Images';
     private const LINKHOME = 'Voir le site';
     private const LINKDISCONNECT = '<i class="fas fa-sign-out-alt" title="déconnexion"></i>';
 
@@ -17,6 +18,7 @@ class DashboardController{
         $h1 = 'Dashboard';
         $linkHomeDashboard = self::LINKHOMEDASHBOARD;
         $linkTiny = self::LINKTINY;
+        $linkMedia = self::LINKMEDIA;
         $linkHome = self::LINKHOME;
         $linkDisconnect = self::LINKDISCONNECT;
         $membersTitle = 'Membres';
@@ -84,6 +86,7 @@ class DashboardController{
         $title = 'Membres';
         $linkHomeDashboard = self::LINKHOMEDASHBOARD;
         $linkTiny = self::LINKTINY;
+        $linkMedia = self::LINKMEDIA;
         $linkHome = self::LINKHOME;
         $linkDisconnect = self::LINKDISCONNECT;
         $h1 = 'Liste des membres';
