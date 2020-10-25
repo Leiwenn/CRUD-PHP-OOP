@@ -86,6 +86,7 @@ class PostsRouter{
                 $file_name = htmlspecialchars($_FILES['file_name']['name']);
                 $file_description = htmlspecialchars($_POST['file_description']);
                 if(!empty($_FILES['file_name']['name'])){
+                    $this->uploadFile();
                     $dashboardPostController = new \p4\blog\controller\DashboardPostController();
                     $dashboardPostController->updatePost($id, $title, $content, $file_name, $file_description);
                     $this->showDashboardRoute();

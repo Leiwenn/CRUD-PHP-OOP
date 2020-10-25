@@ -3,11 +3,11 @@
         <?php
             while($data = $showLastPost->fetch()){
         ?>
-            <article class="rounded card d-flex flex-md-row align-items-center">
-                <div class="col-md-4">
+            <article class="rounded card align-items-center">
+                <div class="col-12 col-md-6">
                     <img src="public/img/<?= $data['file_name'] ?>" class="img-fluid card-img-top rounded" alt="<?= $data['file_description'] ?>" />
                 </div>
-                <div class="card-body col-md-8">
+                <div class="card-body">
                     <h3 class="card-title text-center"> <?= $data['title'] ?> </h3>
                     <p class="card-text text-left">
                         <?= substr(html_entity_decode($data['content']), 0, 1000) . '...' ?>
