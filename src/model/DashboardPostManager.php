@@ -36,6 +36,8 @@ class DashboardPostManager extends DbManager{
      *
      * @param [type] $title
      * @param [type] $content
+     * @param [type] $file_name
+     * @param [type] $file_description
      * @return void
      */
     public function setPostAwaiting($title, $content, $file_name, $file_description){

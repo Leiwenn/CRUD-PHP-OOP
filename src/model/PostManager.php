@@ -2,7 +2,6 @@
 
 namespace p4\blog\model;
 use p4\blog\model\database\DbManager as DbManager;
-use p4\blog\model\DashboardManager as DashboardManager;
 
 class PostManager extends DbManager{
 
@@ -26,7 +25,7 @@ class PostManager extends DbManager{
 			FROM posts 
 			WHERE id = :id'
 		);
-		$req->bindValue(':id', $id, \PDO::PARAM_STR);
+		$req->bindValue(':id', $id, \PDO::PARAM_INT);
 		$req->execute(array('id' => $id));
 		$onePost = $req;
 	    return $onePost;

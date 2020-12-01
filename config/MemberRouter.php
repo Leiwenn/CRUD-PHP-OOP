@@ -203,7 +203,7 @@ class MemberRouter{
 
     private function excludeMemberRoute(){
         if($_SESSION['admin'] == true){
-            $memberController = new \p4\blog\controller\memberController();
+            $memberController = new \p4\blog\controller\MemberController();
             $pseudo = htmlspecialchars($_GET['pseudo']);
             $memberController->deleteMember($pseudo);
             $dashboardController = new \p4\blog\controller\DashboardController();
