@@ -1,4 +1,5 @@
-# P4_GOUAULT_EMELINE
+# P4_BLOG
+Projet étudiant_création d'un blog en PHP POO, BDD MySQL et éditeur de texte TinyMCE
 
 ETAPE 1
 - mise en place squelette MVC
