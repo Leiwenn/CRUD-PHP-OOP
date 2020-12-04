@@ -67,6 +67,7 @@ body{
 }
 .wrapper{
 	background: rgba(0, 0, 0, 0.3);
+	padding-bottom: 20px !important;
 }
 
 /* --- HEADER --- */
@@ -104,7 +105,7 @@ nav a:hover{
 	color:#FFFFF0;
 	border-color: transparent;
 	letter-spacing: 1px;
-	box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+	box-shadow: 5px 40px 0 rgba(0,0,0,0.57);
 	transition: all 0.4s ease 0s;
 }
 .tips{

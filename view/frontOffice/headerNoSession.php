@@ -15,8 +15,8 @@
 			</div>
 			<div class="modal-body">
 				<form action="index.php?action=login" method="post">
-                <label class="pb-1" for="pseudo">Votre pseudo:</label>
-                <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" 
+                    <label class="pb-1" for="pseudo">Votre pseudo:</label>
+                    <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="pseudo" 
                     <?php
                     if(isset($_COOKIE['pseudo'])){
                     ?>
@@ -37,7 +37,7 @@
                     required>
                     <div class="form-group form-check">
 					    <label class="pt-4 form-check-label" for="checkbox">
-                            <input class="form-check-input" type="checkbox" name="checkbox"> 
+                            <input class="form-check-input" type="checkbox" name="checkbox" id="checkbox"> 
                             se souvenir de moi
                         </label>
                         <small class="text-muted">(Enregistrement sous forme de cookies)</small>

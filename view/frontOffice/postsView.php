@@ -43,6 +43,3 @@
         </ul>
     </nav>
 </section>
-
-<!-- end div wrapper -->
-</div>

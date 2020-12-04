@@ -2,8 +2,8 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <script type="text/javascript" src="public/tarteaucitron/tarteaucitron.js"></script>
-        <script type="text/javascript">
+        <script src="public/tarteaucitron/tarteaucitron.js"></script>
+        <script>
             tarteaucitron.init({
                 "privacyUrl": "https://p4blog.emeline-gouault.com/index.php?action=legalNotice",                           
                 "hashtag": "#tarteaucitron",

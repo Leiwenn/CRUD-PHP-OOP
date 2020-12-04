@@ -113,7 +113,7 @@ class FrontController{
         $linkHome = 'Accueil';
         $linkPostsList = 'Liste des épisodes';
         $linkBack = 'Retour à la liste';
-        $h3 = 'Que va t\'il se passer ? </br> Ajoutez votre commentaire';
+        $h3 = 'Ajoutez votre commentaire';
         $help = 'Votre commentaire sera validé par Jean Forteroche avant publication';
         $h4 = 'Vos Commentaires';
         if(!isset($_SESSION['pseudo']) || !isset($_SESSION['admin'])){
