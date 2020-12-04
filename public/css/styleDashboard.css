@@ -184,7 +184,7 @@ header{
     }
 
     .img_dashboard{
-        width: 25% !important;
+        display: none;
     }
 
     .postAwaiting article{

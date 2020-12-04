@@ -61,8 +61,8 @@
                 ?>
                     <div class="bg-white shadow p-3 m-3 rounded">
                         <p class="font-weight-bold"><i class="fas fa-user-circle" aria-hidden="true"></i> <?= $data['pseudo'] ?>, le <?= $data['comment_date_fr'] ?></p>
-                        <p><span class="text-info">Titre</span></br> <?= $data['title'] ?></p>
-                        <p><span class="text-info">Commentaire</span></br> <?= nl2br($data['comment']) ?></p>
+                        <p><span class="text-info">Titre</span><br> <?= $data['title'] ?></p>
+                        <p><span class="text-info">Commentaire</span><br> <?= nl2br($data['comment']) ?></p>
                         <?php
                             if(isset($_SESSION['pseudo'])){
                                 $comment_author = $data['pseudo'];
@@ -82,6 +82,7 @@
                     }
                 $comments->closeCursor();
                 ?>
+            </div>
             </div>
         </div>
         <a id="backToTop" title="retour en haut de page" class="btn"><i class="fas fa-arrow-circle-up"></i></a>

@@ -19,8 +19,8 @@
     <section class="row d-flex justify-content-center align-items-center">
         <div class="col-11 col-md-10 p-4 d-flex justify-content-center align-items-center flex-column rounded text-center">
             <h1>Oups !</h1>
-            <p class="mt-4"> <?= '<span>' . 'Erreur : ' . '</span>' . '</br>' . $e->getMessage(); ?> </p>
-            <p class="mt-2"> <?= '<span>' . 'Fichier : ' . '</span>' . '</br>' . $e->getFile(); ?> </p>
+            <p class="mt-4"> <?= '<span>' . 'Erreur : ' . '</span>' . '<br>' . $e->getMessage(); ?> </p>
+            <p class="mt-2"> <?= '<span>' . 'Fichier : ' . '</span>' . '<br>' . $e->getFile(); ?> </p>
             <a href="index.php" class="btn btn-lg mt-4"><i class="fa fa-arrow-left"></i> Retour</a>
         </div>
     </section>
